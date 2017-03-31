@@ -1,7 +1,7 @@
 // processing file that is called by the electron handler in index.js
 var fs = require('fs');
 var ExifImage = require('exif').ExifImage;
-// console.log("hello im in the nodeProcessing.js file")
+console.log("hello im in the nodeProcessing.js file")
 var path = require( 'path' );
 var process = require( "process" );
 

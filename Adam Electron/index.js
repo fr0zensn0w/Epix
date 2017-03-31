@@ -27,3 +27,11 @@ button2.addEventListener('click', () => {
     console.log("node processing finished")
 })
 document.body.appendChild(button2)
+
+var galleryButton = document.createElement('button')
+galleryButton.textContent = 'view gallery'
+
+galleryButton.addEventListener('click', () => {
+  main.openWindow('gallery')
+}, false)
+document.body.appendChild(galleryButton)
