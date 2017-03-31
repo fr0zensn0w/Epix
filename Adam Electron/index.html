@@ -87,7 +87,7 @@
             // using d3 to pull data from download.csv file
             d3.json("data.json", function(data) {
                 //console.log(data[0]);
-                this.fullData = data
+                this.fullData = data;
                 afterProcessing();
             });
             //function needed because we need to async to be finished before we can use the array
@@ -171,7 +171,7 @@
                         if (dates365Array[i] != undefined) {
                             for (var j = 0; j < dates365Array[i].length; j++) {
                                 sevenDayImageNames.push(dates365Array[i][j]);
-                                //console.log(sevenDayImageNames + " sevenDaysImageNames");
+                                console.log(sevenDayImageNames + " sevenDaysImageNames");
                             }
                         }
                         
