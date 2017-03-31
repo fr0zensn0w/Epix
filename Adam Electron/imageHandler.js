@@ -63,22 +63,29 @@ function uploadImage(fp) {
   } 
 }
 
-// a function to get all image names that have certain tag(s)
+// a function to get all image names that have tags/exif
 
-function getImagesByTag(tagStr) {
+function getImages(slideshowSettings) {
   // split up our string of tags
+  var tagStr = slideshowSettings.Tags;
   var images[]
   var tags = tagStr.split(' ')
   // now read in the JSON detailing all of the images
   d3.json("data.json", function(err, data) {
     if (err) throw err;
+    var pushed = 0;
     for (i = 0; i < data.length; i++) {
       var imgTagStr = data[i].Tags;
       var imgTags = imgTagStr.split(' ');
       for (j = 0; j < imgTags.length; j++) {
         if (tags[i] == imgTags[j]) {
           images.push(data[i].FileName)
+          j = imgTags.length
+          pushed = 1;
         }
+      }
+      if (!pushed) {
+        // we need to figure out how to effective check the exifs here
       }
     }
   });
