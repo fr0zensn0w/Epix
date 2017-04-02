@@ -22,6 +22,8 @@ app.on('ready', () => {
 })
 
 
+
+
 exports.openImage = (i) => {
     global.sharedObj = {imgname: i};
     let win = new BrowserWindow({width:1000, height:800, backgroundColor: '#222',show:false})
@@ -31,8 +33,19 @@ exports.openImage = (i) => {
     //win.webContents.send('imgname', filename)
     win.once('ready-to-show', () => {
       win.show()
+    })  
+}
+
+exports.openSlideshow = (ssName) => {
+    global.sharedObj = {SSN: ssName};
+    let win = new BrowserWindow({width:1000, height:800, backgroundColor: '#222',show:false})
+    win.loadURL(`file://${__dirname}/slideshow.html`)
+    // win.show()
+    //win.webContents.openDevTools()
+    //win.webContents.send('imgname', filename)
+    win.once('ready-to-show', () => {
+      win.show()
     })
-    
 }
 
 

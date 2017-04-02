@@ -43,20 +43,6 @@ function openSelected(i) {
     setTimeout(function(){window.close()}, 700);
 }
 
-// got this from stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
-// function readTextFile(file, callback) {
-//     var rawFile = new XMLHttpRequest();
-//     rawFile.overrideMimeType("application/json");
-//     rawFile.open("GET", file, true);
-//     rawFile.onreadystatechange = function() {
-//         if (rawFile.readyState === 4 && rawFile.status == "200") {
-//             callback(rawFile.responseText);
-//         }
-//     }
-//     rawFile.send(null);
-// }
-
-
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
     fs.readFile('./data.json', function(err, data) {

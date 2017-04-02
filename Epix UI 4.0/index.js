@@ -26,19 +26,11 @@ function openSlideshows() {
     setTimeout(function(){window.close()}, 700);
 }
 
-// got this from stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
-// function readTextFile(file, callback) {
-//     var rawFile = new XMLHttpRequest();
-//     rawFile.overrideMimeType("application/json");
-//     rawFile.open("GET", file, true);
-//     rawFile.onreadystatechange = function() {
-//         if (rawFile.readyState === 4 && rawFile.status == "200") {
-//             callback(rawFile.responseText);
-//         }
-//     }
-//     rawFile.send(null);
-// }
-
+function openSelectedSlideshow(ssName) {
+    window = remote.getCurrentWindow()
+    main.openSlideshow(ssName);
+    // don't timeout
+}
 
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
@@ -49,11 +41,20 @@ window.onload = function populateImages() {
         var img = document.getElementsByClassName('card-img-top img-fluid w-100')
         // right now we're just looping through and assigning images in order.
         // wow actually I just figured out how to make the gallery
-        for (i = 0; i < img.length; i++) {
+        for (i = 0; i < img.length && i < 3; i++) {
+            console.log(img[i])
             img[i].src = 'http://placehold.it/350x250'
-            //img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
+            // img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
             img[i].style.height = '250px'
             img[i].style.width = '350px'
+            // var name = 'ss' + i
+            // console.log(name);
+            img[i].id = imgData[i].Name
+            img[i].addEventListener('click', function(e) {
+                openSelectedSlideshow(e.path[0].currentSrc);
+                console.log(e);
+            })
         }
+        
     })    
 }

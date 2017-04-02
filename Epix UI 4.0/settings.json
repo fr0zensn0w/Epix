@@ -4,5 +4,17 @@
         "Tag": "default",
         "TimeStart": "0",
         "TimeEnd": "7"
+    },
+    {
+        "Name": "Default",
+        "Tag": "default",
+        "TimeStart": "0",
+        "TimeEnd": "7"
+    },
+    {
+        "Name": "Default",
+        "Tag": "default",
+        "TimeStart": "0",
+        "TimeEnd": "7"
     }
 ]
