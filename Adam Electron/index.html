@@ -4,7 +4,7 @@
         <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
         <script type="text/javascript" src="js/d3.v3.min.js"></script>
         <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-	    <script type="text/javascript" src="js/jquery.cycle2.min.js"></script>
+	      <script type="text/javascript" src="js/jquery.cycle2.min.js"></script>
         <script type="text/javascript" src="js/jquery.cycle2.center.min.js"></script>
         <script type="text/javascript" src="nodeProcessing.js"></script>
         <script>if (window.module) module = window.module;</script>
@@ -20,7 +20,7 @@
              }
 
             .cycle-slideshow {
-                
+
                 width: 100%;
                 /*height: 100%;*/
                 min-width: 10%;
@@ -58,10 +58,10 @@
                 font-family: 'Montserrat', sans-serif;
             }
 	</style>
-        
-        
+
+
     </head>
-        
+
         <!-- <button id="preProcessing">Click for PreProcessing</button><br/>
         <p style="color: white"><font size="6">YearsPast</font> - This project uses jQuery, d3.js and Cycle2 to create a dynamic slideshow that changes depending on the time of the year and when the photos were taken.<br></br> The use of geolocation and Google Maps have still yet to be implemented. Bugs with portrait photos are still being worked out as well.</p> -->
     <body>
@@ -80,7 +80,7 @@
             String.prototype.replaceAt=function(index, character) {
                 return this.substr(0, index) + character + this.substr(index+character.length);
             }
-            
+
             var fullData;
             var dates365Array = [];
             var thisWeek = [];
@@ -100,19 +100,19 @@
                 dayOfYearMS = parseInt(dayOfYearMS, 10);
                 dayOfYearMS++; //increment so we can get more or less the right date
                 console.log("current day of the year",dayOfYearMS); // day of the year that will be outputted
-                
+
 
                 // console.log(fullData)
                 //for loop that makes up the array of arrays from 0-365 of the names of the images on those days
                 // so an array of max size 365 and each of the days is an array with the photos of that day
-                // OLD CODE BEFORE, UPDATING FOR NODE 
+                // OLD CODE BEFORE, UPDATING FOR NODE
                 // for (var i = 0; i < fullData.length; i++) {
                 //     if (dates365Array[fullData[i].Time.DayOfYear] == undefined) {
                 //         dates365Array[fullData[i].Time.DayOfYear] = ['<img src="Photos/' + fullData[i].FileName + '">'];
                 //     } else {
                 //         dates365Array[fullData[i].Time.DayOfYear].push('<img src="Photos/' + fullData[i].FileName + '">');
                 //     }
-                    
+
                 // }
 
                 for (i = 0; i < fullData.length; i++) {
@@ -123,17 +123,17 @@
                     }
                 }
                 console.log(dates365Array);
-                
+
                 // loop to make the array of the photos to be displayed in the slide show
                 var startDate = dayOfYearMS - 7;
                 var endDate = dayOfYearMS;
-                
-                
-                
+
+
+
                 console.log("Start Date: " + startDate);
                 console.log("End Date: " + endDate);
                 var sevenDayImageNames = [];
-                
+
                 if (endDate <= 6 && endDate >= 0) {
                     // switch to take care of end of year and beginning of year wrap around
                     switch (endDate) {
@@ -157,7 +157,7 @@
                             dates = [365, 1, 2, 3, 4, 5, 6];
                             break;
                     }
-                    
+
                     for(i = 0; i < dates.length; i++) {
                         if (dates365Array[dates[i]] != undefined) {
                             for (j = 0; j < dates365Array[dates[i]].length; j++) {
@@ -165,7 +165,7 @@
                             }
                         }
                     }
-                    
+
                 } else {
                     for (var i = startDate; i < endDate + 1; i++) {
                         if (dates365Array[i] != undefined) {
@@ -174,20 +174,20 @@
                                 console.log(sevenDayImageNames + " sevenDaysImageNames");
                             }
                         }
-                        
+
                     }
                 }
-                
-                
-                
+
+
+
                 console.log(sevenDayImageNames);
-                
+
                 // make slideshow on the page with the images from sevenDayImageNames - CYCLE2
                 for (var i=0; i < dates365Array.length; i++) {
                     $('.cycle-slideshow').cycle('add', dates365Array[i]);
                 }
                 $(this).prop('disabled', true)
-                
+
                 var time = new Date().getTime();
                 $(document.body).bind("mousemove keypress", function(e) {
                     time = new Date().getTime();
@@ -207,16 +207,16 @@
                     }
                 }
                 setTimeout(refresh, 14400000);
-                
+
             } //END afterProcessing()
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
             //--------------------------HANDLERS--------------------------
-            
+
             // document.getElementById("preProcessing").onclick = function() {
             //     window.open("preProcessing.html");
             // }
@@ -227,7 +227,7 @@
 
             }
         </script>
-        
+
         <div class="cycle-slideshow"
             data-cycle-swipe=true
             data-cycle-swipe-fx=scrollHorz
@@ -239,9 +239,9 @@
             data-cycle-timeout="2000"
         >
             <div class="cycle-caption"></div>
-            
+
             <!--<img src=""> TO BE USED FOR THE INITIAL PICTURE-->
         </div>
-        
+
     </body>
 </html>
