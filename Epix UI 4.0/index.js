@@ -24,3 +24,14 @@ function openSlideshows() {
     main.openWindow("index")
     setTimeout(function(){window.close()}, 700);
 }
+
+// this function should load images into the frames for the slideshows
+window.onload = function populateImages() {
+    // just using one image, we should make it pick an image that acually belongs to the slideshow
+    var img = document.getElementsByClassName('card-img-top img-fluid w-100')
+    for (i = 0; i < img.length; i++) {
+        img[i].src = "/Users/anthonybonitatibus/Documents/Epix/Epix UI 4.0/Photos/IMG_0118.JPG"
+        img[i].style.height = '250px'
+        img[i].style.width = '350px'
+    }
+}

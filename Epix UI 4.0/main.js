@@ -27,6 +27,7 @@ exports.openWindow = (filename) => {
     let win = new BrowserWindow({width:1000, height:800, backgroundColor: '#222',show:false})
     win.loadURL(`file://${__dirname}/` + filename + `.html`)
     // win.show()
+    win.webContents.openDevTools()
     win.once('ready-to-show', () => {
       win.show()
     })
