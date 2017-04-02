@@ -6,10 +6,6 @@ const main = remote.require('./main.js')
 const {shell} = require('electron')
 const fs = require('fs')
 
-
-
-
-
 function openPhotoGallery() {
     // alert("open the gallery")
     // TODO: put code in here to open the gallery, AKA open up to where the images are stored
@@ -39,6 +35,12 @@ function openSlideshows() {
     setTimeout(function(){window.close()}, 700);
 }
 
+function openImage() {
+    window = remote.getCurrentWindow()
+    main.openWindow("image")
+    setTimeout(function(){window.close()}, 700);
+}
+
 // got this from stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
 // function readTextFile(file, callback) {
 //     var rawFile = new XMLHttpRequest();
@@ -55,7 +57,6 @@ function openSlideshows() {
 
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
-    //
     fs.readFile('./data.json', function(err, data) {
         var imgData = JSON.parse(data)
         var gallery = (document.getElementsByClassName('gallery'))[0];
@@ -70,6 +71,11 @@ window.onload = function populateImages() {
             img.src = `file://${__dirname}/Photos/` + imgData[i].FileName
             img.style.height = '250px'
             img.style.width = '350px'
+
+            img.addEventListener('click', function() {
+                openImage()
+            });
+
             div.appendChild(img);
             gallery.append(div);
         }
