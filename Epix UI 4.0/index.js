@@ -25,13 +25,32 @@ function openSlideshows() {
     setTimeout(function(){window.close()}, 700);
 }
 
+// got this from stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
+function readTextFile(file, callback) {
+    var rawFile = new XMLHttpRequest();
+    rawFile.overrideMimeType("application/json");
+    rawFile.open("GET", file, true);
+    rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+            callback(rawFile.responseText);
+        }
+    }
+    rawFile.send(null);
+}
+
+
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
+    readTextFile('./data.json', function(dataJSON) {
+        var imgData = JSON.parse(dataJSON)
+        var img = document.getElementsByClassName('card-img-top img-fluid w-100')
+        for (i = 0; i < img.length; i++) {
+            img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
+            img[i].style.height = '250px'
+            img[i].style.width = '350px'
+        }
+    })
+    //JSON.parse('./data.json');
     // just using one image, we should make it pick an image that acually belongs to the slideshow
-    var img = document.getElementsByClassName('card-img-top img-fluid w-100')
-    for (i = 0; i < img.length; i++) {
-        img[i].src = "/Users/anthonybonitatibus/Documents/Epix/Epix UI 4.0/Photos/IMG_0118.JPG"
-        img[i].style.height = '250px'
-        img[i].style.width = '350px'
-    }
+    
 }
