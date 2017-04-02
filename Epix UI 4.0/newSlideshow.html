@@ -73,18 +73,57 @@
             <li class="breadcrumb-item active">My Dashboard</li>
         </ol>
 
-        <div class="checkbox">
-            <label><input type="checkbox" value="">Filter 1</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="">Filter 2</label>
-        </div>
-        <div class="checkbox">
-            <label><input type="checkbox" value="">Filter 3</label>
-        </div>
+
+        
       
         <div class="settings-form">
-            <div class="tag-field">
+
+            <div style="height: 50px;"></div>
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label">Name of Slideshow</label>
+              <div class="col-10">
+                <input class="form-control" type="text" value="My New Slideshow" id="name">
+              </div>
+            </div>
+
+            <div style="height: 50px;"></div>
+
+            <h3> Filters </h3>
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
+              <!-- <div class="col-10">
+                <input class="form-control" type="text" value="XX:XX-XX:XX" id="time-of-day">
+              </div> -->
+            </div>
+            <div class="form-group row">
+              <label class="col-2 col-form-label"><input type = "checkbox" id="month-checkbox"value="">  Month</label>
+              <div class="col-10">
+                <input class="form-control" type="text" value="ie January" id="month">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-2 col-form-label"><input type = "checkbox" id="location-checkbox"value="">  Location</label>
+              <div class="col-10">
+                <input class="form-control" type="text" value="ie Malibu" id="location">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-2 col-form-label"><input type = "checkbox" id="tags-checkbox"value="">  Tags</label>
+              <div class="col-10">
+                <input class="form-control" type="text" value="ie friends" id="tag">
+              </div>
+            </div>
+
+
+            <div style="height: 50px;"></div>
+
+            
+
+
+
+            <!-- <div class="tag-field">
                 <label><input type="text" id="tag" value="">Tag Filter</label>
             </div>
             <div class="start-field">
@@ -92,12 +131,11 @@
             </div>
             <div class="end-field">
                 <label><input type="text" id="end" value="">End Day(0 is today, counting backwards)</label>
-            </div>
-            <div class="title-field">
-                <label><input type="text" id="name" value="">Name of Slideshow</label>
-            </div>
+            </div> -->
+            
             <div class="submit-button">
-                <button type="button" onclick="saveSlideshowSettings()">Submit</button>
+                <!-- <button type="button" onclick="saveSlideshowSettings()">Submit</button> -->
+                <button class="btn btn-primary" type="submit" onclick="saveSlideshowSettings()">Submit</button>
             </div>
         </div>
 
