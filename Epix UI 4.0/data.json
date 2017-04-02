@@ -1,0 +1,499 @@
+[
+    {
+        "DateTimeOriginal": "2016:10:21 21:29:29",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 21,
+        "TimeOfDayHour": 21,
+        "TimeOfDayMin": 29,
+        "TimeOfDaySec": 29,
+        "TimeDayOfYear": 295,
+        "FileName": "IMG_0042.JPG",
+        "Tags": "undefined simple"
+    },
+    {
+        "DateTimeOriginal": "2016:11:19 18:07:56",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 19,
+        "TimeOfDayHour": 18,
+        "TimeOfDayMin": 7,
+        "TimeOfDaySec": 56,
+        "TimeDayOfYear": 324,
+        "FileName": "FullSizeRender 2.jpg",
+        "GPSLatitude": [
+            33,
+            47,
+            46.54
+        ],
+        "GPSLongitude": [
+            84,
+            23,
+            29.16
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:09:25 17:22:52",
+        "TimeYear": 2016,
+        "TimeMonth": 9,
+        "TimeDayofMonth": 25,
+        "TimeOfDayHour": 17,
+        "TimeOfDayMin": 22,
+        "TimeOfDaySec": 52,
+        "TimeDayOfYear": 269,
+        "FileName": "IMG_0091.JPG",
+        "GPSLatitude": [
+            33,
+            50,
+            15.01
+        ],
+        "GPSLongitude": [
+            84,
+            22,
+            50.13
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:10:07 19:21:44",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 7,
+        "TimeOfDayHour": 19,
+        "TimeOfDayMin": 21,
+        "TimeOfDaySec": 44,
+        "TimeDayOfYear": 281,
+        "FileName": "IMG_0088.JPG"
+    },
+    {
+        "DateTimeOriginal": "2016:10:20 16:54:03",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 20,
+        "TimeOfDayHour": 16,
+        "TimeOfDayMin": 54,
+        "TimeOfDaySec": 3,
+        "TimeDayOfYear": 294,
+        "FileName": "IMG_0087.JPG",
+        "GPSLatitude": [
+            26,
+            8,
+            0.24
+        ],
+        "GPSLongitude": [
+            80,
+            6,
+            10.32
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:09:01 20:48:28",
+        "TimeYear": 2016,
+        "TimeMonth": 9,
+        "TimeDayofMonth": 1,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 48,
+        "TimeOfDaySec": 28,
+        "TimeDayOfYear": 245,
+        "FileName": "IMG_0089.JPG",
+        "GPSLatitude": [
+            33,
+            46,
+            41.17
+        ],
+        "GPSLongitude": [
+            84,
+            23,
+            57.2
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:08:09 18:29:03",
+        "TimeYear": 2016,
+        "TimeMonth": 8,
+        "TimeDayofMonth": 9,
+        "TimeOfDayHour": 18,
+        "TimeOfDayMin": 29,
+        "TimeOfDaySec": 3,
+        "TimeDayOfYear": 222,
+        "FileName": "IMG_0051.JPG",
+        "GPSLatitude": [
+            33,
+            55,
+            7.68
+        ],
+        "GPSLongitude": [
+            84,
+            22,
+            37.5
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:07:12 09:57:47",
+        "TimeYear": 2016,
+        "TimeMonth": 7,
+        "TimeDayofMonth": 12,
+        "TimeOfDayHour": 9,
+        "TimeOfDayMin": 57,
+        "TimeOfDaySec": 47,
+        "TimeDayOfYear": 194,
+        "FileName": "IMG_0118.JPG",
+        "GPSLatitude": [
+            33,
+            47,
+            18.81
+        ],
+        "GPSLongitude": [
+            84,
+            23,
+            41.44
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:07:15 16:38:20",
+        "TimeYear": 2016,
+        "TimeMonth": 7,
+        "TimeDayofMonth": 15,
+        "TimeOfDayHour": 16,
+        "TimeOfDayMin": 38,
+        "TimeOfDaySec": 20,
+        "TimeDayOfYear": 197,
+        "FileName": "IMG_0122.JPG",
+        "GPSLatitude": [
+            33,
+            55,
+            50.16
+        ],
+        "GPSLongitude": [
+            84,
+            21,
+            2.22
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:10:18 20:40:02",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 18,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 40,
+        "TimeOfDaySec": 2,
+        "TimeDayOfYear": 292,
+        "FileName": "IMG_0102.JPG",
+        "GPSLatitude": [
+            33,
+            49,
+            20.46
+        ],
+        "GPSLongitude": [
+            84,
+            22,
+            7.56
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:11:11 20:39:24",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 11,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 39,
+        "TimeOfDaySec": 24,
+        "TimeDayOfYear": 316,
+        "FileName": "IMG_0130.JPG",
+        "GPSLatitude": [
+            33,
+            56,
+            14.33
+        ],
+        "GPSLongitude": [
+            84,
+            22,
+            43.84
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:07:06 21:09:25",
+        "TimeYear": 2016,
+        "TimeMonth": 7,
+        "TimeDayofMonth": 6,
+        "TimeOfDayHour": 21,
+        "TimeOfDayMin": 9,
+        "TimeOfDaySec": 25,
+        "TimeDayOfYear": 188,
+        "FileName": "IMG_0047.JPG",
+        "GPSLatitude": [
+            33,
+            46,
+            26.79
+        ],
+        "GPSLongitude": [
+            84,
+            23,
+            48.47
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:10:02 09:34:52",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 2,
+        "TimeOfDayHour": 9,
+        "TimeOfDayMin": 34,
+        "TimeOfDaySec": 52,
+        "TimeDayOfYear": 276,
+        "FileName": "IMG_0136.JPG",
+        "GPSLatitude": [
+            39,
+            15,
+            42.85
+        ],
+        "GPSLongitude": [
+            84,
+            19,
+            21.67
+        ]
+    },
+    {
+        "DateTimeOriginal": "2015:05:14 13:50:01",
+        "TimeYear": 2015,
+        "TimeMonth": 5,
+        "TimeDayofMonth": 14,
+        "TimeOfDayHour": 13,
+        "TimeOfDayMin": 50,
+        "TimeOfDaySec": 1,
+        "TimeDayOfYear": 134,
+        "FileName": "IMG_0140.JPG",
+        "GPSLatitude": [
+            33,
+            46,
+            25.76
+        ],
+        "GPSLongitude": [
+            84,
+            23,
+            52.32
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:10:16 09:52:52",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 9,
+        "TimeOfDayMin": 52,
+        "TimeOfDaySec": 52,
+        "TimeDayOfYear": 290,
+        "FileName": "IMG_0153.JPG",
+        "GPSLatitude": [
+            33,
+            50,
+            55.6
+        ],
+        "GPSLongitude": [
+            84,
+            21,
+            48.97
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:11:19 16:46:38",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 19,
+        "TimeOfDayHour": 16,
+        "TimeOfDayMin": 46,
+        "TimeOfDaySec": 38,
+        "TimeDayOfYear": 324,
+        "FileName": "IMG_1174.JPG",
+        "GPSLatitude": [
+            33,
+            46,
+            34.06
+        ],
+        "GPSLongitude": [
+            84,
+            24,
+            1.13
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:07:15 21:09:43",
+        "TimeYear": 2016,
+        "TimeMonth": 7,
+        "TimeDayofMonth": 15,
+        "TimeOfDayHour": 21,
+        "TimeOfDayMin": 9,
+        "TimeOfDaySec": 43,
+        "TimeDayOfYear": 197,
+        "FileName": "IMG_0158.JPG",
+        "GPSLatitude": [
+            33,
+            44,
+            5.04
+        ],
+        "GPSLongitude": [
+            84,
+            23,
+            20.73
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:07:15 20:11:56",
+        "TimeYear": 2016,
+        "TimeMonth": 7,
+        "TimeDayofMonth": 15,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 11,
+        "TimeOfDaySec": 56,
+        "TimeDayOfYear": 197,
+        "FileName": "IMG_0146.JPG",
+        "GPSLatitude": [
+            33,
+            44,
+            5.37
+        ],
+        "GPSLongitude": [
+            84,
+            23,
+            21.2
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:11:16 19:27:38",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 19,
+        "TimeOfDayMin": 27,
+        "TimeOfDaySec": 38,
+        "TimeDayOfYear": 321,
+        "FileName": "IMG_3336.JPG"
+    },
+    {
+        "DateTimeOriginal": "2016:11:16 20:02:01",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 2,
+        "TimeOfDaySec": 1,
+        "TimeDayOfYear": 321,
+        "FileName": "IMG_3362.JPG"
+    },
+    {
+        "DateTimeOriginal": "2015:05:16 19:52:57",
+        "TimeYear": 2015,
+        "TimeMonth": 5,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 19,
+        "TimeOfDayMin": 52,
+        "TimeOfDaySec": 57,
+        "TimeDayOfYear": 136,
+        "FileName": "IMG_0164.JPG",
+        "GPSLatitude": [
+            34,
+            0,
+            56.33
+        ],
+        "GPSLongitude": [
+            84,
+            11,
+            16.21
+        ]
+    },
+    {
+        "DateTimeOriginal": "2015:05:15 09:32:33",
+        "TimeYear": 2015,
+        "TimeMonth": 5,
+        "TimeDayofMonth": 15,
+        "TimeOfDayHour": 9,
+        "TimeOfDayMin": 32,
+        "TimeOfDaySec": 33,
+        "TimeDayOfYear": 135,
+        "FileName": "IMG_0151.JPG",
+        "GPSLatitude": [
+            33,
+            48,
+            31.72
+        ],
+        "GPSLongitude": [
+            84,
+            23,
+            50.2
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:11:24 21:11:14",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 24,
+        "TimeOfDayHour": 21,
+        "TimeOfDayMin": 11,
+        "TimeOfDaySec": 14,
+        "TimeDayOfYear": 329,
+        "FileName": "IMG_7512.JPG",
+        "GPSLatitude": [
+            39,
+            5,
+            45.7
+        ],
+        "GPSLongitude": [
+            84,
+            30,
+            39.63
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:10:02 16:02:40",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 2,
+        "TimeOfDayHour": 16,
+        "TimeOfDayMin": 2,
+        "TimeOfDaySec": 40,
+        "TimeDayOfYear": 276,
+        "FileName": "IMG_0151-1.JPG",
+        "GPSLatitude": [
+            39,
+            8,
+            45.64
+        ],
+        "GPSLongitude": [
+            84,
+            30,
+            22.19
+        ]
+    },
+    {
+        "DateTimeOriginal": "2016:11:16 20:05:48",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 5,
+        "TimeOfDaySec": 48,
+        "TimeDayOfYear": 321,
+        "FileName": "IMG_3365.JPG"
+    },
+    {
+        "DateTimeOriginal": "2016:10:07 19:11:53",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 7,
+        "TimeOfDayHour": 19,
+        "TimeOfDayMin": 11,
+        "TimeOfDaySec": 53,
+        "TimeDayOfYear": 281,
+        "FileName": "IMG_5560.JPG",
+        "GPSLatitude": [
+            33,
+            38,
+            21.17
+        ],
+        "GPSLongitude": [
+            84,
+            26,
+            6.49
+        ]
+    }
+]

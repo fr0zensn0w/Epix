@@ -77,6 +77,7 @@ fs.readdir(currentDirectory, function(err, files) {
                     imgObj.FileName = file;
                     imgObj.GPSLatitude = exifData.gps['GPSLatitude']
                     imgObj.GPSLongitude = exifData.gps['GPSLongitude']
+                    imgObj.Tags = "";
                     JSONarray.push(imgObj);
                     fs.writeFileSync('data.json', JSON.stringify(JSONarray, null, 4));
                     // fs.appendFile('data.json', JSON.stringify(imgObj), function(err) {
