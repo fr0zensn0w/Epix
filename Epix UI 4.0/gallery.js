@@ -4,6 +4,7 @@
 const remote = require('electron').remote
 const main = remote.require('./main.js')
 const {shell} = require('electron')
+const fs = require('fs')
 
 
 
@@ -39,23 +40,24 @@ function openSlideshows() {
 }
 
 // got this from stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript
-function readTextFile(file, callback) {
-    var rawFile = new XMLHttpRequest();
-    rawFile.overrideMimeType("application/json");
-    rawFile.open("GET", file, true);
-    rawFile.onreadystatechange = function() {
-        if (rawFile.readyState === 4 && rawFile.status == "200") {
-            callback(rawFile.responseText);
-        }
-    }
-    rawFile.send(null);
-}
+// function readTextFile(file, callback) {
+//     var rawFile = new XMLHttpRequest();
+//     rawFile.overrideMimeType("application/json");
+//     rawFile.open("GET", file, true);
+//     rawFile.onreadystatechange = function() {
+//         if (rawFile.readyState === 4 && rawFile.status == "200") {
+//             callback(rawFile.responseText);
+//         }
+//     }
+//     rawFile.send(null);
+// }
 
 
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
-    readTextFile('./data.json', function(dataJSON) {
-        var imgData = JSON.parse(dataJSON)
+    //
+    fs.readFile('./data.json', function(err, data) {
+        var imgData = JSON.parse(data)
         var gallery = (document.getElementsByClassName('gallery'))[0];
         //var img = document.getElementsByClassName('card-img-top img-fluid w-100')
         // right now we're just looping through and assigning images in order.
