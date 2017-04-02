@@ -45,7 +45,13 @@ window.onload = function renderImage() {
     input.type = "text"
     input.id = "tag"
     form.appendChild(input);
+    var backButton = document.createElement('button')
+    backButton.textContent = 'Back'
+    backButton.addEventListener('click', function() {
+        openGallery()
+    });
     var button = document.createElement('button')
+    button.textContent = 'Submit Tag'
     button.addEventListener('click', function() {
         var tag = document.getElementById("tag").value
         fs.readFile('./data.json', function(err, data) {
@@ -66,4 +72,5 @@ window.onload = function renderImage() {
     })
     document.body.appendChild(form);
     document.body.appendChild(button);
+    document.body.appendChild(backButton);
 }

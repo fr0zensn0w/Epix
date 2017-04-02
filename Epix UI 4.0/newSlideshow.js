@@ -37,10 +37,14 @@ function openSlideshows() {
 function saveSlideshowSettings() {
     var tag = document.getElementById('tag').value
     var name = document.getElementById('name').value
+    var timeStart = document.getElementById('start').value
+    var timeEnd = document.getElementById('end').value
     var ssObj = new Object()
     var json = []
-    ssObj.name = name
-    ssObj.tag = tag
+    ssObj.Name = name
+    ssObj.Tag = tag
+    ssObj.TimeStart = timeStart;
+    ssObj.TimeEnd = timeEnd;
     fs.stat('./settings.json', function(err, stat) {
         if (err == null) {
             fs.readFile('./settings.json', function(err, data) {

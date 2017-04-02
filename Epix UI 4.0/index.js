@@ -44,13 +44,14 @@ function openSlideshows() {
 window.onload = function populateImages() {
     //readTextFile('./data.json', function(dataJSON) {
     // I'm a dummy and forgot about fs
-    fs.readFile('./data.json', 'utf8', function(err, data) {
+    fs.readFile('./settings.json', 'utf8', function(err, data) {
         var imgData = JSON.parse(data)
         var img = document.getElementsByClassName('card-img-top img-fluid w-100')
         // right now we're just looping through and assigning images in order.
         // wow actually I just figured out how to make the gallery
         for (i = 0; i < img.length; i++) {
-            img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
+            img[i].src = 'http://placehold.it/350x250'
+            //img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
             img[i].style.height = '250px'
             img[i].style.width = '350px'
         }
