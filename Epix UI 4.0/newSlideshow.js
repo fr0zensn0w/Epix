@@ -5,6 +5,8 @@
 
 const remote = require('electron').remote
 const main = remote.require('./main.js')
+const fs = require('fs')
+const path = require('path')
 
 
 
@@ -30,4 +32,25 @@ function openSlideshows() {
     window = remote.getCurrentWindow()
     main.openWindow("index")
     setTimeout(function(){window.close()}, 700);
+}
+
+function saveSlideshowSettings() {
+    var tag = document.getElementById('tag').value
+    var name = document.getElementById('name').value
+    var ssObj = new Object()
+    var json = []
+    ssObj.name = name
+    ssObj.tag = tag
+    fs.stat('./settings.json', function(err, stat) {
+        if (err == null) {
+            fs.readFile('./settings.json', function(err, data) {
+                json = JSON.parse(data);
+                json.push(ssObj);
+                fs.writeFileSync('settings.json', JSON.stringify(json, null, 4));
+            })
+        } else {
+            json.push(ssObj)
+            fs.writeFileSync('settings.json', JSON.stringify(json, null, 4));
+        }
+    });
 }
