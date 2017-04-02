@@ -44,13 +44,12 @@ window.onload = function populateImages() {
     readTextFile('./data.json', function(dataJSON) {
         var imgData = JSON.parse(dataJSON)
         var img = document.getElementsByClassName('card-img-top img-fluid w-100')
+        // right now we're just looping through and assigning images in order.
+        // wow actually I just figured out how to make the gallery
         for (i = 0; i < img.length; i++) {
             img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
             img[i].style.height = '250px'
             img[i].style.width = '350px'
         }
-    })
-    //JSON.parse('./data.json');
-    // just using one image, we should make it pick an image that acually belongs to the slideshow
-    
+    })    
 }
