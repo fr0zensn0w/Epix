@@ -6,6 +6,8 @@ const main = remote.require('./main.js')
 const {shell} = require('electron')
 const fs = require('fs')
 
+let myWindow = remote.BrowserWindow.fromId(1);
+
 function openPhotoGallery() {
     // alert("open the gallery")
     // TODO: put code in here to open the gallery, AKA open up to where the images are stored
@@ -35,9 +37,9 @@ function openSlideshows() {
     setTimeout(function(){window.close()}, 700);
 }
 
-function openImage() {
+function openSelected(i) {
     window = remote.getCurrentWindow()
-    main.openWindow("image")
+    main.openImage(i)
     setTimeout(function(){window.close()}, 700);
 }
 
@@ -72,9 +74,10 @@ window.onload = function populateImages() {
             img.style.height = '250px'
             img.style.width = '350px'
 
-            img.addEventListener('click', function() {
-                openImage()
-            });
+            img.addEventListener('click', function(e) {
+                //openSelected(e);
+                openSelected(e.path[0].currentSrc);
+            })
 
             div.appendChild(img);
             gallery.append(div);
