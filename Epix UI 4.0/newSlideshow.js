@@ -35,16 +35,28 @@ function openSlideshows() {
 }
 
 function saveSlideshowSettings() {
-    var tag = document.getElementById('tag').value
-    var name = document.getElementById('name').value
-    var timeStart = document.getElementById('start').value
-    var timeEnd = document.getElementById('end').value
+    var tag = " "
+    var name = " "
+    var month = " "
+    var location = " "
+    if (1) {
+        tag = document.getElementById('tag').value
+    }
+    if (1) {
+        name = document.getElementById('name').value
+    }
+    if (1) {
+        month = document.getElementById('month').value
+    }
+    if (1) {
+        location = document.getElementById('location').value
+    }
     var ssObj = new Object()
     var json = []
     ssObj.Name = name
     ssObj.Tag = tag
-    ssObj.TimeStart = timeStart;
-    ssObj.TimeEnd = timeEnd;
+    ssObj.Month = month;
+    ssObj.Location = location;
     fs.stat('./settings.json', function(err, stat) {
         if (err == null) {
             fs.readFile('./settings.json', function(err, data) {
