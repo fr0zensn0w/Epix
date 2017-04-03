@@ -23,3 +23,7 @@ function openSlideshows() {
     main.openWindow("index")
     setTimeout(function(){window.close()}, 700);
 }
+
+function getSlideshowName() {
+    return remote.getGlobal('sharedObj').SSN
+}

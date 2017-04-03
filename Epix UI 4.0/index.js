@@ -51,10 +51,10 @@ window.onload = function populateImages() {
             // console.log(name);
             img[i].id = imgData[i].Name
             img[i].addEventListener('click', function(e) {
-                openSelectedSlideshow(e.path[0].currentSrc);
+                openSelectedSlideshow(e.path[0].id);
                 console.log(e);
             })
         }
-        
-    })    
+
+    })
 }
