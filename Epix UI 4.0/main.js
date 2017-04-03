@@ -29,11 +29,11 @@ exports.openImage = (i) => {
     let win = new BrowserWindow({width:1000, height:800, backgroundColor: '#222',show:false})
     win.loadURL(`file://${__dirname}/image.html`)
     // win.show()
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
     //win.webContents.send('imgname', filename)
     win.once('ready-to-show', () => {
       win.show()
-    })  
+    })
 }
 
 exports.openSlideshow = (ssName) => {
@@ -54,7 +54,7 @@ exports.openWindow = (filename) => {
     let win = new BrowserWindow({width:1000, height:800, backgroundColor: '#222',show:false})
     win.loadURL(`file://${__dirname}/` + filename + `.html`)
     // win.show()
-    win.webContents.openDevTools()
+    // win.webContents.openDevTools()
     win.once('ready-to-show', () => {
       win.show()
     })

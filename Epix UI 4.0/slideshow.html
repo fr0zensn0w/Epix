@@ -3,13 +3,14 @@
 
 <head>
 
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Epix Auto Slideshow</title>
+    <title id="slideshowTitle">Epix Auto Slideshow</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -77,7 +78,7 @@
 
 <body>
 
-    <div class="cycle-slideshow"
+    <!-- <div class="cycle-slideshow"
             data-cycle-swipe=true
             data-cycle-swipe-fx=scrollHorz
             data-cycle-center-horz=true
@@ -90,7 +91,15 @@
         <img src="Photos/IMG_3336.JPG">
         <img src="Photos/IMG_3362.JPG">
         <img src="Photos/IMG_3365.JPG">
-    <div class="cycle-caption"></div>
+
+      </div> -->
+
+      <div class="cycle-slideshow">
+          <img src="Photos/IMG_3336.JPG">
+          <img src="Photos/IMG_3362.JPG">
+          <img src="Photos/IMG_3365.JPG">
+      </div>
+    <!-- <div class="cycle-caption"></div> -->
 
     <!-- <script src="slideshow.js"></script> -->
     <!-- hopefully, a slideshow -->
@@ -122,7 +131,7 @@
     <script type="text/javascript" src="js/jquery.cycle2.center.min.js"></script>
 
     <!-- NEED FOR ELECTRON 2/2-->
-    <script>if (window.module) module = window.module;</script>
+    <!-- <script>if (window.module) module = window.module;</script> -->
 
 
 
@@ -168,16 +177,23 @@
                     slideshowImages[fullData[i].TimeDayOfYear].push('<img src="Photos/' + fullData[i].FileName + '">');
                 }
             }
-            // console.log(slideshowImages);
+            console.log(slideshowImages);
 
-            // this shoudl work :/
-            // for (var i=0; i < slideshowImages.length; i++) {
-            //         // console.log("add image")
-            //         // console.log(slideshowImages)
-            //         $('.cycle-slideshow').cycle('add', slideshowImages[i]);
-            // }
+            // this should work :/
+
+            console.log("now add to slideshow")
+
+            setTimeout(addToShow(), 3000)
+            function addToShow() {
+                for (var i=0; i < slideshowImages.length; i++) {
+                        // console.log("add image")
+                        // console.log(slideshowImages)
+                        $('.cycle-slideshow').cycle('add', slideshowImages[i]);
+                }
+            }
+
             // $(this).prop('disabled', true)
-            //
+
             // var time = new Date().getTime();
             // $(document.body).bind("mousemove keypress", function(e) {
             //     time = new Date().getTime();
@@ -204,6 +220,9 @@
 
 
     </script>
+
+    <!-- NEED FOR ELECTRON 2/2-->
+    <script>if (window.module) module = window.module;</script>
 
 
 
