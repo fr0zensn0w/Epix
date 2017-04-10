@@ -5,15 +5,28 @@ const remote = require('electron').remote
 const main = remote.require('./main.js')
 const {shell} = require('electron')
 const fs = require('fs')
+<<<<<<< Updated upstream
 const sql = require('sql.js')
+=======
+const processing = require('./processing.js')
+>>>>>>> Stashed changes
 
 let myWindow = remote.BrowserWindow.fromId(1);
+
+
+function processPhotos() {
+    processing.processPhotos()
+}
 
 function openPhotoGallery() {
     // alert("open the gallery")
     // TODO: put code in here to open the gallery, AKA open up to where the images are stored
     // fullPath = "/Users/liquidsn0w/Desktop/"
+<<<<<<< Updated upstream
     fullPath = `file://${__dirname}/Photos/`
+=======
+    fullPath = __dirname + "/Photos/.0000001.jpg"
+>>>>>>> Stashed changes
     // shell.beep() //makes a beeping sound
     shell.showItemInFolder(fullPath)
 }
