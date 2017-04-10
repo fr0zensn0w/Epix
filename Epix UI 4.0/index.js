@@ -54,6 +54,7 @@ window.onload = function populateImages() {
             // var name = 'ss' + i
             // console.log(name);
             img.id = imgData[i].Name
+            
             img.className = "card-img-top img-fluid w-100"
             img.addEventListener('click', function(e) {
                 openSelectedSlideshow(e.path[0].id);
