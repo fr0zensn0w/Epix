@@ -59,8 +59,11 @@ window.onload = function renderImage() {
             // we should implement a more efficient search later
             var found = 0
             var i = 0
-            while (!found) {
-                if (json[i].FileName == imgName[imgName.length-1]) {
+            while (!found && i < json.length) {
+                console.log(json[i].FileName)
+                console.log(imgName[imgName.length-1])
+                var curImage = (imgName[imgName.length-1]).replace("%20", " ")
+                if (json[i].FileName == curImage) {
                     found = 1;
                 } else {
                     i++

@@ -38,22 +38,30 @@ window.onload = function populateImages() {
     // I'm a dummy and forgot about fs
     fs.readFile('./settings.json', 'utf8', function(err, data) {
         var imgData = JSON.parse(data)
-        var img = document.getElementsByClassName('card-img-top img-fluid w-100')
+        var deck = document.getElementById("card-deck")
+        // var img = document.getElementsByClassName('card-img-top img-fluid w-100')
         // right now we're just looping through and assigning images in order.
         // wow actually I just figured out how to make the gallery
-        for (i = 0; i < img.length && i < 3; i++) {
-            console.log(img[i])
-            img[i].src = 'http://placehold.it/350x250'
+        for (i = 0; i < imgData.length; i++) {
+            var div = document.createElement('div')
+            div.className = "card card-inverse"
+            var img = document.createElement('img')
+            console.log(img)
+            img.src = 'http://placehold.it/350x250'
             // img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
-            img[i].style.height = '250px'
-            img[i].style.width = '350px'
+            img.style.height = '250px'
+            img.style.width = '350px'
             // var name = 'ss' + i
             // console.log(name);
-            img[i].id = imgData[i].Name
-            img[i].addEventListener('click', function(e) {
+            img.id = imgData[i].Name
+            
+            img.className = "card-img-top img-fluid w-100"
+            img.addEventListener('click', function(e) {
                 openSelectedSlideshow(e.path[0].id);
                 console.log(e);
             })
+            div.appendChild(img)
+            deck.appendChild(div)
         }
 
     })

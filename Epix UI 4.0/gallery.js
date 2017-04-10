@@ -5,14 +5,15 @@ const remote = require('electron').remote
 const main = remote.require('./main.js')
 const {shell} = require('electron')
 const fs = require('fs')
+const sql = require('sql.js')
 
 let myWindow = remote.BrowserWindow.fromId(1);
 
 function openPhotoGallery() {
     // alert("open the gallery")
     // TODO: put code in here to open the gallery, AKA open up to where the images are stored
-    fullPath = "/Users/liquidsn0w/Desktop/"
-    fullPath = __dirname + "/Photos"
+    // fullPath = "/Users/liquidsn0w/Desktop/"
+    fullPath = `file://${__dirname}/Photos/`
     // shell.beep() //makes a beeping sound
     shell.showItemInFolder(fullPath)
 }
@@ -44,6 +45,25 @@ function openSelected(i) {
     setTimeout(function(){window.close()}, 700);
 }
 
+function loadDatabase() {
+    try { 
+        //https://github.com/kripken/sql.js/
+        var inBuff = fs.readFileSync('./database.sqlite') 
+        console.log("database found!")
+        var db = new sql.Database(inBuff)
+    } catch (e) {
+        console.log(e)
+        console.log("database not found");
+        var db = new sql.Database();
+        var sqlStr = "CREATE TABLE Test (a int, b char);"
+        sqlStr += "INSERT INTO Test VALUES (0, 'boop');"
+        db.run(sqlStr);
+        var dbBinary = db.export()
+        var buff = new Buffer(dbBinary)
+        fs.writeFileSync("database.sqlite", buff)
+    }
+}
+
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
     fs.readFile('./data.json', function(err, data) {
@@ -67,7 +87,7 @@ window.onload = function populateImages() {
             })
 
             div.appendChild(img);
-            gallery.append(div);
+            gallery.appendChild(div);
         }
     })
 }
