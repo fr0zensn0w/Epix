@@ -36,19 +36,20 @@ function openSlideshows() {
 
 function saveSlideshowSettings() {
     var tag = " "
-    var name = " "
+    var name = document.getElementById('name').value
     var month = " "
     var location = " "
-    if (1) {
+    // console.log(document.getElementById('tags-checkbox').checked)
+    if (document.getElementById('tags-checkbox').checked) {
         tag = document.getElementById('tag').value
     }
-    if (1) {
-        name = document.getElementById('name').value
-    }
-    if (1) {
+    // if (document.getElementById('name-checkbox').checked) {
+    //     name = document.getElementById('name').value
+    // }
+    if (document.getElementById('month-checkbox').checked) {
         month = document.getElementById('month').value
     }
-    if (1) {
+    if (document.getElementById('location-checkbox').checked) {
         location = document.getElementById('location').value
     }
     var ssObj = new Object()
