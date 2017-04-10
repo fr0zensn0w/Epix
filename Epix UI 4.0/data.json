@@ -1,15 +1,33 @@
 [
     {
-        "DateTimeOriginal": "2016:10:21 21:29:29",
-        "TimeYear": 2016,
-        "TimeMonth": 10,
-        "TimeDayofMonth": 21,
-        "TimeOfDayHour": 21,
-        "TimeOfDayMin": 29,
-        "TimeOfDaySec": 29,
-        "TimeDayOfYear": 295,
-        "FileName": "IMG_0042.JPG",
-        "Tags": "simple plane duck sky default "
+        "DateTimeOriginal": "2017:03:24 18:13:01",
+        "TimeYear": 2017,
+        "TimeMonth": 3,
+        "TimeDayofMonth": 24,
+        "TimeOfDayHour": 18,
+        "TimeOfDayMin": 13,
+        "TimeOfDaySec": 1,
+        "TimeDayOfYear": 83,
+        "FileName": ".0000001.jpg",
+        "Make": "Apple",
+        "Model": "iPhone",
+        "Exposure": 15.066478076379067,
+        "iso": 25,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            50,
+            5,
+            4.59
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            14,
+            24,
+            48.37
+        ],
+        "GPSLongitudeRef": "E",
+        "Tags": "undefined default "
     },
     {
         "DateTimeOriginal": "2016:11:19 18:07:56",
@@ -21,197 +39,41 @@
         "TimeOfDaySec": 56,
         "TimeDayOfYear": 324,
         "FileName": "FullSizeRender 2.jpg",
+        "Make": "Apple",
+        "Model": "iPhone",
+        "Exposure": 8,
+        "iso": 160,
+        "Width": 4032,
+        "Height": 3024,
         "GPSLatitude": [
             33,
             47,
             46.54
         ],
+        "GPSLatitudeRef": "N",
         "GPSLongitude": [
             84,
             23,
             29.16
         ],
-        "Tags": "undefined city default "
+        "GPSLongitudeRef": "W"
     },
     {
-        "DateTimeOriginal": "2016:09:25 17:22:52",
-        "TimeYear": 2016,
-        "TimeMonth": 9,
-        "TimeDayofMonth": 25,
-        "TimeOfDayHour": 17,
-        "TimeOfDayMin": 22,
-        "TimeOfDaySec": 52,
-        "TimeDayOfYear": 269,
-        "FileName": "IMG_0091.JPG",
-        "GPSLatitude": [
-            33,
-            50,
-            15.01
-        ],
-        "GPSLongitude": [
-            84,
-            22,
-            50.13
-        ],
-        "Tags": "undefined ferrari"
-    },
-    {
-        "DateTimeOriginal": "2016:10:07 19:21:44",
+        "DateTimeOriginal": "2016:10:21 21:29:29",
         "TimeYear": 2016,
         "TimeMonth": 10,
-        "TimeDayofMonth": 7,
-        "TimeOfDayHour": 19,
-        "TimeOfDayMin": 21,
-        "TimeOfDaySec": 44,
-        "TimeDayOfYear": 281,
-        "FileName": "IMG_0088.JPG"
-    },
-    {
-        "DateTimeOriginal": "2016:10:20 16:54:03",
-        "TimeYear": 2016,
-        "TimeMonth": 10,
-        "TimeDayofMonth": 20,
-        "TimeOfDayHour": 16,
-        "TimeOfDayMin": 54,
-        "TimeOfDaySec": 3,
-        "TimeDayOfYear": 294,
-        "FileName": "IMG_0087.JPG",
-        "GPSLatitude": [
-            26,
-            8,
-            0.24
-        ],
-        "GPSLongitude": [
-            80,
-            6,
-            10.32
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:09:01 20:48:28",
-        "TimeYear": 2016,
-        "TimeMonth": 9,
-        "TimeDayofMonth": 1,
-        "TimeOfDayHour": 20,
-        "TimeOfDayMin": 48,
-        "TimeOfDaySec": 28,
-        "TimeDayOfYear": 245,
-        "FileName": "IMG_0089.JPG",
-        "GPSLatitude": [
-            33,
-            46,
-            41.17
-        ],
-        "GPSLongitude": [
-            84,
-            23,
-            57.2
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:08:09 18:29:03",
-        "TimeYear": 2016,
-        "TimeMonth": 8,
-        "TimeDayofMonth": 9,
-        "TimeOfDayHour": 18,
+        "TimeDayofMonth": 21,
+        "TimeOfDayHour": 21,
         "TimeOfDayMin": 29,
-        "TimeOfDaySec": 3,
-        "TimeDayOfYear": 222,
-        "FileName": "IMG_0051.JPG",
-        "GPSLatitude": [
-            33,
-            55,
-            7.68
-        ],
-        "GPSLongitude": [
-            84,
-            22,
-            37.5
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:07:12 09:57:47",
-        "TimeYear": 2016,
-        "TimeMonth": 7,
-        "TimeDayofMonth": 12,
-        "TimeOfDayHour": 9,
-        "TimeOfDayMin": 57,
-        "TimeOfDaySec": 47,
-        "TimeDayOfYear": 194,
-        "FileName": "IMG_0118.JPG",
-        "GPSLatitude": [
-            33,
-            47,
-            18.81
-        ],
-        "GPSLongitude": [
-            84,
-            23,
-            41.44
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:07:15 16:38:20",
-        "TimeYear": 2016,
-        "TimeMonth": 7,
-        "TimeDayofMonth": 15,
-        "TimeOfDayHour": 16,
-        "TimeOfDayMin": 38,
-        "TimeOfDaySec": 20,
-        "TimeDayOfYear": 197,
-        "FileName": "IMG_0122.JPG",
-        "GPSLatitude": [
-            33,
-            55,
-            50.16
-        ],
-        "GPSLongitude": [
-            84,
-            21,
-            2.22
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:10:18 20:40:02",
-        "TimeYear": 2016,
-        "TimeMonth": 10,
-        "TimeDayofMonth": 18,
-        "TimeOfDayHour": 20,
-        "TimeOfDayMin": 40,
-        "TimeOfDaySec": 2,
-        "TimeDayOfYear": 292,
-        "FileName": "IMG_0102.JPG",
-        "GPSLatitude": [
-            33,
-            49,
-            20.46
-        ],
-        "GPSLongitude": [
-            84,
-            22,
-            7.56
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:11:11 20:39:24",
-        "TimeYear": 2016,
-        "TimeMonth": 11,
-        "TimeDayofMonth": 11,
-        "TimeOfDayHour": 20,
-        "TimeOfDayMin": 39,
-        "TimeOfDaySec": 24,
-        "TimeDayOfYear": 316,
-        "FileName": "IMG_0130.JPG",
-        "GPSLatitude": [
-            33,
-            56,
-            14.33
-        ],
-        "GPSLongitude": [
-            84,
-            22,
-            43.84
-        ]
+        "TimeOfDaySec": 29,
+        "TimeDayOfYear": 295,
+        "FileName": "IMG_0042.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.25,
+        "iso": 1600,
+        "Width": 4032,
+        "Height": 3024
     },
     {
         "DateTimeOriginal": "2016:07:06 21:09:25",
@@ -223,16 +85,291 @@
         "TimeOfDaySec": 25,
         "TimeDayOfYear": 188,
         "FileName": "IMG_0047.JPG",
+        "Make": "Apple + Pro HDR",
+        "Model": "iPhone",
+        "Exposure": 0.058823529411764705,
+        "iso": 200,
+        "Width": 4032,
+        "Height": 3024,
         "GPSLatitude": [
             33,
             46,
             26.79
         ],
+        "GPSLatitudeRef": "N",
         "GPSLongitude": [
             84,
             23,
             48.47
-        ]
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 291.7720207253886,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:10:20 16:54:03",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 20,
+        "TimeOfDayHour": 16,
+        "TimeOfDayMin": 54,
+        "TimeOfDaySec": 3,
+        "TimeDayOfYear": 294,
+        "FileName": "IMG_0087.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.0004909180166912126,
+        "iso": 20,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            26,
+            8,
+            0.24
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            80,
+            6,
+            10.32
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 25.014787430683917,
+        "GPSAltitudeRef": 1
+    },
+    {
+        "DateTimeOriginal": "2016:10:07 19:21:44",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 7,
+        "TimeOfDayHour": 19,
+        "TimeOfDayMin": 21,
+        "TimeOfDaySec": 44,
+        "TimeDayOfYear": 281,
+        "FileName": "IMG_0088.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.041666666666666664,
+        "iso": 32,
+        "Width": 4032,
+        "Height": 3024
+    },
+    {
+        "DateTimeOriginal": "2016:08:09 18:29:03",
+        "TimeYear": 2016,
+        "TimeMonth": 8,
+        "TimeDayofMonth": 9,
+        "TimeOfDayHour": 18,
+        "TimeOfDayMin": 29,
+        "TimeOfDaySec": 3,
+        "TimeDayOfYear": 222,
+        "FileName": "IMG_0051.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 6s Plus",
+        "Exposure": 0.25,
+        "iso": 64,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            55,
+            7.68
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            22,
+            37.5
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 309.93367346938777,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:09:01 20:48:28",
+        "TimeYear": 2016,
+        "TimeMonth": 9,
+        "TimeDayofMonth": 1,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 48,
+        "TimeOfDaySec": 28,
+        "TimeDayOfYear": 245,
+        "FileName": "IMG_0089.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 6s Plus",
+        "Exposure": 0.25,
+        "iso": 160,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            46,
+            41.17
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            23,
+            57.2
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 290.3150289017341,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:09:25 17:22:52",
+        "TimeYear": 2016,
+        "TimeMonth": 9,
+        "TimeDayofMonth": 25,
+        "TimeOfDayHour": 17,
+        "TimeOfDayMin": 22,
+        "TimeOfDaySec": 52,
+        "TimeDayOfYear": 269,
+        "FileName": "IMG_0091.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 6s Plus",
+        "Exposure": 0.006493506493506494,
+        "iso": 25,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            50,
+            15.01
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            22,
+            50.13
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 295.91379310344826,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:10:18 20:40:02",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 18,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 40,
+        "TimeOfDaySec": 2,
+        "TimeDayOfYear": 292,
+        "FileName": "IMG_0102.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.25,
+        "iso": 125,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            49,
+            20.46
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            22,
+            7.56
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 269.65868263473055,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:07:12 09:57:47",
+        "TimeYear": 2016,
+        "TimeMonth": 7,
+        "TimeDayofMonth": 12,
+        "TimeOfDayHour": 9,
+        "TimeOfDayMin": 57,
+        "TimeOfDaySec": 47,
+        "TimeDayOfYear": 194,
+        "FileName": "IMG_0118.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 5s",
+        "Exposure": 0.041666666666666664,
+        "iso": 320,
+        "Width": 3264,
+        "Height": 2448,
+        "GPSLatitude": [
+            33,
+            47,
+            18.81
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            23,
+            41.44
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 270.54294478527606,
+        "Tags": "undefined default "
+    },
+    {
+        "DateTimeOriginal": "2016:07:15 16:38:20",
+        "TimeYear": 2016,
+        "TimeMonth": 7,
+        "TimeDayofMonth": 15,
+        "TimeOfDayHour": 16,
+        "TimeOfDayMin": 38,
+        "TimeOfDaySec": 20,
+        "TimeDayOfYear": 197,
+        "FileName": "IMG_0122.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 6s Plus",
+        "Exposure": 0.06666666666666667,
+        "iso": 64,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            55,
+            50.16
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            21,
+            2.22
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 322.0880829015544,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:11:11 20:39:24",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 11,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 39,
+        "TimeOfDaySec": 24,
+        "TimeDayOfYear": 316,
+        "FileName": "IMG_0130.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.03333333333333333,
+        "iso": 40,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            56,
+            14.33
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            22,
+            43.84
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 289.79057591623035,
+        "GPSAltitudeRef": 0
     },
     {
         "DateTimeOriginal": "2016:10:02 09:34:52",
@@ -244,16 +381,26 @@
         "TimeOfDaySec": 52,
         "TimeDayOfYear": 276,
         "FileName": "IMG_0136.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.06666666666666667,
+        "iso": 64,
+        "Width": 4032,
+        "Height": 3024,
         "GPSLatitude": [
             39,
             15,
             42.85
         ],
+        "GPSLatitudeRef": "N",
         "GPSLongitude": [
             84,
             19,
             21.67
-        ]
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 231,
+        "GPSAltitudeRef": 0
     },
     {
         "DateTimeOriginal": "2015:05:14 13:50:01",
@@ -265,79 +412,26 @@
         "TimeOfDaySec": 1,
         "TimeDayOfYear": 134,
         "FileName": "IMG_0140.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 5s",
+        "Exposure": 0.03333333333333333,
+        "iso": 125,
+        "Width": 3264,
+        "Height": 2448,
         "GPSLatitude": [
             33,
             46,
             25.76
         ],
+        "GPSLatitudeRef": "N",
         "GPSLongitude": [
             84,
             23,
             52.32
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:10:16 09:52:52",
-        "TimeYear": 2016,
-        "TimeMonth": 10,
-        "TimeDayofMonth": 16,
-        "TimeOfDayHour": 9,
-        "TimeOfDayMin": 52,
-        "TimeOfDaySec": 52,
-        "TimeDayOfYear": 290,
-        "FileName": "IMG_0153.JPG",
-        "GPSLatitude": [
-            33,
-            50,
-            55.6
         ],
-        "GPSLongitude": [
-            84,
-            21,
-            48.97
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:11:19 16:46:38",
-        "TimeYear": 2016,
-        "TimeMonth": 11,
-        "TimeDayofMonth": 19,
-        "TimeOfDayHour": 16,
-        "TimeOfDayMin": 46,
-        "TimeOfDaySec": 38,
-        "TimeDayOfYear": 324,
-        "FileName": "IMG_1174.JPG",
-        "GPSLatitude": [
-            33,
-            46,
-            34.06
-        ],
-        "GPSLongitude": [
-            84,
-            24,
-            1.13
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:07:15 21:09:43",
-        "TimeYear": 2016,
-        "TimeMonth": 7,
-        "TimeDayofMonth": 15,
-        "TimeOfDayHour": 21,
-        "TimeOfDayMin": 9,
-        "TimeOfDaySec": 43,
-        "TimeDayOfYear": 197,
-        "FileName": "IMG_0158.JPG",
-        "GPSLatitude": [
-            33,
-            44,
-            5.04
-        ],
-        "GPSLongitude": [
-            84,
-            23,
-            20.73
-        ]
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 293.40683229813664,
+        "GPSAltitudeRef": 0
     },
     {
         "DateTimeOriginal": "2016:07:15 20:11:56",
@@ -349,101 +443,26 @@
         "TimeOfDaySec": 56,
         "TimeDayOfYear": 197,
         "FileName": "IMG_0146.JPG",
+        "Make": "Apple + Pro HDR",
+        "Model": "iPhone",
+        "Exposure": 0.0011049723756906078,
+        "iso": 25,
+        "Width": 4032,
+        "Height": 3024,
         "GPSLatitude": [
             33,
             44,
             5.37
         ],
+        "GPSLatitudeRef": "N",
         "GPSLongitude": [
             84,
             23,
             21.2
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:11:16 19:27:38",
-        "TimeYear": 2016,
-        "TimeMonth": 11,
-        "TimeDayofMonth": 16,
-        "TimeOfDayHour": 19,
-        "TimeOfDayMin": 27,
-        "TimeOfDaySec": 38,
-        "TimeDayOfYear": 321,
-        "FileName": "IMG_3336.JPG"
-    },
-    {
-        "DateTimeOriginal": "2016:11:16 20:02:01",
-        "TimeYear": 2016,
-        "TimeMonth": 11,
-        "TimeDayofMonth": 16,
-        "TimeOfDayHour": 20,
-        "TimeOfDayMin": 2,
-        "TimeOfDaySec": 1,
-        "TimeDayOfYear": 321,
-        "FileName": "IMG_3362.JPG"
-    },
-    {
-        "DateTimeOriginal": "2015:05:16 19:52:57",
-        "TimeYear": 2015,
-        "TimeMonth": 5,
-        "TimeDayofMonth": 16,
-        "TimeOfDayHour": 19,
-        "TimeOfDayMin": 52,
-        "TimeOfDaySec": 57,
-        "TimeDayOfYear": 136,
-        "FileName": "IMG_0164.JPG",
-        "GPSLatitude": [
-            34,
-            0,
-            56.33
         ],
-        "GPSLongitude": [
-            84,
-            11,
-            16.21
-        ]
-    },
-    {
-        "DateTimeOriginal": "2015:05:15 09:32:33",
-        "TimeYear": 2015,
-        "TimeMonth": 5,
-        "TimeDayofMonth": 15,
-        "TimeOfDayHour": 9,
-        "TimeOfDayMin": 32,
-        "TimeOfDaySec": 33,
-        "TimeDayOfYear": 135,
-        "FileName": "IMG_0151.JPG",
-        "GPSLatitude": [
-            33,
-            48,
-            31.72
-        ],
-        "GPSLongitude": [
-            84,
-            23,
-            50.2
-        ]
-    },
-    {
-        "DateTimeOriginal": "2016:11:24 21:11:14",
-        "TimeYear": 2016,
-        "TimeMonth": 11,
-        "TimeDayofMonth": 24,
-        "TimeOfDayHour": 21,
-        "TimeOfDayMin": 11,
-        "TimeOfDaySec": 14,
-        "TimeDayOfYear": 329,
-        "FileName": "IMG_7512.JPG",
-        "GPSLatitude": [
-            39,
-            5,
-            45.7
-        ],
-        "GPSLongitude": [
-            84,
-            30,
-            39.63
-        ]
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 292.3446327683616,
+        "GPSAltitudeRef": 0
     },
     {
         "DateTimeOriginal": "2016:10:02 16:02:40",
@@ -455,16 +474,215 @@
         "TimeOfDaySec": 40,
         "TimeDayOfYear": 276,
         "FileName": "IMG_0151-1.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.016666666666666666,
+        "iso": 64,
+        "Width": 4032,
+        "Height": 3024,
         "GPSLatitude": [
             39,
             8,
             45.64
         ],
+        "GPSLatitudeRef": "N",
         "GPSLongitude": [
             84,
             30,
             22.19
-        ]
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 195.4822134387352,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2015:05:15 09:32:33",
+        "TimeYear": 2015,
+        "TimeMonth": 5,
+        "TimeDayofMonth": 15,
+        "TimeOfDayHour": 9,
+        "TimeOfDayMin": 32,
+        "TimeOfDaySec": 33,
+        "TimeDayOfYear": 135,
+        "FileName": "IMG_0151.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 5s",
+        "Exposure": 0.0024630541871921183,
+        "iso": 32,
+        "Width": 3264,
+        "Height": 2448,
+        "GPSLatitude": [
+            33,
+            48,
+            31.72
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            23,
+            50.2
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 271.32544378698225,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:10:16 09:52:52",
+        "TimeYear": 2016,
+        "TimeMonth": 10,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 9,
+        "TimeOfDayMin": 52,
+        "TimeOfDaySec": 52,
+        "TimeDayOfYear": 290,
+        "FileName": "IMG_0153.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.0012224938875305623,
+        "iso": 20,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            50,
+            55.6
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            21,
+            48.97
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 300.06971677559915,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:07:15 21:09:43",
+        "TimeYear": 2016,
+        "TimeMonth": 7,
+        "TimeDayofMonth": 15,
+        "TimeOfDayHour": 21,
+        "TimeOfDayMin": 9,
+        "TimeOfDaySec": 43,
+        "TimeDayOfYear": 197,
+        "FileName": "IMG_0158.JPG",
+        "Make": "Apple + Pro HDR",
+        "Model": "iPhone",
+        "Exposure": 0.025,
+        "iso": 25,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            44,
+            5.04
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            23,
+            20.73
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 290.53435114503816,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2015:05:16 19:52:57",
+        "TimeYear": 2015,
+        "TimeMonth": 5,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 19,
+        "TimeOfDayMin": 52,
+        "TimeOfDaySec": 57,
+        "TimeDayOfYear": 136,
+        "FileName": "IMG_0164.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 5s",
+        "Exposure": 0.03333333333333333,
+        "iso": 80,
+        "Width": 3264,
+        "Height": 2448,
+        "GPSLatitude": [
+            34,
+            0,
+            56.33
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            11,
+            16.21
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 302,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:11:19 16:46:38",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 19,
+        "TimeOfDayHour": 16,
+        "TimeOfDayMin": 46,
+        "TimeOfDaySec": 38,
+        "TimeDayOfYear": 324,
+        "FileName": "IMG_1174.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.0006997900629811056,
+        "iso": 20,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            33,
+            46,
+            34.06
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            24,
+            1.13
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 297.81909547738695,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:11:16 19:27:38",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 19,
+        "TimeOfDayMin": 27,
+        "TimeOfDaySec": 38,
+        "TimeDayOfYear": 321,
+        "FileName": "IMG_3336.JPG",
+        "Make": "Apple",
+        "Model": "iPhone",
+        "Exposure": 13.999706572769954,
+        "iso": 40,
+        "Width": 4032,
+        "Height": 3024
+    },
+    {
+        "DateTimeOriginal": "2016:11:16 20:02:01",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 16,
+        "TimeOfDayHour": 20,
+        "TimeOfDayMin": 2,
+        "TimeOfDaySec": 1,
+        "TimeDayOfYear": 321,
+        "FileName": "IMG_3362.JPG",
+        "Make": "Apple",
+        "Model": "iPhone",
+        "Exposure": 1.9998746081504701,
+        "iso": 250,
+        "Width": 4032,
+        "Height": 3024
     },
     {
         "DateTimeOriginal": "2016:11:16 20:05:48",
@@ -475,7 +693,13 @@
         "TimeOfDayMin": 5,
         "TimeOfDaySec": 48,
         "TimeDayOfYear": 321,
-        "FileName": "IMG_3365.JPG"
+        "FileName": "IMG_3365.JPG",
+        "Make": "Apple",
+        "Model": "iPhone",
+        "Exposure": 8,
+        "iso": 250,
+        "Width": 4032,
+        "Height": 3024
     },
     {
         "DateTimeOriginal": "2016:10:07 19:11:53",
@@ -487,15 +711,56 @@
         "TimeOfDaySec": 53,
         "TimeDayOfYear": 281,
         "FileName": "IMG_5560.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.008333333333333333,
+        "iso": 32,
+        "Width": 4032,
+        "Height": 3024,
         "GPSLatitude": [
             33,
             38,
             21.17
         ],
+        "GPSLatitudeRef": "N",
         "GPSLongitude": [
             84,
             26,
             6.49
-        ]
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 398.1034482758621,
+        "GPSAltitudeRef": 0
+    },
+    {
+        "DateTimeOriginal": "2016:11:24 21:11:14",
+        "TimeYear": 2016,
+        "TimeMonth": 11,
+        "TimeDayofMonth": 24,
+        "TimeOfDayHour": 21,
+        "TimeOfDayMin": 11,
+        "TimeOfDaySec": 14,
+        "TimeDayOfYear": 329,
+        "FileName": "IMG_7512.JPG",
+        "Make": "Apple",
+        "Model": "iPhone 7 Plus",
+        "Exposure": 0.25,
+        "iso": 100,
+        "Width": 4032,
+        "Height": 3024,
+        "GPSLatitude": [
+            39,
+            5,
+            45.7
+        ],
+        "GPSLatitudeRef": "N",
+        "GPSLongitude": [
+            84,
+            30,
+            39.63
+        ],
+        "GPSLongitudeRef": "W",
+        "GPSAltitude": 147.67368421052632,
+        "GPSAltitudeRef": 0
     }
 ]
