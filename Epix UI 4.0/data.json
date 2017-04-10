@@ -9,7 +9,7 @@
         "TimeOfDaySec": 29,
         "TimeDayOfYear": 295,
         "FileName": "IMG_0042.JPG",
-        "Tags": "simple plane duck sky"
+        "Tags": "simple plane duck sky default "
     },
     {
         "DateTimeOriginal": "2016:11:19 18:07:56",
@@ -30,7 +30,8 @@
             84,
             23,
             29.16
-        ]
+        ],
+        "Tags": "undefined city default "
     },
     {
         "DateTimeOriginal": "2016:09:25 17:22:52",
@@ -51,7 +52,8 @@
             84,
             22,
             50.13
-        ]
+        ],
+        "Tags": "undefined ferrari"
     },
     {
         "DateTimeOriginal": "2016:10:07 19:21:44",

@@ -47,6 +47,7 @@ function openSelected(i) {
 
 function loadDatabase() {
     try { 
+        //https://github.com/kripken/sql.js/
         var inBuff = fs.readFileSync('./database.sqlite') 
         console.log("database found!")
         var db = new sql.Database(inBuff)
@@ -86,7 +87,7 @@ window.onload = function populateImages() {
             })
 
             div.appendChild(img);
-            gallery.append(div);
+            gallery.appendChild(div);
         }
     })
 }

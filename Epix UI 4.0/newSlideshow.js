@@ -39,6 +39,7 @@ function saveSlideshowSettings() {
     var name = document.getElementById('name').value
     var month = " "
     var location = " "
+    var exif = " "
     // console.log(document.getElementById('tags-checkbox').checked)
     if (document.getElementById('tags-checkbox').checked) {
         tag = document.getElementById('tag').value
@@ -52,12 +53,16 @@ function saveSlideshowSettings() {
     if (document.getElementById('location-checkbox').checked) {
         location = document.getElementById('location').value
     }
+    if (document.getElementById('exif-checkbox').checked) {
+        exif = document.getElementById('exif').value
+    }
     var ssObj = new Object()
     var json = []
     ssObj.Name = name
     ssObj.Tag = tag
-    ssObj.Month = month;
-    ssObj.Location = location;
+    ssObj.Month = month
+    ssObj.Location = location
+    ssObj.Exif = exif
     fs.stat('./settings.json', function(err, stat) {
         if (err == null) {
             fs.readFile('./settings.json', function(err, data) {
