@@ -20,6 +20,12 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
+    <style>
+        h1 {
+            padding-top: 10px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -75,8 +81,11 @@
             <li class="breadcrumb-item active">Manage your Photos here.</li>
         </ol>
 
-        <button type="button" href="#" class="btn btn-sm btn-primary" id="openPhotoGallery" onclick="openPhotoGallery()">Open Gallery / Import and Delete Photos</button>
-        <button type="button" href="#" class="btn btn-sm btn-primary" id="openPhotoGallery" onclick="processPhotos()">Click here to process photos</button>
+        <div id = "gallery-buttons">
+            <button type="button" href="#" class="btn btn-sm btn-primary" id="openPhotoGallery" onclick="openPhotoGallery()">Open Gallery / Import and Delete Photos</button>
+            <button type="button" href="#" class="btn btn-sm btn-primary" id="openPhotoGallery" onclick="processPhotos()">Click here to process photos</button>
+        </div>
+
         <div id="gallery">
             <!-- This will be filled in by gallery.js -->
             <div class="card-columns" id="gallery-cards">
