@@ -62,45 +62,47 @@ function loadDatabase() {
         console.log(e)
         console.log("database not found");
         var db = new sql.Database();
-        var sqlStr = "CREATE TABLE Image (
-                imageId int NOT NULL,
-                Model varchar(255),
-                Make varchar(255),
-                ExposureTime int,
-                iso int,
-                Tags varchar(),
-                Height int,
-                Width int,
-                Day int,
-                Month int,
-                Year int,
-                Second int,
-                Minute int,
-                Hour int,
-                LensModel varchar(255),
-                GPSCoord varchar(255),
-                Heading varchar(255),
-                PRIMARY KEY (imageID)
+        var sqlStr = "CREATE TABLE Image (\
+                imageName varchar(255) NOT NULL,\
+                Model varchar(255),\
+                Make varchar(255),\
+                ExposureTime int,\
+                iso int,\
+                Tags varchar(),\
+                Height int,\
+                Width int,\
+                Day int,\
+                Month int,\
+                Year int,\
+                Second int,\
+                Minute int,\
+                Hour int,\
+                DayoftheYear int,\
+                LensModel varchar(255),\
+                GPSCoord varchar(255),\
+                Heading varchar(255),\
+                PRIMARY KEY (imageName)\
             );"
-        sqlStr += "CREATE TABLE Slideshow (
-                slideshowId int NOT NULL,
-                Model varchar(255),
-                Make varchar(255),
-                ExposureTime int,
-                iso int,
-                Tags varchar(),
-                Height int,
-                Width int,
-                Day int,
-                Month int,
-                Year int,
-                Second int,
-                Minute int,
-                Hour int,
-                LensModel varchar(255),
-                GPSCoord varchar(255),
-                Heading varchar(255),
-                PRIMARY KEY (slideshowId)
+        sqlStr += "CREATE TABLE Slideshow (\
+                slideshowName varchar(255) NOT NULL,\
+                Model varchar(255),\
+                Make varchar(255),\
+                ExposureTime int,\
+                iso int,\
+                Tags varchar(),\
+                Height int,\
+                Width int,\
+                Day int,\
+                Month int,\
+                Year int,\
+                Second int,\
+                Minute int,\
+                Hour int,\
+                DayoftheYear int,\
+                LensModel varchar(255),\
+                GPSCoord varchar(255),\
+                Heading varchar(255),\
+                PRIMARY KEY (slideshowName)\
             );"
         db.run(sqlStr);
         var dbBinary = db.export()
