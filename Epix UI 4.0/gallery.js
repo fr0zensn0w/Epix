@@ -138,15 +138,15 @@ function loadDatabase() {
 window.onload = function populateImages() {
     fs.readFile('./data.json', function(err, data) {
         var imgData = JSON.parse(data)
-        var gallery = (document.getElementsByClassName('gallery'))[0];
+        var gallery = document.getElementById("gallery-cards")
         //var img = document.getElementsByClassName('card-img-top img-fluid w-100')
         // right now we're just looping through and assigning images in order.
         // wow actually I just figured out how to make the gallery
         for (i = 0; i < imgData.length; i++) {
             var div = document.createElement('div')
-            div.class = "card"
+            div.className = "card card-inverse"
             var img = document.createElement('img')
-            img.class = "card-img-top img-fluid w-100"
+            img.className = "card-img-top img-fluid w-100"
             img.src = `file://${__dirname}/Photos/` + imgData[i].FileName
             img.style.height = '250px'
             img.style.width = '350px'
