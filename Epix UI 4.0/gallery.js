@@ -12,7 +12,9 @@ let myWindow = remote.BrowserWindow.fromId(1);
 
 
 function processPhotos() {
+    loadDatabase()
     processing.processPhotos()
+
 }
 
 function openPhotoGallery() {
@@ -68,7 +70,7 @@ function loadDatabase() {
                 Make varchar(255),\
                 ExposureTime int,\
                 iso int,\
-                Tags varchar(),\
+                Tags varchar(255),\
                 Height int,\
                 Width int,\
                 Day int,\
@@ -89,7 +91,7 @@ function loadDatabase() {
                 Make varchar(255),\
                 ExposureTime int,\
                 iso int,\
-                Tags varchar(),\
+                Tags varchar(255),\
                 Height int,\
                 Width int,\
                 Day int,\
@@ -104,6 +106,27 @@ function loadDatabase() {
                 Heading varchar(255),\
                 PRIMARY KEY (slideshowName)\
             );"
+        // dummy insert just to check if it's working
+        // sqlStr += "INSERT INTO Image VALUES (\
+        //         'first',\
+        //         'Iphone',\
+        //         'something',\
+        //         6,\
+        //         5,\
+        //         'default',\
+        //         4,\
+        //         3,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         'urp',\
+        //         'bleh',\
+        //         'north'\
+        //         );"
         db.run(sqlStr);
         var dbBinary = db.export()
         var buff = new Buffer(dbBinary)
