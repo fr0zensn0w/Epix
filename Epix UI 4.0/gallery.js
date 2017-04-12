@@ -62,8 +62,46 @@ function loadDatabase() {
         console.log(e)
         console.log("database not found");
         var db = new sql.Database();
-        var sqlStr = "CREATE TABLE Test (a int, b char);"
-        sqlStr += "INSERT INTO Test VALUES (0, 'boop');"
+        var sqlStr = "CREATE TABLE Image (
+                imageId int NOT NULL,
+                Model varchar(255),
+                Make varchar(255),
+                ExposureTime int,
+                iso int,
+                Tags varchar(),
+                Height int,
+                Width int,
+                Day int,
+                Month int,
+                Year int,
+                Second int,
+                Minute int,
+                Hour int,
+                LensModel varchar(255),
+                GPSCoord varchar(255),
+                Heading varchar(255),
+                PRIMARY KEY (imageID)
+            );"
+        sqlStr += "CREATE TABLE Slideshow (
+                slideshowId int NOT NULL,
+                Model varchar(255),
+                Make varchar(255),
+                ExposureTime int,
+                iso int,
+                Tags varchar(),
+                Height int,
+                Width int,
+                Day int,
+                Month int,
+                Year int,
+                Second int,
+                Minute int,
+                Hour int,
+                LensModel varchar(255),
+                GPSCoord varchar(255),
+                Heading varchar(255),
+                PRIMARY KEY (slideshowId)
+            );"
         db.run(sqlStr);
         var dbBinary = db.export()
         var buff = new Buffer(dbBinary)
