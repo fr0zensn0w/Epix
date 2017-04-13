@@ -44,7 +44,7 @@ window.onload = function populateImages() {
         // wow actually I just figured out how to make the gallery
         for (i = 0; i < imgData.length; i++) {
             var div = document.createElement('div')
-            div.className = "card card-inverse"
+            div.className = "card card-default"
             var img = document.createElement('img')
             console.log(img)
             img.src = 'http://placehold.it/350x250'
@@ -60,7 +60,27 @@ window.onload = function populateImages() {
                 openSelectedSlideshow(e.path[0].id);
                 console.log(e);
             })
+
+            //Adding card block to hold slideshow title and description
+            var cardBlock = document.createElement('div')
+            cardBlock.className = "card-block"
+
+            //Card title
+            var h4 = document.createElement("h4")
+            h4.textContent = "Slideshow Title"
+            h4.className = "card-title"
+
+            //Card description
+            var p = document.createElement("p")
+            p.textContent = "Slideshow description"
+            p.className = "card-text"
+
+            cardBlock.appendChild(h4)
+            cardBlock.appendChild(p)
+
+
             div.appendChild(img)
+            div.appendChild(cardBlock)
             deck.appendChild(div)
         }
 
