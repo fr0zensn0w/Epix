@@ -70,9 +70,9 @@ window.onload = function populateImages() {
             h4.textContent = imgData[i].Name
             h4.className = "card-title"
 
-            //Card description
+            //Card tags
             var p = document.createElement("p")
-            p.textContent = "Slideshow description"
+            p.textContent = "Tags: " + imgData[i].Tag
             p.className = "card-text"
 
             cardBlock.appendChild(h4)
