@@ -148,8 +148,11 @@ window.onload = function populateImages() {
             var img = document.createElement('img')
             img.className = "card-img-top img-fluid w-100"
             img.src = `file://${__dirname}/Photos/` + imgData[i].FileName
-            img.style.height = '250px'
-            img.style.width = '350px'
+            // img.style.height = '250px'
+            // img.style.width = '350px'
+
+            img.style.width = imgData[i].Width/20
+            img.style.height = imgData[i].Height/20
 
             img.addEventListener('click', function(e) {
                 //openSelected(e);

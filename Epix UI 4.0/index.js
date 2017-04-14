@@ -67,7 +67,7 @@ window.onload = function populateImages() {
 
             //Card title
             var h4 = document.createElement("h4")
-            h4.textContent = "Slideshow Title"
+            h4.textContent = imgData[i].Name
             h4.className = "card-title"
 
             //Card description
