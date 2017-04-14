@@ -40,18 +40,15 @@ function saveSlideshowSettings() {
     var month = " "
     var location = " "
     var exif = " "
-    // console.log(document.getElementById('tags-checkbox').checked)
-    if (document.getElementById('tags-checkbox').checked) {
-        tag = document.getElementById('tag').value
-    }
-    // if (document.getElementById('name-checkbox').checked) {
-    //     name = document.getElementById('name').value
-    // }
+    
     if (document.getElementById('month-checkbox').checked) {
         month = document.getElementById('month').value
     }
     if (document.getElementById('location-checkbox').checked) {
         location = document.getElementById('location').value
+    }
+    if (document.getElementById('tags-checkbox').checked) {
+        tag += document.getElementById('tag').value
     }
     if (document.getElementById('exif-checkbox').checked) {
         exif = document.getElementById('exif').value
