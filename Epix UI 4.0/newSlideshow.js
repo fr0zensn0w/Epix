@@ -12,6 +12,12 @@ const path = require('path')
 
 // TODO put functions here that handle what goes on in the create new slideshow page
 // All buttons should be placed in the newSlideshow.html file
+function openMap() {
+    window = remote.getCurrentWindow()
+    main.openWindow("map")
+    setTimeout(function() {window.close}, 700)
+}
+
 
 function openNewSlideshow() {
     // DO NOT DELETE - handles opening the page
