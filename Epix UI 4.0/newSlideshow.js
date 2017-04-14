@@ -15,7 +15,7 @@ const path = require('path')
 function openMap() {
     window = remote.getCurrentWindow()
     main.openWindow("map")
-    setTimeout(function() {window.close}, 700)
+    setTimeout(function() {window.close}, 1700)
 }
 
 
@@ -24,20 +24,20 @@ function openNewSlideshow() {
     //open the create new slideshow window
     window = remote.getCurrentWindow()
     main.openWindow("newSlideshow")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
     // window.close()
 }
 
 function openGallery() {
     window = remote.getCurrentWindow()
     main.openWindow("gallery")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 function openSlideshows() {
     window = remote.getCurrentWindow()
     main.openWindow("index")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 function saveSlideshowSettings() {

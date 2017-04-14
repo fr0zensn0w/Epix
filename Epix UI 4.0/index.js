@@ -10,20 +10,20 @@ function openNewSlideshow() {
     //open the create new slideshow window
     window = remote.getCurrentWindow()
     main.openWindow("newSlideshow")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
     // window.close()
 }
 
 function openGallery() {
     window = remote.getCurrentWindow()
     main.openWindow("gallery")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 function openSlideshows() {
     window = remote.getCurrentWindow()
     main.openWindow("index")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 function openSelectedSlideshow(ssName) {
@@ -54,7 +54,7 @@ window.onload = function populateImages() {
             // var name = 'ss' + i
             // console.log(name);
             img.id = imgData[i].Name
-            
+
             img.className = "card-img-top img-fluid w-100"
             img.addEventListener('click', function(e) {
                 openSelectedSlideshow(e.path[0].id);

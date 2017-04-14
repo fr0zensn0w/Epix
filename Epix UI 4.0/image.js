@@ -8,26 +8,26 @@ function openNewSlideshow() {
     //open the create new slideshow window
     window = remote.getCurrentWindow()
     main.openWindow("newSlideshow")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
     // window.close()
 }
 
 function openGallery() {
     window = remote.getCurrentWindow()
     main.openWindow("gallery")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 function openSlideshows() {
     window = remote.getCurrentWindow()
     main.openWindow("index")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 function openImage() {
     window = remote.getCurrentWindow()
     main.openWindow("image")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 window.onload = function renderImage() {
@@ -51,7 +51,7 @@ window.onload = function renderImage() {
 
     imageNameDiv.appendChild(imageNameCol)
 
-    
+
 
     //back button
     var backDiv = document.createElement('div')
@@ -69,7 +69,7 @@ window.onload = function renderImage() {
 
     container.appendChild(backDiv);
 
-    
+
 
 
     //div to hold image and tag input row
@@ -106,11 +106,11 @@ window.onload = function renderImage() {
     var input = document.createElement('input')
     input.type = "text"
     input.className = "form-control"
-    input.value = "add tags"
+    input.placeholder = "add tags"
     input.id = "tag"
     form.appendChild(input);
 
-    
+
 
     //submit button
     var button = document.createElement('button')
@@ -151,5 +151,5 @@ window.onload = function renderImage() {
 
     container.appendChild(imageAndInput);
 
-    
+
 }

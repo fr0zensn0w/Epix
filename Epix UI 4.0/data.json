@@ -27,7 +27,7 @@
             48.37
         ],
         "GPSLongitudeRef": "E",
-        "Tags": "undefined default "
+        "Tags": "undefined default  default"
     },
     {
         "DateTimeOriginal": "2016:11:19 18:07:56",
@@ -276,7 +276,8 @@
         ],
         "GPSLongitudeRef": "W",
         "GPSAltitude": 269.65868263473055,
-        "GPSAltitudeRef": 0
+        "GPSAltitudeRef": 0,
+        "Tags": "undefined default "
     },
     {
         "DateTimeOriginal": "2016:07:12 09:57:47",
