@@ -81,8 +81,12 @@ function loadDatabase() {
                 Hour int,\
                 DayoftheYear int,\
                 LensModel varchar(255),\
-                GPSCoord varchar(255),\
-                Heading varchar(255),\
+                GPSLatitude varchar(255),\
+                GPSLatitudeRef varchar(255),\
+                GPSLongitude varchar(255),\
+                GPSLongitudeRef varchar(255),\
+                GPSAltitude int,\
+                GPSAltitudeRef int,\
                 PRIMARY KEY (imageName)\
             );"
         sqlStr += "CREATE TABLE Slideshow (\
@@ -102,8 +106,12 @@ function loadDatabase() {
                 Hour int,\
                 DayoftheYear int,\
                 LensModel varchar(255),\
-                GPSCoord varchar(255),\
-                Heading varchar(255),\
+                GPSLatitude varchar(255),\
+                GPSLatitudeRef varchar(255),\
+                GPSLongitude varchar(255),\
+                GPSLongitudeRef varchar(255),\
+                GPSAltitude int,\
+                GPSAltitudeRef int,\
                 PRIMARY KEY (slideshowName)\
             );"
         // dummy insert just to check if it's working
@@ -125,13 +133,19 @@ function loadDatabase() {
         //         1,\
         //         'urp',\
         //         'bleh',\
-        //         'north'\
+        //         'north',\
+        //         'orb',\
+        //         'west',\
+        //         0,\
+        //         1\
         //         );"
         db.run(sqlStr);
         var dbBinary = db.export()
         var buff = new Buffer(dbBinary)
         fs.writeFileSync("database.sqlite", buff)
+
     }
+    db.close()
 }
 
 // this function should load images into the frames for the slideshows
