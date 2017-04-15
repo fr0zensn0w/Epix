@@ -26,6 +26,8 @@
         }
     </style>
 
+
+
 </head>
 
 <body>
@@ -87,9 +89,9 @@
             <div style="height: 50px;"></div>
 
             <div class="form-group row">
-              <label class="col-2 col-form-label">Name of Slideshow</label>
+              <label class="col-2 col-form-label" data-toggle="tooltip" data-placement="top" title = "Give your slideshow a nice name!">Name of Slideshow</label>
               <div class="col-10">
-                <input class="form-control" type="text" value="My New Slideshow" id="name">
+                <input class="form-control" type="text" value="My New Slideshow" id="name" >
               </div>
             </div>
 
@@ -107,25 +109,25 @@
                 <div class="col-sm-5">
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from today"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
                       <!-- <div class="col-10">
                         <input class="form-control" type="text" value="XX:XX-XX:XX" id="time-of-day">
                       </div> -->
                     </div>
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="month-checkbox"value="">  Month</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from a specific month"><input type = "checkbox" id="month-checkbox"value="">  Month</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. January 2017" id="month">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="location-checkbox"value="">  Location</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from a certain location"><input type = "checkbox" id="location-checkbox"value="">  Location</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. Malibu" id="location">
                       </div>
                     </div>
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="tags-checkbox"value="">  Tags</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags"><input type = "checkbox" id="tags-checkbox"value="">  Tags</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. friends" id="tag">
                       </div>
@@ -138,28 +140,28 @@
                     </div> -->
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="make-checkbox"value="">  Make</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken by a camera with a specific make"><input type = "checkbox" id="make-checkbox"value="">  Make</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. Apple" id="make">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="model-checkbox"value="">  Model</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken by a specific model of camera"><input type = "checkbox" id="model-checkbox"value="">  Model</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. iPhone 7 Plus" id="model">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="exposure-checkbox"value="">  Exposure Time</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific exposure time"><input type = "checkbox" id="exposure-checkbox"value="">  Exposure Time</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. 1000 seconds" id="exposure">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="iso-checkbox"value="">  ISO</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Information Information"><input type = "checkbox" id="iso-checkbox"value="">  ISO</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. 200" id="iso">
                       </div>
@@ -169,49 +171,49 @@
                 <div class="col-sm-5">
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="width-checkbox"value="">  Width</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific width"><input type = "checkbox" id="width-checkbox"value="">  Width</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. 250 px" id="width">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="height-checkbox"value="">  Height</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific height"><input type = "checkbox" id="height-checkbox"value="">  Height</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. 250 px" id="height">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="lens-model-checkbox"value="">  Lens Model</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken with a specific lens"><input type = "checkbox" id="lens-model-checkbox"value="">  Lens Model</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. iPhone 7 Plus back iSight Duo camer 3.99mm f/1.8" id="lens-model">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="latitude-checkbox"value="">  GPS Latitude</label>
+                      <label class="col-3 col-form-label"data-toggle="tooltip" data-placement="top" title = "Include all photos taken at a specific GPS Latitutde"><input type = "checkbox" id="latitude-checkbox"value="">  GPS Latitude</label>
                       <div class="col-6">
-                        <input class="form-control" type="text" placeholder="i.e. idk what goes here" id="latitude">
+                        <input class="form-control" type="text" placeholder="i.e. 33.7490" id="latitude">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="longitude-checkbox"value="">  GPS Longitude</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken at a specific GPS Longitude"><input type = "checkbox" id="longitude-checkbox"value="">  GPS Longitude</label>
                       <div class="col-6">
-                        <input class="form-control" type="text" placeholder="i.e. Apple" id="longitude">
+                        <input class="form-control" type="text" placeholder="i.e. 84.3880" id="longitude">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="altitude-checkbox"value="">  GPS Altitude</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken at a specific Altitude"><input type = "checkbox" id="altitude-checkbox"value="">  GPS Altitude</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="0 for above sea level, 1 for below sea level" id="altitude">
                       </div>
                     </div>
 
                     <div class="form-group row">
-                      <label class="col-3 col-form-label"><input type = "checkbox" id="dest-bearing-checkbox"value="">  GPS Dest Bearing</label>
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Information Information"><input type = "checkbox" id="dest-bearing-checkbox"value="">  GPS Dest Bearing</label>
                       <div class="col-6">
                         <input class="form-control" type="text" placeholder="i.e. 0-360" id="dest-bearing">
                       </div>
@@ -238,10 +240,15 @@
                 <label><input type="text" id="end" value="">End Day(0 is today, counting backwards)</label>
             </div> -->
             <button class="btn btn-primary" onclick="openMap()">Open Map</button>
+
+            <div style="height: 50px;"></div>
+            
             <div class="submit-button">
                 <!-- <button type="button" onclick="saveSlideshowSettings()">Submit</button> -->
                 <button class="btn btn-primary" type="submit" onclick="saveSlideshowSettings()">Submit</button>
             </div>
+
+
         </div>
 
     </div>
