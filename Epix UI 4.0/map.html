@@ -45,6 +45,7 @@
       <button onclick="toggleHeatmap()">Toggle Heatmap</button>
       <button onclick="changeGradient()">Change gradient</button>
       <button onclick="changeRadius()">Change radius</button>
+      <button onclick="saveArea()">Save Area</button>
       <!-- <button onclick="changeOpacity()">Change opacity</button> -->
     </div>
     <div id="map"></div>
@@ -63,7 +64,7 @@
           d3.json("data.json", function(data) {
               //console.log(data[0]);
               this.fullData = data;
-              console.log(fullData)
+              // console.log(fullData)
 
               afterProcessing();
 
@@ -71,8 +72,8 @@
           });
         }
 
+        // converts the coordinates given to decimal degrees for google maps
         function calculateDecimalGPS(direction, degrees, minutes, seconds) {
-          // converts the coordinates given to decimal degrees for google maps
             if (direction == "N" || direction == "E") {
                 dd = (seconds/3600) + (minutes/60) + degrees
             } else if (direction == "S" || direction == "W") {
@@ -98,7 +99,7 @@
                     GPScoords.push(new google.maps.LatLng(lat, long))
                 }
             }
-            console.log(GPScoords)
+            // console.log(GPScoords)
             initMap()
             //make the map
             // initMap()
@@ -109,19 +110,101 @@
       // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
 
       var map, heatmap;
+      var circles;
+
+      //values to be written to the database as where the slideshow should be
+      var lat, long, radius
+
+      //the circle that we are using to select
+      var circle;
+
+      // function to save the area that is selected on the map.
+      // you must click this to update the database with the coordinates and radius
+      function saveArea() {
+        console.log("saving area")
+        circle = [lat, long, radius]
+        console.log("new coordinates are ", circle)
+        // console.log(circles[0].center)
+        // console.log(circles[0].radius)
+        // console.log(circle.getBounds())
+        console.log(circle)
+        alert("Area added to critera")
+        return
+      }
 
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: {lat: 37.0902, lng: -95.7129}
-        });
+          map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 2,
+            // center: {lat: 37.0902, lng: -95.7129}
+            center: {lat: 0, lng:0}
+          });
 
-        heatmap = new google.maps.visualization.HeatmapLayer({
-          data: getPoints(),
-          map: map
-        });
-        changeGradient()
+          heatmap = new google.maps.visualization.HeatmapLayer({
+            data: getPoints(),
+            map: map
+          });
+          changeGradient()
+          changeRadius()
+          // createCircle()
+          ///// making a circle
+          circles = []
+
+          // var circle = new google.maps.Circle({
+          //   radius: 10 * (1/map.getZoom() * 10000),
+          //   center: {lat: 0, lng:0},
+          //   clickable: true,
+          //   editable: true,
+          //   strokeWeight: 2,
+          //   map: map
+          // });
+
+          map.addListener('click', function(e) {
+              // console.log("map clicked")
+              // console.log("data ",e)
+              // console.log(map.getZoom())
+              if (circles.length < 1) {
+                var circle = new google.maps.Circle({
+                  radius: 10 * (1/map.getZoom() * 10000),
+                  center: e.latLng,
+                  clickable: true,
+                  editable: true,
+                  strokeWeight: 2,
+                  draggable: false,
+                  map: map
+                });
+                stringy = JSON.stringify(circle.center)
+                // console.log("stringy" , stringy)
+                comma = stringy.lastIndexOf(",")
+                // console.log("comma", comma)
+                lat = parseFloat(stringy.slice(7, comma))
+                long = parseFloat(stringy.slice(comma + 7, stringy.length - 1))
+                // initial radius
+                radius = circle.radius
+                circles = [lat, long, radius]
+
+                circle.addListener('center_changed', function() {
+                    // console.log('circle dragged')
+                    stringy = JSON.stringify(circle.center)
+                    comma = stringy.lastIndexOf(",")
+                    lat = parseFloat(stringy.slice(7, comma))
+                    long = parseFloat(stringy.slice(comma + 7, stringy.length - 1))
+                    console.log("coordinates have changed to (lat, long)", lat, long)
+                });
+
+                circle.addListener('radius_changed', function() {
+                    // console.log('radius has changed')
+                    radius = circle.radius
+                    console.log("radius has changed to", radius)
+
+                });
+
+
+              }
+          })
+
+
       }
+
 
       function toggleHeatmap() {
         heatmap.setMap(heatmap.getMap() ? null : map);
@@ -157,15 +240,15 @@
 
       // Heatmap data: 500 Points
       function getPoints() {
-        console.log("fetching data")
-        setTimeout(function(){console.log("wait over")},700)
+        // console.log("fetching data")
+        // setTimeout(function(){console.log("wait over")},700)
         // getData()
-        console.log("got the data")
+        // console.log("got the data")
         return GPScoords
       }
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPSIpnmnNbdE9whRu4cdmvjiMOd6wmoE0&libraries=visualization&callback=getData">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPSIpnmnNbdE9whRu4cdmvjiMOd6wmoE0&libraries=visualization&geometry&callback=getData">
     </script>
 
     <!-- NEED FOR ELECTRON 2/2-->
