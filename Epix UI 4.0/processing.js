@@ -21,6 +21,21 @@ function getDayOfYear(year, month, day) {
     return N
 }
 
+// standardizes the GPS coordinates to decimal
+function calculateDecimalGPS(direction, dms) {
+    var degrees = dms[0]
+    var minutes = dms[1]
+    var seconds = dms[2]
+
+    if (direction == "N" || direction == "E") {
+        dd = (seconds/3600) + (minutes/60) + degrees
+    } else if (direction == "S" || direction == "W") {
+        dd = - ((seconds/3600) + (minutes/60) + degrees)
+    }
+    return dd
+}
+
+
 // so the other page gallery.js can see this function wooot.
 module.exports = {
     processPhotos: function() {
@@ -44,7 +59,7 @@ function parsePhotos() {
             console.log(file2)
             try {
                 var inBuff = fs.readFileSync('./database.sqlite')
-                console.log("database found!")
+                // console.log("database found!")
                 var db = new sql.Database(inBuff)
 
                 var insStmt = "INSERT INTO Image VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
@@ -76,28 +91,28 @@ function parsePhotos() {
                         } else {
 
                             var inBuff = fs.readFileSync('./database.sqlite')
-                            console.log("database found!")
+                            // console.log("database found!")
                             var db = new sql.Database(inBuff)
 
 
                             var imgObj = new Object();
                             if (exifData.exif['DateTimeOriginal']) {
-                                imgObj.DateTimeOriginal = exifData.exif['DateTimeOriginal'];
+                                // imgObj.DateTimeOriginal = exifData.exif['DateTimeOriginal'];
                                 imgObj.TimeYear = parseInt(exifData.exif['DateTimeOriginal'].substring(0,4))
                                 imgObj.TimeMonth = parseInt(exifData.exif['DateTimeOriginal'].substring(5,8))
                                 imgObj.TimeDayofMonth = parseInt(exifData.exif['DateTimeOriginal'].substring(8,10))
-                                imgObj.TimeOfDayHour = parseInt(exifData.exif['DateTimeOriginal'].substring(11,13))
-                                imgObj.TimeOfDayMin = parseInt(exifData.exif['DateTimeOriginal'].substring(14,16))
-                                imgObj.TimeOfDaySec = parseInt(exifData.exif['DateTimeOriginal'].substring(17,19))
+                                // imgObj.TimeOfDayHour = parseInt(exifData.exif['DateTimeOriginal'].substring(11,13))
+                                // imgObj.TimeOfDayMin = parseInt(exifData.exif['DateTimeOriginal'].substring(14,16))
+                                // imgObj.TimeOfDaySec = parseInt(exifData.exif['DateTimeOriginal'].substring(17,19))
                                 imgObj.TimeDayOfYear = getDayOfYear(imgObj.TimeYear, imgObj.TimeMonth, imgObj.TimeDayofMonth)
                             } else {
-                                imgObj.DateTimeOriginal = 0;
+                                // imgObj.DateTimeOriginal = 0;
                                 imgObj.TimeYear = 0
                                 imgObj.TimeMonth = 0
-                                imgObj.TimeDayofMonth = 0
-                                imgObj.TimeOfDayHour = 0
-                                imgObj.TimeOfDayMin = 0
-                                imgObj.TimeOfDaySec = 0
+                                // imgObj.TimeDayofMonth = 0
+                                // imgObj.TimeOfDayHour = 0
+                                // imgObj.TimeOfDayMin = 0
+                                // imgObj.TimeOfDaySec = 0
                                 imgObj.TimeDayOfYear = 0
                             }
                             imgObj.imageName = file;
@@ -105,9 +120,9 @@ function parsePhotos() {
 
                             imgObj.LensModel = (exifData.image['LensModel'] ? exifData.image['LensModel'] : 'unknown')
                             // Make (Apple)
-                            imgObj.Make = (exifData.image['Make'] ? exifData.image['Make'] : 'unknown')
+                            imgObj.Make = (exifData.image['Make'] ? (exifData.image['Make']).replace(/\0/g, '') : 'unknown')
                             // Model (iPhone 7 Plus)
-                            imgObj.Model = (exifData.image['Model'] ? exifData.image['Model'] : 'unknown')
+                            imgObj.Model = (exifData.image['Model'] ? (exifData.image['Model']).replace(/\0/g, '') : 'unknown')
                             // Exposure Time (fraction, DO NOT ROUND)
                             imgObj.Exposure = (exifData.exif['ExposureTime'] ? exifData.exif['ExposureTime'] : 0)
                             // ISO (20-16000 ish?)
@@ -115,7 +130,7 @@ function parsePhotos() {
                             // DateTimeOriginal - Above
                             ///// done see above
                             // UserComment - Added later in image.js file
-                            imgObj.Tag = " default "
+                            imgObj.Tag = "default"
                             ///// Done see image.js
                             // ExifImageWidth
                             imgObj.Width = (exifData.exif['ExifImageWidth'] ? exifData.exif['ExifImageWidth'] : 0)
@@ -124,47 +139,49 @@ function parsePhotos() {
                             // LensModel (iPhone 7 Plus back iSight Duo)
                             imgObj.LensModel = (exifData.exif['LensModel'] ? exifData.exif['LensModel'] : 'unknown')
                             // GPSLatitude (Hours, Minutes, Seconds)
-                            imgObj.GPSLatitude = (exifData.gps['GPSLatitude'] ? exifData.gps['GPSLatitude'] : 'unknown')
+                            imgObj.GPSLatitude = (exifData.gps['GPSLatitude'] ? calculateDecimalGPS(exifData.gps['GPSLatitudeRef'], exifData.gps['GPSLatitude']) : 0)
                             // GPSLatitudeRef (N S E W)
-                            imgObj.GPSLatitudeRef = (exifData.gps['GPSLatitudeRef'] ? exifData.gps['GPSLatitudeRef'] : 'unknown')
+                            //imgObj.GPSLatitudeRef = (exifData.gps['GPSLatitudeRef'] ? exifData.gps['GPSLatitudeRef'] : 'unknown')
                             // GPSLongitude (Hours, Minutes, Seconds)
-                            imgObj.GPSLongitude = (exifData.gps['GPSLongitude'] ? exifData.gps['GPSLongitude'] : 'unknown')
+                            imgObj.GPSLongitude = (exifData.gps['GPSLongitude'] ? calculateDecimalGPS(exifData.gps['GPSLongitudeRef'], exifData.gps['GPSLongitude']) : 0)
                             // GPSLongitudeRef (N S E W)
-                            imgObj.GPSLongitudeRef = (exifData.gps['GPSLongitudeRef'] ? exifData.gps['GPSLongitudeRef'] : 'unknown')
+                            //imgObj.GPSLongitudeRef = (exifData.gps['GPSLongitudeRef'] ? exifData.gps['GPSLongitudeRef'] : 'unknown')
                             // GPSAltitude
-                            imgObj.GPSAltitude = (exifData.gps['GPSAltitude'] ? exifData.gps['GPSAltitude'] : 0)
+                            // imgObj.GPSAltitude = (exifData.gps['GPSAltitude'] ? exifData.gps['GPSAltitude'] : 0)
                             // GPSAltitudeRef (0 for above sea level, 1 for below sea level)
-                            imgObj.GPSAltitudeRef = (exifData.gps['GPSAltitudeRef'] ? exifData.gps['GPSAltitudeRef'] : 0)
+                            // imgObj.GPSAltitudeRef = (exifData.gps['GPSAltitudeRef'] ? exifData.gps['GPSAltitudeRef'] : 0)
 
                             //console.log(imgObj)
-                            db.run("INSERT INTO Image VALUES ('" +
-                                                imgObj.imageName + "','" +
-                                                imgObj.Model + "','" +
-                                                imgObj.Make + "'," +
-                                                imgObj.Exposure + "," +
-                                                imgObj.iso + ",'" +
-                                                imgObj.Tag + "'," +
-                                                imgObj.Height + "," +
-                                                imgObj.Width + "," +
-                                                imgObj.TimeDayofMonth + "," +
-                                                imgObj.TimeMonth + "," +
-                                                imgObj.TimeYear + "," +
-                                                imgObj.TimeOfDaySec + "," +
-                                                imgObj.TimeOfDayMin + "," +
-                                                imgObj.TimeOfDayHour + "," +
-                                                imgObj.TimeDayOfYear + ",'" +
-                                                imgObj.LensModel + "','" +
-                                                imgObj.GPSLatitude + "','" +
-                                                imgObj.GPSLatitudeRef + "','" +
-                                                imgObj.GPSLongitude + "','" +
-                                                imgObj.GPSLongitudeRef + "'," +
-                                                imgObj.GPSAltitude + "," +
-                                                imgObj.GPSAltitudeRef +
-                                                ");")
+                            try {
+                                db.run("INSERT INTO ImageTags VALUES ('" +
+                                    imgObj.imageName + "','" +
+                                    imgObj.Tag + "');")
+                                db.run("INSERT INTO Image VALUES ('" +
+                                    imgObj.imageName + "','" +
+                                    imgObj.Model + "','" +
+                                    imgObj.Make + "','" +
+                                    imgObj.LensModel + "'," +
+                                    imgObj.Exposure + "," +
+                                    imgObj.iso + "," +
+                                    imgObj.Height + "," +
+                                    imgObj.Width + "," +
+                                    imgObj.TimeMonth + "," +
+                                    imgObj.TimeYear + "," +
+                                    imgObj.TimeDayOfYear + "," +
+                                    imgObj.GPSLatitude + "," +
+                                    imgObj.GPSLongitude +
+                                    ");")
+
+                            } catch (e) {
+                                console.log(imgObj)
+                                console.log(imgObj.Model)
+                                console.log(e)
+
+                            }
                             var dbBinary = db.export()
                             var buff = new Buffer(dbBinary)
                             fs.writeFileSync("database.sqlite", buff)
-                            console.log(db.exec("SELECT * FROM Image;"))
+                            // console.log(db.exec("SELECT * FROM Image;"))
                             db.close()   
                         }
                     });
