@@ -4,7 +4,7 @@ var ExifImage = require('exif').ExifImage;
 // console.log("hello I have been imported into gallery.js")
 var path = require( 'path' );
 var process = require( "process" );
-var sql = require('sql.js').sql-memory-growth.js
+var sql = require('sql.js')
 
 var dataArray = []
 var fileNames = []
@@ -27,43 +27,11 @@ module.exports = {
       parsePhotos()
     }
 }
+
 function parsePhotos() {
     currentDirectory = __dirname + "/Photos"
     var numberOfPhotos = []
     var counter = 0
-
-    // var inBuff = fs.readFileSync('./database.sqlite')
-    // console.log("database found!")
-    // var db = new sql.Database(inBuff)
-
-    // console.log(db.exec("SELECT * FROM Image;"))
-
-    // db.run("INSERT INTO Image VALUES (\
-    //             'first',\
-    //             'Iphone',\
-    //             'something',\
-    //             6,\
-    //             5,\
-    //             'default',\
-    //             4,\
-    //             3,\
-    //             1,\
-    //             1,\
-    //             1,\
-    //             1,\
-    //             1,\
-    //             1,\
-    //             1,\
-    //             'urp',\
-    //             'bleh',\
-    //             'north',\
-    //             'orb',\
-    //             'west',\
-    //             0,\
-    //             1\
-    //             );")
-
-
 
     fs.readdir(currentDirectory, function(err, files) {
         console.log("number of files = ", files.length)
@@ -196,38 +164,14 @@ function parsePhotos() {
                             var dbBinary = db.export()
                             var buff = new Buffer(dbBinary)
                             fs.writeFileSync("database.sqlite", buff)
-                            db.close()
-                            //console.log(ret)
-                            // try {
-                            //     db.run(insStmt,[imgObj.imageName, imgObj.Model, imgObj.Make, imgObj.Exposure, imgObj.iso, imgObj.Tag, imgObj.Height, imgObj.Width, imgObj.TimeDayofMonth, imgObj.TimeMonth, imgObj.TimeYear, imgObj.TimeOfDaySec, imgObj.TimeOfDayMin, imgObj.TimeOfDayHour, imgObj.TimeDayOfYear, imgObj.LensModel, imgObj.GPSLatitude, imgObj.GPSLatitudeRef, imgObj.GPSLongitude, imgObj.GPSLongitudeRef, imgObj.GPSAltitude, imgObj.GPSAltitudeRef]);
-                            // } catch (e) {
-                            //     console.log(e)
-                            // }
                             console.log(db.exec("SELECT * FROM Image;"))
+                            db.close()   
                         }
-
                     });
                 } catch (error) {
                     console.log('Error: ' + error.message);
-                }
-                
+                }             
             }
-            var dbBinary = db.export()
-            var buff = new Buffer(dbBinary)
-            fs.writeFileSync("database.sqlite", buff)
-            db.close()
-            //insStmt.free()
-            // var dbBinary = db.export()
-            // var buff = new Buffer(dbBinary)
-            // fs.writeFileSync("database.sqlite", buff)
-
         })
-        // console.log(db.exec("SELECT * FROM Image;"))
-        // insStmt.free()
     })
-    // console.log(db.exec("SELECT * FROM Image;"))
-    // console.log(db.exec("SELECT * FROM Image"))
-    // var dbBinary = db.export()
-    // var buff = new Buffer(dbBinary)
-    // fs.writeFileSync("database.sqlite", buff)
 }

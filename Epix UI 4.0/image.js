@@ -66,29 +66,28 @@ window.onload = function renderImage() {
         console.log(db.exec("SELECT * FROM Image"))
 
         // prepare some statments, one to read the old tags, one to set the new ones
-        var readTagStmt = "SELECT Tags FROM Image WHERE imageName=" + imgName + ";"
-        var writeTagStmt = db.prepare("UPDATE Image SET Tags=:newTags WHERE imageName=:imgName;")
+        var readTagStmt = "SELECT Tags FROM Image WHERE imageName='" + imgName + "';"
+        // var writeTagStmt = db.prepare("UPDATE Image SET Tags=:newTags WHERE imageName=:imgName;")
 
         // bind values for read
         //readTagStmt.bind({':imageName' : imgName})
 
         // read in old tags from DB using query
         var oldTags = db.exec(readTagStmt)
-        console.log(oldTags)
+        //console.log(oldTags[0].values[0][0])
 
         // concatenate with new tags
-        var newTags = oldTags + tag + " ";
+        var newTags = oldTags[0].values[0][0] + tag + " ";
         console.log(newTags)
 
         // bind values for write
-        writeTagStmt.bind({':imgName' : imgName, ':newTags' : newTags})
+        // writeTagStmt.bind({':imgName' : imgName, ':newTags' : newTags})
 
         // execute the query
-        db.run(writeTagStmt)
+        db.run("UPDATE Image SET Tags='" + newTags + "' WHERE imageName='" + imgName + "';")
 
         // free stmts
-        readTagStmt.free()
-        writeTagStmt.free()
+        // writeTagStmt.free()
         // old way using jsons
         // fs.readFile('./data.json', function(err, data) {
         //     var json = JSON.parse(data);
@@ -108,6 +107,8 @@ window.onload = function renderImage() {
         //     json[i].Tags = json[i].Tags + " " + tag
         //     fs.writeFileSync('data.json', JSON.stringify(json, null, 4));
         // })
+        console.log(db.exec("SELECT * FROM Image"))
+        db.close()
     })
     document.body.appendChild(form);
     document.body.appendChild(button);

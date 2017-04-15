@@ -143,8 +143,9 @@ function loadDatabase() {
         var dbBinary = db.export()
         var buff = new Buffer(dbBinary)
         fs.writeFileSync("database.sqlite", buff)
-        db.close()
+
     }
+    db.close()
 }
 
 // this function should load images into the frames for the slideshows
