@@ -1,6 +1,7 @@
 const electron = require('electron')
 const {app, BrowserWindow, shell} = electron
 const remote = electron.remote
+const path = require('path')
 
 //// implement below somehow to get the window to gracefully transition (no white flash)
 // let win = new BrowserWindow({show: false})
@@ -12,7 +13,13 @@ const remote = electron.remote
 
 // when the app is ready, open this page
 app.on('ready', () => {
-    let win1 = new BrowserWindow({width:1400, height:1000, transparent:false, frame:true, show:false})
+    let win1 = new BrowserWindow({
+      width:1400,
+      height:1000,
+      transparent:false,
+      frame:true,
+      show:false,
+      icon:path.join(__dirname, 'icons/png_grey/512x512.png')})
     win1.loadURL(`file://${__dirname}/index.html`)
     // removes the white page that is shown before the window is loaded up
     win1.once('ready-to-show', () => {
