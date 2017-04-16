@@ -1,0 +1,38 @@
+[
+    {
+        "Name": "Default",
+        "Tag": "default",
+        "TimeStart": "0",
+        "TimeEnd": "7"
+    },
+    {
+        "Name": "Default2",
+        "Tag": "default",
+        "TimeStart": "0",
+        "TimeEnd": "7"
+    },
+    {
+        "Name": "Default3",
+        "Tag": "default",
+        "TimeStart": "0",
+        "TimeEnd": "7"
+    },
+    {
+        "Name": "My New Slideshow",
+        "Tag": "ie friends",
+        "Month": "ie January",
+        "Location": "ie Malibu"
+    },
+    {
+        "Name": "Christmas",
+        "Tag": "family",
+        "Month": "December",
+        "Location": "Augusta"
+    },
+    {
+        "Name": "Halloween",
+        "Tag": "spooky",
+        "Month": "October",
+        "Location": "Atlanta"
+    }
+]

@@ -1,0 +1,21 @@
+{
+  "name": "epix",
+  "version": "1.0.0",
+  "description": "Epix Photo Gallery",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron . --disable-gpu"
+  },
+  "author": "liquidsn0w",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^1.6.2",
+    "electron-packager": "^8.6.0"
+  },
+  "dependencies": {
+    "exif": "^0.6.0",
+    "geolib": "^2.0.22",
+    "sql.js": "^0.4.0"
+  }
+}

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Epix Auto Slideshow</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+
+    <style>
+        h1 {
+            padding-top: 10px;
+        }
+
+        .dropdown {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+
+        .label-button {
+          width: 300px;
+        }
+
+        #open-map-button {
+          width: 300px;
+        }
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Epix</a>
+        <div class="collapse navbar-collapse" id="navbarExample">
+            <ul class="sidebar-nav navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openSlideshows()" href="#"><i class="fa fa-fw fa-desktop"></i> Slideshows</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" onclick="openNewSlideshow()" href="#"><i class="fa fa-fw fa-edit"></i> Create a New Slideshow</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" onclick="openGallery()" href="#"><i class="fa fa-fw fa-table"></i> Photo Gallery</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fa fa-fw"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Create a New Slideshow
+                </h1>
+                <!-- <ol class="breadcrumb">
+                    <li>
+                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <i class="fa fa-bar-chart-o"></i> Charts
+                    </li>
+                </ol> -->
+            </div>
+        </div>
+
+        <ol class="breadcrumb my-3">
+            <!-- <li class="breadcrumb-item"><a href="#">Dashboard</a></li> -->
+            <li class="breadcrumb-item active">Fill in the fields below to create a new slideshow containing photos that meet any of the criteria you choose.</li>
+        </ol>
+
+
+
+
+        <div class="settings-form">
+
+            <div style="height: 50px;"></div>
+
+            <div class="form-group row">
+              <label class="col-2 col-form-label" data-toggle="tooltip" data-placement="top" title = "Give your slideshow a nice name!">Name of Slideshow</label>
+              <div class="col-10">
+                <input class="form-control" type="text" value="My New Slideshow" id="name" >
+              </div>
+            </div>
+
+            <!-- <div class="form-group row">
+              <label class="col-2 col-form-label">Slideshow Description</label>
+              <div class="col-10">
+                <input class="form-control" type="text" value="My New Slideshow Description" id="description">
+              </div>
+            </div> -->
+
+            <div style="height: 50px;"></div>
+
+            <h3> Filters </h3>
+
+              <div class="form-group row">
+                <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from today"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
+
+              </div>
+
+              <div class="form-group row">
+                <label class="col-1 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags"><input type = "checkbox" id="tags-checkbox"value="">  Tags</label>
+                <div class="col-4">
+                  <input class="form-control" type="text" placeholder="i.e. friends" id="tag">
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken after this date">Date Start</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="date-start" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "date-start-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class = "dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken before this date">Date End</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="date-end" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "date-end-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class = "dropdown">
+
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" type="button" data-toggle="tooltip" data-placement="top" title = "Include all photos from a specific month"> Month </button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="month" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "month-options">
+                    <a class="dropdown-item" href="#">January</a>
+                    <a class="dropdown-item" href="#">February</a>
+                    <a class="dropdown-item" href="#">March</a>
+                    <a class="dropdown-item" href="#">April</a>
+                    <a class="dropdown-item" href="#">May</a>
+                    <a class="dropdown-item" href="#">June</a>
+                    <a class="dropdown-item" href="#">July</a>
+                    <a class="dropdown-item" href="#">August</a>
+                    <a class="dropdown-item" href="#">September</a>
+                    <a class="dropdown-item" href="#">October</a>
+                    <a class="dropdown-item" href="#">November</a>
+                    <a class="dropdown-item" href="#">December</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific make of a camera">Make</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="make" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "make-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific model of camera">Model</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="model" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "model-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific exposure time">Exposure Time</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="exposure-time" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "exposure-time-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              
+
+
+
+            <!-- <div class = "row"> -->
+                <!-- <div class="col-sm-5">
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from today"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
+
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from a specific month"><input type = "checkbox" id="month-checkbox"value="">  Month</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. January 2017" id="month">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from a certain location"><input type = "checkbox" id="location-checkbox"value="">  Location</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. Malibu" id="location">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags"><input type = "checkbox" id="tags-checkbox"value="">  Tags</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. friends" id="tag">
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-2 col-form-label"><input type = "checkbox" id="exif-checkbox"value="">  Exif</label>
+                      <div class="col-10">
+                        <input class="form-control" type="text" value="ie ISO:800" id="exif">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken by a camera with a specific make"><input type = "checkbox" id="make-checkbox"value="">  Make</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. Apple" id="make">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken by a specific model of camera"><input type = "checkbox" id="model-checkbox"value="">  Model</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. iPhone 7 Plus" id="model">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific exposure time"><input type = "checkbox" id="exposure-checkbox"value="">  Exposure Time</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. 1000 seconds" id="exposure">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Information Information"><input type = "checkbox" id="iso-checkbox"value="">  ISO</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. 200" id="iso">
+                      </div>
+                    </div>
+
+                </div> -->
+                <!-- <div class="col-sm-5">
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific width"><input type = "checkbox" id="width-checkbox"value="">  Width</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. 250 px" id="width">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific height"><input type = "checkbox" id="height-checkbox"value="">  Height</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. 250 px" id="height">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken with a specific lens"><input type = "checkbox" id="lens-model-checkbox"value="">  Lens Model</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. iPhone 7 Plus back iSight Duo camer 3.99mm f/1.8" id="lens-model">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label"data-toggle="tooltip" data-placement="top" title = "Include all photos taken at a specific GPS Latitutde"><input type = "checkbox" id="latitude-checkbox"value="">  GPS Latitude</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. 33.7490" id="latitude">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken at a specific GPS Longitude"><input type = "checkbox" id="longitude-checkbox"value="">  GPS Longitude</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. 84.3880" id="longitude">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken at a specific Altitude"><input type = "checkbox" id="altitude-checkbox"value="">  GPS Altitude</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="0 for above sea level, 1 for below sea level" id="altitude">
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Information Information"><input type = "checkbox" id="dest-bearing-checkbox"value="">  GPS Dest Bearing</label>
+                      <div class="col-6">
+                        <input class="form-control" type="text" placeholder="i.e. 0-360" id="dest-bearing">
+                      </div>
+                    </div>
+
+                </div> -->
+            <!-- </div> -->
+            <!-- end of row -->
+
+
+            <div style="height: 20px;"></div>
+
+
+
+
+
+            <!-- <div class="tag-field">
+                <label><input type="text" id="tag" value="">Tag Filter</label>
+            </div>
+            <div class="start-field">
+                <label><input type="text" id="start" value="">Start Day(0 is today, counting backwards)</label>
+            </div>
+            <div class="end-field">
+                <label><input type="text" id="end" value="">End Day(0 is today, counting backwards)</label>
+            </div> -->
+            <button class="btn btn-info" id = "open-map-button" data-toggle="tooltip" data-placement="top" title = "Open map to select from what location to include photos from" onclick="openMap()">Open Map</button>
+
+            <div style="height: 50px;"></div>
+            
+            <div class="submit-button">
+                <!-- <button type="button" onclick="saveSlideshowSettings()">Submit</button> -->
+                <button class="btn btn-primary" type="submit" onclick="saveSlideshowSettings()">Submit</button>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-- NEED FOR ELECTRON 1/2-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <!-- jQuery Version 3.1.1 -->
+    <script src="lib/jquery/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="lib/tether/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="lib/chart.js/Chart.min.js"></script>
+
+    <!-- SB Admin JavaScript -->
+    <script src="js/sb-admin.min.js"></script>
+
+    <!-- just my files -->
+    <script src="newSlideshow.js"></script>
+
+    <!-- NEED FOR ELECTRON 2/2-->
+    <script>if (window.module) module = window.module;</script>
+
+</body>
+
+</html>

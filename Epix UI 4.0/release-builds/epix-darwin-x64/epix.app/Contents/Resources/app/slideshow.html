@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title id="slideshowTitle">Epix Auto Slideshow</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Custom Fonts -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <!-- <link href="css/sb-admin.css" rel="stylesheet"> -->
+
+    <script type="text/javascript" src="data.json"></script>
+
+    <style>
+
+        body {background-color:black;}
+
+        /* set border-box so that percents can be used for width, padding, etc (personal preference) */
+        .cycle-slideshow, .cycle-slideshow * {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+        .cycle-slideshow {
+
+          width: auto%;
+          height: auto;
+          min-width: 10%;
+          max-width: 100%;
+          max-height: 100%;
+          margin: 10px auto;
+          padding: 0;
+          position: relative;
+
+        }
+
+        /* slideshow images (for most of the demos, these are the actual "slides") */
+        .cycle-slideshow img {
+          /*
+          some of these styles will be set by the plugin (by default) but setting them here
+          helps avoid flash-of-unstyled-content
+          */
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          display: block;
+        }
+        /* display paused text on top of paused slideshow */
+        .cycle-paused:after {
+          content: 'Paused'; color: white; background: black; padding: 10px;
+          z-index: 500; position: absolute; top: 10px; right: 10px;
+          border-radius: 10px;
+          opacity: .5; filter: alpha(opacity=50);
+          font: Garamond;
+        }
+        p {
+          font-family: 'Montserrat', sans-serif;
+        }
+  	</style>
+
+</head>
+
+<body>
+
+    <!-- <div class="cycle-slideshow"
+            data-cycle-swipe=true
+            data-cycle-swipe-fx=scrollHorz
+            data-cycle-center-horz=true
+            data-cycle-center-vert=true
+            data-cycle-loader=true
+            data-cycle-fx="fade"
+            data-cycle-pause-on-hover="true"
+            data-cycle-timeout="2000">
+
+        <img src="Photos/IMG_3336.JPG">
+        <img src="Photos/IMG_3362.JPG">
+        <img src="Photos/IMG_3365.JPG">
+
+      </div> -->
+
+      <div class="cycle-slideshow"
+          data-cycle-center-horz=true
+          data-cycle-center-vert=true>
+          <!-- <img src="Photos/IMG_3336.JPG">
+          <img src="Photos/IMG_3362.JPG">
+          <img src="Photos/IMG_3365.JPG"> -->
+      </div>
+    <!-- <div class="cycle-caption"></div> -->
+
+    <!-- <script src="slideshow.js"></script> -->
+    <!-- hopefully, a slideshow -->
+    <!-- NEED FOR ELECTRON 1/2-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <!-- jQuery Version 3.1.1 -->
+    <!-- we import jquery below -->
+    <script src="lib/jquery/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="lib/tether/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="lib/chart.js/Chart.min.js"></script>
+
+    <!-- SB Admin JavaScript -->
+    <script src="js/sb-admin.min.js"></script>
+
+    <!-- just my files -->
+    <script src="slideshow.js"></script>
+
+    <script src="js/d3.v3.min.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
+	  <script type="text/javascript" src="js/jquery.cycle2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cycle2.center.min.js"></script>
+
+    <!-- NEED FOR ELECTRON 2/2-->
+    <!-- <script>if (window.module) module = window.module;</script> -->
+
+
+
+    <script>
+        //// code to make the slideshow when the page loads
+
+        var fullData;
+        var slideshowSettings
+        d3.json("data.json", function(data) {
+            //console.log(data[0]);
+            this.fullData = data;
+            console.log(fullData)
+
+            d3.json("settings.json", function(data) {
+                //console.log(data[0]);
+                this.slideshowSettings = data;
+                console.log(slideshowSettings)
+                afterProcessing()
+            });
+
+
+        });
+
+
+
+        //filter the data depending on what the criteria are in the settings.json
+        // place the filtered images into an array to be written to html to be used
+        // in the creation of the slideshow
+
+
+
+        // array that has the images to be displayed
+        var slideshowImages = []
+        // var dates365Array;
+        function afterProcessing() {
+            var slideshowName = getSlideshowName()
+            // console.log(calculateInCircle())
+            console.log("Slideshow Name " + slideshowName)
+            var currentSettings
+
+            // we need to get the settings for this slideshow
+            for (i = 0; i < slideshowSettings.length; i++) {
+              if (slideshowSettings[i].Name == slideshowName) {
+                currentSettings = slideshowSettings[i]
+                i = slideshowSettings.length
+              }
+            }
+
+            // loop to grab all images by location
+
+            // for (i = 0; i < fullData.length; i++) {
+            //   if (fullData[i].Location)
+            // }
+
+            // loop to grab all images by tag
+
+            for (i = 0; i < fullData.length; i++) {
+              console.log(fullData[i].Tags)
+              if (fullData[i].Tags) {
+                var imageTags = (fullData[i].Tags)
+                var ssTags = (currentSettings.Tag).split(' ')
+                console.log(imageTags)
+                console.log(ssTags)
+                for (j = 0; j < ssTags.length; j++) {
+                  console.log(" " + ssTags[j] + " ")
+                  if (imageTags.includes(" " + ssTags[j] + " ")) {
+                    if (slideshowImages[fullData[i].TimeDayOfYear] == undefined) {
+                        slideshowImages[fullData[i].TimeDayOfYear] = ['<img src="Photos/' + fullData[i].FileName + '">'];
+                    } else {
+                        slideshowImages[fullData[i].TimeDayOfYear].push('<img src="Photos/' + fullData[i].FileName + '">');
+                    }
+                  }
+                }
+              }
+            }
+
+            // loop to grab all images by exif
+
+
+            // loop just grabs them all and puts them in the array
+            // for (i = 0; i < fullData.length; i++) {
+            //     if (slideshowImages[fullData[i].TimeDayOfYear] == undefined) {
+            //         slideshowImages[fullData[i].TimeDayOfYear] = ['<img src="Photos/' + fullData[i].FileName + '">'];
+            //     } else {
+            //         slideshowImages[fullData[i].TimeDayOfYear].push('<img src="Photos/' + fullData[i].FileName + '">');
+            //     }
+            // }
+
+            console.log(slideshowImages);
+
+            // this should work :/
+
+            console.log("now add to slideshow")
+
+            setTimeout(addToShow(), 3000)
+            function addToShow() {
+              $('.cycle-slideshow').cycle();
+
+                for (var i=0; i < slideshowImages.length; i++) {
+                        // console.log("add image")
+                        // console.log(slideshowImages)
+                        $('.cycle-slideshow').cycle('add', slideshowImages[i]);
+                }
+            }
+
+            // $(this).prop('disabled', true)
+
+            // var time = new Date().getTime();
+            // $(document.body).bind("mousemove keypress", function(e) {
+            //     time = new Date().getTime();
+            // });
+
+
+                //function to refresh the images in the array. Better than refreshing the page
+                function refresh() {
+                    console.log(new Date().getTime() - time + " difference in time AKA TIMEOUT");
+                    if(new Date().getTime() - time >= 10800000) { // refreshing on a quarter of a day so in theory if you go to sleep it should be new when you wake
+                        console.log("reload page");
+                        //window.location.reload(true); //uncomment to reload page
+                        afterProcessing();
+                    }
+                    else {
+                        setTimeout(refresh, 14400000);
+                    }
+                }
+                setTimeout(refresh, 14400000);
+
+        }
+
+
+
+
+    </script>
+
+    <!-- NEED FOR ELECTRON 2/2-->
+    <script>if (window.module) module = window.module;</script>
+
+
+
+</body>
+
+</html>

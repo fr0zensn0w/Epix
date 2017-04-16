@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 25%;
+        z-index: 5;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+      #floating-panel {
+        background-color: #fff;
+        border: 1px solid #999;
+        left: 25%;
+        padding: 5px;
+        position: absolute;
+        top: 10px;
+        z-index: 5;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="floating-panel">
+      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
+      <button onclick="changeGradient()">Change gradient</button>
+      <button onclick="changeRadius()">Change radius</button>
+      <button onclick="saveArea()">Save Area</button>
+      <!-- <button onclick="changeOpacity()">Change opacity</button> -->
+    </div>
+    <div id="map"></div>
+    <!-- NEED FOR ELECTRON 1/2-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <!-- just my files -->
+    <!-- <script src="map.js"></script> -->
+    <script type="text/javascript" src="js/d3.v3.min.js"></script>
+    <script>
+
+        var fullData;
+        var slideshowSettings
+        var GPScoords;
+
+        function getData() {
+          d3.json("data.json", function(data) {
+              //console.log(data[0]);
+              this.fullData = data;
+              // console.log(fullData)
+
+              afterProcessing();
+
+
+          });
+        }
+
+        // converts the coordinates given to decimal degrees for google maps
+        function calculateDecimalGPS(direction, degrees, minutes, seconds) {
+            if (direction == "N" || direction == "E") {
+                dd = (seconds/3600) + (minutes/60) + degrees
+            } else if (direction == "S" || direction == "W") {
+                dd = - ((seconds/3600) + (minutes/60) + degrees)
+            }
+            return dd
+        }
+
+        function afterProcessing() {
+          GPScoords = []
+
+            for (i = 0; i < fullData.length; i++) {
+                // convert the given exif format to to decimal degrees to be
+                // passed to google maps for the heatmap
+                if (fullData[i].GPSLongitude) {
+                    // console.log(fullData[i].GPSLatitude)
+                    // console.log(fullData[i].GPSLongitude)
+
+                    lat = calculateDecimalGPS(fullData[i].GPSLatitudeRef, fullData[i].GPSLatitude[0], fullData[i].GPSLatitude[1], fullData[i].GPSLatitude[2])
+                    long = calculateDecimalGPS(fullData[i].GPSLongitudeRef, fullData[i].GPSLongitude[0], fullData[i].GPSLongitude[1], fullData[i].GPSLongitude[2])
+                    // console.log(lat, long)
+
+                    GPScoords.push(new google.maps.LatLng(lat, long))
+                }
+            }
+            // console.log(GPScoords)
+            initMap()
+            //make the map
+            // initMap()
+        }
+
+      // This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+
+      var map, heatmap;
+      var circles;
+
+      //values to be written to the database as where the slideshow should be
+      var lat, long, radius
+
+      //the circle that we are using to select
+      var circle;
+
+      // function to save the area that is selected on the map.
+      // you must click this to update the database with the coordinates and radius
+      function saveArea() {
+        console.log("saving area")
+        circle = [lat, long, radius]
+        console.log("new coordinates are ", circle)
+        // console.log(circles[0].center)
+        // console.log(circles[0].radius)
+        // console.log(circle.getBounds())
+        console.log(circle)
+        alert("Area added to critera")
+        return
+      }
+
+      function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 2,
+            // center: {lat: 37.0902, lng: -95.7129}
+            center: {lat: 0, lng:0}
+          });
+
+          heatmap = new google.maps.visualization.HeatmapLayer({
+            data: getPoints(),
+            map: map
+          });
+          changeGradient()
+          changeRadius()
+          // createCircle()
+          ///// making a circle
+          circles = []
+
+          // var circle = new google.maps.Circle({
+          //   radius: 10 * (1/map.getZoom() * 10000),
+          //   center: {lat: 0, lng:0},
+          //   clickable: true,
+          //   editable: true,
+          //   strokeWeight: 2,
+          //   map: map
+          // });
+
+          map.addListener('click', function(e) {
+              // console.log("map clicked")
+              // console.log("data ",e)
+              // console.log(map.getZoom())
+              if (circles.length < 1) {
+                var circle = new google.maps.Circle({
+                  radius: 10 * (1/map.getZoom() * 10000),
+                  center: e.latLng,
+                  clickable: true,
+                  editable: true,
+                  strokeWeight: 2,
+                  draggable: false,
+                  map: map
+                });
+                stringy = JSON.stringify(circle.center)
+                // console.log("stringy" , stringy)
+                comma = stringy.lastIndexOf(",")
+                // console.log("comma", comma)
+                lat = parseFloat(stringy.slice(7, comma))
+                long = parseFloat(stringy.slice(comma + 7, stringy.length - 1))
+                // initial radius
+                radius = circle.radius
+                circles = [lat, long, radius]
+
+                circle.addListener('center_changed', function() {
+                    // console.log('circle dragged')
+                    stringy = JSON.stringify(circle.center)
+                    comma = stringy.lastIndexOf(",")
+                    lat = parseFloat(stringy.slice(7, comma))
+                    long = parseFloat(stringy.slice(comma + 7, stringy.length - 1))
+                    console.log("coordinates have changed to (lat, long)", lat, long)
+                });
+
+                circle.addListener('radius_changed', function() {
+                    // console.log('radius has changed')
+                    radius = circle.radius
+                    console.log("radius has changed to", radius)
+
+                });
+
+
+              }
+          })
+
+
+      }
+
+
+      function toggleHeatmap() {
+        heatmap.setMap(heatmap.getMap() ? null : map);
+      }
+
+      function changeGradient() {
+        var gradient = [
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ]
+        heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
+      }
+
+      function changeRadius() {
+        heatmap.set('radius', heatmap.get('radius') ? null : 20);
+      }
+
+      function changeOpacity() {
+        heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
+      }
+
+      // Heatmap data: 500 Points
+      function getPoints() {
+        // console.log("fetching data")
+        // setTimeout(function(){console.log("wait over")},700)
+        // getData()
+        // console.log("got the data")
+        return GPScoords
+      }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPSIpnmnNbdE9whRu4cdmvjiMOd6wmoE0&libraries=visualization&geometry&callback=getData">
+    </script>
+
+    <!-- NEED FOR ELECTRON 2/2-->
+    <script>if (window.module) module = window.module;</script>
+  </body>
+</html>
