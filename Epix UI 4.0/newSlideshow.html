@@ -24,6 +24,20 @@
         h1 {
             padding-top: 10px;
         }
+
+        .dropdown {
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+
+        .label-button {
+          width: 300px;
+        }
+
+        #open-map-button {
+          width: 300px;
+        }
+
     </style>
 
 
@@ -105,14 +119,123 @@
             <div style="height: 50px;"></div>
 
             <h3> Filters </h3>
-            <div class = "row">
-                <div class="col-sm-5">
+
+              <div class="form-group row">
+                <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from today"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
+
+              </div>
+
+              <div class="form-group row">
+                <label class="col-1 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags"><input type = "checkbox" id="tags-checkbox"value="">  Tags</label>
+                <div class="col-4">
+                  <input class="form-control" type="text" placeholder="i.e. friends" id="tag">
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken after this date">Date Start</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="date-start" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "date-start-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class = "dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken before this date">Date End</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="date-end" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "date-end-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class = "dropdown">
+
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" type="button" data-toggle="tooltip" data-placement="top" title = "Include all photos from a specific month"> Month </button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="month" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "month-options">
+                    <a class="dropdown-item" href="#">January</a>
+                    <a class="dropdown-item" href="#">February</a>
+                    <a class="dropdown-item" href="#">March</a>
+                    <a class="dropdown-item" href="#">April</a>
+                    <a class="dropdown-item" href="#">May</a>
+                    <a class="dropdown-item" href="#">June</a>
+                    <a class="dropdown-item" href="#">July</a>
+                    <a class="dropdown-item" href="#">August</a>
+                    <a class="dropdown-item" href="#">September</a>
+                    <a class="dropdown-item" href="#">October</a>
+                    <a class="dropdown-item" href="#">November</a>
+                    <a class="dropdown-item" href="#">December</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific make of a camera">Make</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="make" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "make-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific model of camera">Model</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="model" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "model-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dropdown">
+                <div class="btn-group">
+                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific exposure time">Exposure Time</button>
+                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="exposure-time" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "exposure-time-options">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+
+              
+
+
+
+            <!-- <div class = "row"> -->
+                <!-- <div class="col-sm-5">
 
                     <div class="form-group row">
                       <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from today"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
-                      <!-- <div class="col-10">
-                        <input class="form-control" type="text" value="XX:XX-XX:XX" id="time-of-day">
-                      </div> -->
+
                     </div>
                     <div class="form-group row">
                       <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from a specific month"><input type = "checkbox" id="month-checkbox"value="">  Month</label>
@@ -132,12 +255,12 @@
                         <input class="form-control" type="text" placeholder="i.e. friends" id="tag">
                       </div>
                     </div>
-                    <!-- <div class="form-group row">
+                    <div class="form-group row">
                       <label class="col-2 col-form-label"><input type = "checkbox" id="exif-checkbox"value="">  Exif</label>
                       <div class="col-10">
                         <input class="form-control" type="text" value="ie ISO:800" id="exif">
                       </div>
-                    </div> -->
+                    </div>
 
                     <div class="form-group row">
                       <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos taken by a camera with a specific make"><input type = "checkbox" id="make-checkbox"value="">  Make</label>
@@ -167,8 +290,8 @@
                       </div>
                     </div>
 
-                </div>
-                <div class="col-sm-5">
+                </div> -->
+                <!-- <div class="col-sm-5">
 
                     <div class="form-group row">
                       <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific width"><input type = "checkbox" id="width-checkbox"value="">  Width</label>
@@ -219,12 +342,12 @@
                       </div>
                     </div>
 
-                </div>
-            </div>
+                </div> -->
+            <!-- </div> -->
             <!-- end of row -->
 
 
-            <div style="height: 50px;"></div>
+            <div style="height: 20px;"></div>
 
 
 
@@ -239,7 +362,7 @@
             <div class="end-field">
                 <label><input type="text" id="end" value="">End Day(0 is today, counting backwards)</label>
             </div> -->
-            <button class="btn btn-primary" onclick="openMap()">Open Map</button>
+            <button class="btn btn-info" id = "open-map-button" data-toggle="tooltip" data-placement="top" title = "Open map to select from what location to include photos from" onclick="openMap()">Open Map</button>
 
             <div style="height: 50px;"></div>
             
