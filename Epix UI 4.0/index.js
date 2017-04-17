@@ -67,7 +67,8 @@ function loadDatabase() {
                 Make varchar(255),\
                 ExposureTime int,\
                 Today int,\
-                SingleMonth int,\
+                Month int,\
+                Year int,\
                 StartMonth int,\
                 StartYear int,\
                 StartDayoftheYear int,\

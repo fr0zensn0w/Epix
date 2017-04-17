@@ -65,8 +65,19 @@ window.onload = function setupForm() {
     console.log("database found!")
     var db = new sql.Database(inBuff)
 
-    var allMakes = db.exec("SELECT DISTINCT Make FROM Images;")
-    var allModels = db.exec("SELECT DISTINT Model FROM Images;")
+    var allMakes = db.exec("SELECT DISTINCT Make FROM Image;")
+    var allModels = db.exec("SELECT DISTINCT Model FROM Image;")
+
+    if (allMakes) {
+        console.log(allMakes)
+        var makeOpt = document.getElementById('make-options')
+        for (i = 0; i < (allMakes[0].values).length; i++) {
+            var opt = document.createElement('option')
+            opt.text = allMakes[0].values[i][0]
+            makeOpt.appendChild(opt)
+
+        }
+    }
 
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
@@ -78,12 +89,7 @@ function saveSlideshowSettings() {
     var inBuff = fs.readFileSync('./database.sqlite')
     console.log("database found!")
     var db = new sql.Database(inBuff)
-        
 
-    var today = 0
-    if($('#day-checkbox').prop('checked')) {
-        today = 1
-    }
     var tags = $('#tag').val()
 
     if (tags) {
@@ -93,23 +99,33 @@ function saveSlideshowSettings() {
         }
     }
 
+    // get the name of the slideshow
     var name = $('#name').val()
     console.log(name)
+
+    // get the today value if it's there, otherwise get year/month values
+    var today = 0
     var month = null
-    if (!today) {
-        month = $('#month').text()
-        console.log(month)
-    }
     var year = null
+    if ($('#day-checkbox').prop('checked')) {
+        today = 1
+    } else {
+        month = $('#month').text()
+        // console.log(month)
+        year = null
+    }
+    
+
+    // get the coordinate details
     var lat = null
     var lon = null
     var rad = null
     if (remote.getGlobal('sharedObj')) {
         var coordinates = remote.getGlobal('sharedObj').coordinates
-        console.log(location)
-        lat = location[0]
-        lon = location[1]
-        rad = location[2]
+        console.log(coordinates)
+        lat = coordinates[0]
+        lon = coordinates[1]
+        rad = coordinates[2]
     }
     var make = $('#make-picker option:selected').text()
     console.log(make)
@@ -124,7 +140,8 @@ function saveSlideshowSettings() {
             (make ? ("'" + make + "'") : 'NULL') + "," +
             today + "," +
             (month ? month : 'NULL') + "," +
-            "NULL,NULL,NULL,NULL,NULL,NULL,NULL," +
+            (year ? year : 'NULL') + "," +
+            "NULL,NULL,NULL,NULL,NULL,NULL," +
             (lat ? lat : 'NULL') + "," +
             (lon ? lon : 'NULL') + "," +
             (rad ? rad : 'NULL') + ");"
