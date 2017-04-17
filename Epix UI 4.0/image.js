@@ -51,6 +51,8 @@ window.onload = function renderImage() {
 
     //put everything into this
     var container = document.getElementById("page-container")
+    var alert = document.getElementById("alert-info")
+    // console.log(alert)
 
     //img name
     var imageName = document.createElement('h1')
@@ -174,7 +176,16 @@ window.onload = function renderImage() {
         fs.writeFileSync("database.sqlite", buff)
         console.log(db.exec("SELECT * FROM ImageTags WHERE imageName='" + imgName +"';"))
         db.close()
+        settingsSubmitted()
     })
+
+    function settingsSubmitted() {
+        console.log("added tag to the database")
+        var submitAlert = document.createElement('div')
+        submitAlert.className = "alert alert-success"
+        submitAlert.textContent = "Tag Saved"
+        alert.appendChild(submitAlert)
+    }
     // document.body.appendChild(form);
     // document.body.appendChild(button);
     // document.body.appendChild(backButton);
