@@ -212,11 +212,11 @@
             // select by today within range
             if (settings[0].values[0][4]) {
               var date = new Date()
-              var endDayOfYear
+              var endDayOfYearMS
               var startDayOfYear
               dateMS = date.getTime()
               endDayOfYearMS = (dateMS % 31556952000) / 86400000
-              endDayOfYearMS = parseInt(dayOfYearMS, 10)
+              endDayOfYearMS = parseInt(endDayOfYearMS, 10)
               endDayOfYearMS++
 
               startDayOfYear = endDayOfYear - settings[0].values[0][4]
