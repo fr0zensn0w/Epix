@@ -27,6 +27,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/daterangepicker.css" />
 
+
     <style>
         h1 {
             padding-top: 10px;
@@ -124,12 +125,15 @@
             <h3> Filters </h3>
 
               <div class="form-group row">
-                <label class="col-3 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from today"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
+                <label class="col-1 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from today and the past number of days"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
+                <div class="col-4">
+                  <input class="form-control" type="text" placeholder="1" id="day">
+                </div>
 
               </div>
 
               <div class="form-group row">
-                <label class="col-1 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags"><input type = "checkbox" id="tags-checkbox"value="">  Tags</label>
+                <label class="col-1 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags"><input type = "checkbox" id="tag-checkbox"value="">  Tags</label>
                 <div class="col-4">
                   <input class="form-control" type="text" placeholder="i.e. friends" id="tag">
                 </div>
@@ -162,94 +166,58 @@
                   </div>
                 </div>
               </div>
-
               
-              <div class="dropdown col-md-4">
-                <div class="form-group" id="month-picker">
-                    <label>Month</label>
-                    <select class="form-control">
-                        <option></option>
-                        <option>January</option>
-                        <option>February</option>
-                        <option>March</option>
-                        <option>April</option>
-                        <option>May</option>
-                        <option>June</option>
-                        <option>July</option>
-                        <option>August</option>
-                        <option>Sepetember</option>
-                        <option>October</option>
-                        <option>November</option>
-                        <option>December</option>
-                    </select>
-                </div>
+              <div class=" dropdown form-group row" id="month-picker">
+                <label class = "col-1 col-form-label" >Month</label>
+                <select class="form-control col-4" padding>
+                    <option></option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option>
+                    <option>April</option>
+                    <option>May</option>
+                    <option>June</option>
+                    <option>July</option>
+                    <option>August</option>
+                    <option>Sepetember</option>
+                    <option>October</option>
+                    <option>November</option>
+                    <option>December</option>
+                </select>
+                <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken in a specific month">
+                
               </div>
 
 
-              <div class="dropdown">
-                <div class="form-group" id="make-picker">
-                    <label>Make</label>
-                    <select class="form-control" id="make-options">
-                        <option></option>
-                        <option>Apple</option>
-                        <option>DGI</option>
-                    </select>
-                </div>
+              <div class="dropdown form-group row" id="make-picker">
+                <label class = "col-1 col-form-label" >Make</label>
+                <select class="form-control col-4" id="make-options">
+                    <option></option>
+                    <option>Apple</option>
+                    <option>DGI</option>
+                </select>
+                <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific make of camera">
+
               </div>
 
-              <div class="dropdown" >
-                <div class="form-group" id="model-picker">
-                    <label>Model</label>
-                    <select class="form-control" id="model-options">
-                        <option></option>
-                        <option>iPhone 7 Plus</option>
-                        <option>FC300C</option>
-                    </select>
-                </div>
+              <div class="dropdown form-group row" id="model-picker">
+                <label class = "col-1 col-form-label" >Model</label>
+                <select class="form-control col-4" id="model-options">
+                    <option></option>
+                    <option>iPhone 7 Plus</option>
+                    <option>FC300C</option>
+                </select>
+                <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific model of camera">
               </div>
 
-
-
-              <div class="dropdown">
-                <div class="btn-group">
-                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific make of a camera">Make</button>
-                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="make" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "make-options">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="dropdown">
-                <div class="btn-group">
-                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific model of camera">Model</button>
-                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="model" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "model-options">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="dropdown">
-                <div class="btn-group">
-                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include all photos with a specific exposure time">Exposure Time</button>
-                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="exposure-time" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "exposure-time-options">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
+              <div class="dropdown form-group row" id="exp-picker">
+                <label class = "col-1 col-form-label" >Exposure Time</label>
+                <select class="form-control col-4" id="exp-options">
+                    <option></option>
+                    <option>Less than 1.0</option>
+                    <option>More than 1.0</option>
+                </select>
+                <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken with a certain exposure time">
               </div>
 
               <input type="text" name="datefilter" value="" />
