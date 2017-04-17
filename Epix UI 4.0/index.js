@@ -144,21 +144,21 @@ window.onload = function populateImages() {
         cardBlock.className = "card-block"
 
         //Card title
-        // var h4 = document.createElement("h4")
-        // h4.textContent = img.id
-        // h4.className = "card-title"
+        var h4 = document.createElement("h4")
+        h4.textContent = img.id
+        h4.className = "card-title"
 
         // //Card tags
         // var p = document.createElement("p")
         // // p.textContent = "Tags: "
         // // p.className = "card-text"
 
-        // cardBlock.appendChild(h4)
+        cardBlock.appendChild(h4)
         // cardBlock.appendChild(p)
 
 
         div.appendChild(img)
-        // div.appendChild(cardBlock)
+        div.appendChild(cardBlock)
         deck.appendChild(div)
     }
 
