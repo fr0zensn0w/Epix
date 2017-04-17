@@ -79,15 +79,16 @@ window.onload = function setupForm() {
         }
     }
 
-    var delSS = document.createElement('button')
+    if (allModels) {
+        console.log(allModels)
+        var makeOpt = document.getElementById('model-options')
+        for (i = 0; i < (allModels[0].values).length; i++) {
+            var opt = document.createElement('option')
+            opt.text = allModels[0].values[i][0]
+            makeOpt.appendChild(opt)
 
-    delSS.type = "button"
-    delSS.className = "btn btn-sm btn-primary"
-
-    delSS.textContent = 'Delete Slideshow'
-    delSS.addEventListener('click', function() {
-        deleteSS()
-    })
+        }
+    }
 
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
@@ -171,7 +172,7 @@ function saveSlideshowSettings() {
         console.log(e)
     }
 
-
+    console.log(db.exec("SELECT * FROM ImageTags"))
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
     fs.writeFileSync("database.sqlite", buff)

@@ -183,7 +183,6 @@
             var db = new sql.Database(inBuff)
 
             var images = ssHandler.getSlideshowImages(db, getSlideshowName())
-            // for loop to go through all the images and then add them based on their GPS
 
             var dbBinary = db.export()
             var buff = new Buffer(dbBinary)
@@ -191,12 +190,14 @@
             db.close()
 
             // loop just grabs them all and puts them in the array
-            for (i = 0; i < images.length; i++) {
-                if (slideshowImages[images[i][10]] == undefined) {
-                    slideshowImages[images[i][10]] = ['<img src="Photos/' + images[i][0] + '">'];
-                } else {
-                    slideshowImages[images[i][10]].push('<img src="Photos/' + images[i][0] + '">');
-                }
+            if (images) {
+              for (i = 0; i < images.length; i++) {
+                  if (slideshowImages[images[i][10]] == undefined) {
+                      slideshowImages[images[i][10]] = ['<img src="Photos/' + images[i][0] + '">'];
+                  } else {
+                      slideshowImages[images[i][10]].push('<img src="Photos/' + images[i][0] + '">');
+                  }
+              }
             }
 
             console.log(slideshowImages);
