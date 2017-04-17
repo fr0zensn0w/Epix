@@ -36,57 +36,107 @@ function openSelectedSlideshow(ssName) {
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
     loadDatabase()
+
+    var inBuff = fs.readFileSync('./database.sqlite')
+    console.log("database found!")
+    var db = new sql.Database(inBuff)
+
+    var allSettings = db.exec("SELECT * FROM Slideshow")
+    var deck = document.getElementById("card-deck")
+
+    for (i = 0; i < allSettings[0].values.length; i++) {
+        console.log('creating card')
+        console.log(allSettings[0].values[i])
+        var div = document.createElement("div")
+        var img = document.createElement("img")
+
+        div.className = "card card-default"
+
+        img.src = "http://placehold.it/350x250"
+        img.style.height = '250px'
+        img.style.width = '350px'
+        img.id = allSettings[0].values[i][0]
+        img.className = "card-img-top img-fluid w-100"
+        img.addEventListener('click', function(e) {
+            openSelectedSlideshow(e.path[0].id);
+        })
+        var cardBlock = document.createElement('div')
+        cardBlock.className = "card-block"
+
+        //Card title
+        // var h4 = document.createElement("h4")
+        // h4.textContent = img.id
+        // h4.className = "card-title"
+
+        // //Card tags
+        // var p = document.createElement("p")
+        // // p.textContent = "Tags: "
+        // // p.className = "card-text"
+
+        // cardBlock.appendChild(h4)
+        // cardBlock.appendChild(p)
+
+
+        div.appendChild(img)
+        // div.appendChild(cardBlock)
+        deck.appendChild(div)
+    }
+
+    var dbBinary = db.export()
+    var buff = new Buffer(dbBinary)
+    fs.writeFileSync("database.sqlite", buff)
+    db.close()
+
+    
     //readTextFile('./data.json', function(dataJSON) {
     // I'm a dummy and forgot about fs
-    fs.readFile('./settings.json', 'utf8', function(err, data) {
-        var imgData = JSON.parse(data)
-        var deck = document.getElementById("card-deck")
-        // var img = document.getElementsByClassName('card-img-top img-fluid w-100')
-        // right now we're just looping through and assigning images in order.
-        // wow actually I just figured out how to make the gallery
-        for (i = 0; i < imgData.length; i++) {
-            var div = document.createElement('div')
-            div.className = "card card-default"
-            var img = document.createElement('img')
-            console.log(img)
-            img.src = 'http://placehold.it/350x250'
-            // img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
-            img.style.height = '250px'
-            img.style.width = '350px'
-            // var name = 'ss' + i
-            // console.log(name);
-            img.id = imgData[i].Name
+    // fs.readFile('./settings.json', 'utf8', function(err, data) {
 
-            img.className = "card-img-top img-fluid w-100"
-            img.addEventListener('click', function(e) {
-                openSelectedSlideshow(e.path[0].id);
-                console.log(e);
-            })
+    //     var imgData = JSON.parse(data)
+    //     var deck = document.getElementById("card-deck")
 
-            //Adding card block to hold slideshow title and description
-            var cardBlock = document.createElement('div')
-            cardBlock.className = "card-block"
+    //     for (i = 0; i < imgData.length; i++) {
 
-            //Card title
-            var h4 = document.createElement("h4")
-            h4.textContent = imgData[i].Name
-            h4.className = "card-title"
-
-            //Card tags
-            var p = document.createElement("p")
-            p.textContent = "Tags: " + imgData[i].Tag
-            p.className = "card-text"
-
-            cardBlock.appendChild(h4)
-            cardBlock.appendChild(p)
+    //         var div = document.createElement('div')
+    //         div.className = "card card-default"
+    //         var img = document.createElement('img')
+    //         img.src = 'http://placehold.it/350x250'
 
 
-            div.appendChild(img)
-            div.appendChild(cardBlock)
-            deck.appendChild(div)
-        }
+    //         // img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
+    //         img.style.height = '250px'
+    //         img.style.width = '350px'
+    //         img.id = imgData[i].Name
+    //         img.className = "card-img-top img-fluid w-100"
+    //         img.addEventListener('click', function(e) {
+    //             openSelectedSlideshow(e.path[0].id);
+    //             console.log(e);
+    //         })
 
-    })
+    //         //Adding card block to hold slideshow title and description
+    //         var cardBlock = document.createElement('div')
+    //         cardBlock.className = "card-block"
+
+    //         //Card title
+    //         var h4 = document.createElement("h4")
+    //         h4.textContent = imgData[i].Name
+    //         h4.className = "card-title"
+
+    //         //Card tags
+    //         var p = document.createElement("p")
+    //         p.textContent = "Tags: " + imgData[i].Tag
+    //         p.className = "card-text"
+
+    //         cardBlock.appendChild(h4)
+    //         cardBlock.appendChild(p)
+
+
+    //         div.appendChild(img)
+    //         div.appendChild(cardBlock)
+    //         deck.appendChild(div)
+    //     }
+
+    // })
 
 }
 
@@ -121,16 +171,18 @@ function loadDatabase() {
                 slideshowName varchar(255) NOT NULL,\
                 Model varchar(255),\
                 Make varchar(255),\
-                LensModel varchar(255),\
                 ExposureTime int,\
-                iso int,\
-                Height int,\
-                Width int,\
-                Month int,\
-                Year int,\
-                DayoftheYear int,\
+                Today int,\
+                SingleMonth int,\
+                StartMonth int,\
+                StartYear int,\
+                StartDayoftheYear int,\
+                EndMonth int,\
+                EndYear int,\
+                EndDayoftheYear int,\
                 GPSLatitude float,\
                 GPSLongitude float,\
+                GPSRadius float,\
                 PRIMARY KEY (slideshowName)\
             );"
         db.run(sqlStr)
@@ -146,34 +198,6 @@ function loadDatabase() {
                 PRIMARY KEY (slideshowName, tag)\
             );"
         db.run(sqlStr)
-
-        // console.log(sqlStr)
-        // dummy insert just to check if it's working
-        // sqlStr += "INSERT INTO Image VALUES (\
-        //         'first',\
-        //         'Iphone',\
-        //         'something',\
-        //         6,\
-        //         5,\
-        //         'default',\
-        //         4,\
-        //         3,\
-        //         1,\
-        //         1,\
-        //         1,\
-        //         1,\
-        //         1,\
-        //         1,\
-        //         1,\
-        //         'urp',\
-        //         'bleh',\
-        //         'north',\
-        //         'orb',\
-        //         'west',\
-        //         0,\
-        //         1\
-        //         );"
-        //db.run(sqlStr);
         var dbBinary = db.export()
         var buff = new Buffer(dbBinary)
         fs.writeFileSync("database.sqlite", buff)

@@ -190,6 +190,10 @@
             var settings = db.exec("SELECT * FROM Slideshow WHERE slideshowName='" + slideshowName + "';")
             console.log(settings)
 
+            var query = "SELECT * FROM Image WHERE "
+
+            if (settings[0].values[0][])
+
             // var ssImages = db.exec("SELECT imageName, Month, Year, DayoftheYear FROM Images WHERE ")
 
             var dbBinary = db.export()

@@ -47,9 +47,9 @@ function saveSlideshowSettings() {
     var db = new sql.Database(inBuff)
         
 
-    var today = $('#day-checkbox').prop('checked')
-    if(today) {
-        console.log('today')
+    var today = 0
+    if($('#day-checkbox').prop('checked')) {
+        today = 1
     }
     var tags = $('#tag').val()
 
@@ -71,8 +71,8 @@ function saveSlideshowSettings() {
     var lat = null
     var lon = null
     var rad = null
-    var coordinates = remote.getGlobal('sharedObj').coordinates
-    if (location.length < 4) {
+    if (remote.getGlobal('sharedObj')) {
+        var coordinates = remote.getGlobal('sharedObj').coordinates
         console.log(location)
         lat = location[0]
         lon = location[1]
@@ -89,6 +89,8 @@ function saveSlideshowSettings() {
             name + "'," +
             (model ? ("'" + model + "'") : 'NULL') + "," +
             (make ? ("'" + make + "'") : 'NULL') + "," +
+            today + "," +
+            (month ? month : 'NULL') + "," +
             "NULL,NULL,NULL,NULL,NULL,NULL,NULL," +
             (lat ? lat : 'NULL') + "," +
             (lon ? lon : 'NULL') + "," +
@@ -96,12 +98,14 @@ function saveSlideshowSettings() {
         db.run(query)
 
         var tagQuery = ""
-        for (i = 0; i < splitTags.length; i++) {
-            tagQuery += "INSERT INTO SlideshowTags VALUES ('" +
-                name + "','" + splitTags[i] + "');"
+        if (splitTags) {
+            for (i = 0; i < splitTags.length; i++) {
+                tagQuery += "INSERT INTO SlideshowTags VALUES ('" +
+                    name + "','" + splitTags[i] + "');"
+            }
+            db.run(tagQuery)
+            console.log(db.exec("SELECT * FROM SlideshowTags"))
         }
-        db.run(tagQuery)
-        console.log(db.exec("SELECT * FROM SlideshowTags"))
 
     } catch (e) {
         console.log(e)
@@ -111,24 +115,5 @@ function saveSlideshowSettings() {
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
     fs.writeFileSync("database.sqlite", buff)
-    // console.log(db.exec("SELECT * FROM Slideshow;"))
     db.close()
-    // var dateStart = document.getElementById('date-start')
-    // var dateEnd = document.getElementById('date-end')
-    
-
-    
-    // we probably don't need this anymore
-    // fs.stat('./settings.json', function(err, stat) {
-    //     if (err == null) {
-    //         fs.readFile('./settings.json', function(err, data) {
-    //             json = JSON.parse(data);
-    //             json.push(ssObj);
-    //             fs.writeFileSync('settings.json', JSON.stringify(json, null, 4));
-    //         })
-    //     } else {
-    //         json.push(ssObj)
-    //         fs.writeFileSync('settings.json', JSON.stringify(json, null, 4));
-    //     }
-    // });
 }
