@@ -33,6 +33,75 @@ function openSelectedSlideshow(ssName) {
     // don't timeout
 }
 
+function loadDatabase() {
+    try {
+        //https://github.com/kripken/sql.js/
+        var inBuff = fs.readFileSync('./database.sqlite')
+        // console.log("database found!")
+        var db = new sql.Database(inBuff)
+    } catch (e) {
+        // console.log(e)
+        // console.log("database not found");
+        var db = new sql.Database();
+        var sqlStr = "CREATE TABLE Image (\
+                imageName varchar(255) NOT NULL,\
+                Model varchar(255),\
+                Make varchar(255),\
+                LensModel varchar(255),\
+                ExposureTime int,\
+                iso int,\
+                Height int,\
+                Width int,\
+                Month int,\
+                Year int,\
+                DayoftheYear int,\
+                GPSLatitude float,\
+                GPSLongitude float,\
+                PRIMARY KEY (imageName)\
+            );"
+        db.run(sqlStr);
+        sqlStr = "CREATE TABLE Slideshow (\
+                slideshowName varchar(255) NOT NULL,\
+                Model varchar(255),\
+                Make varchar(255),\
+                ExposureTime int,\
+                Today int,\
+                SingleMonth int,\
+                StartMonth int,\
+                StartYear int,\
+                StartDayoftheYear int,\
+                EndMonth int,\
+                EndYear int,\
+                EndDayoftheYear int,\
+                GPSLatitude float,\
+                GPSLongitude float,\
+                GPSRadius float,\
+                PRIMARY KEY (slideshowName)\
+            );"
+        db.run(sqlStr)
+        sqlStr = "CREATE TABLE ImageTags (\
+                imageName varchar(255) NOT NULL,\
+                tag varchar(255) NOT NULL,\
+                PRIMARY KEY (imageName, tag)\
+            );"
+        db.run(sqlStr)
+        sqlStr = "CREATE TABLE SlideshowTags (\
+                slideshowName varchar(255) NOT NULL,\
+                tag varchar(255) NOT NULL,\
+                PRIMARY KEY (slideshowName, tag)\
+            );"
+        db.run(sqlStr)
+        sqlStr = "INSERT INTO Slideshow (slideshowName, Today)\
+            VALUES ('Default', 7);"
+        db.run(sqlStr)
+        var dbBinary = db.export()
+        var buff = new Buffer(dbBinary)
+        fs.writeFileSync("database.sqlite", buff)
+
+    }
+    db.close()
+}
+
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
     loadDatabase()
@@ -140,68 +209,4 @@ window.onload = function populateImages() {
 
 }
 
-function loadDatabase() {
-    try {
-        //https://github.com/kripken/sql.js/
-        var inBuff = fs.readFileSync('./database.sqlite')
-        // console.log("database found!")
-        var db = new sql.Database(inBuff)
-    } catch (e) {
-        // console.log(e)
-        // console.log("database not found");
-        var db = new sql.Database();
-        var sqlStr = "CREATE TABLE Image (\
-                imageName varchar(255) NOT NULL,\
-                Model varchar(255),\
-                Make varchar(255),\
-                LensModel varchar(255),\
-                ExposureTime int,\
-                iso int,\
-                Height int,\
-                Width int,\
-                Month int,\
-                Year int,\
-                DayoftheYear int,\
-                GPSLatitude float,\
-                GPSLongitude float,\
-                PRIMARY KEY (imageName)\
-            );"
-        db.run(sqlStr);
-        sqlStr = "CREATE TABLE Slideshow (\
-                slideshowName varchar(255) NOT NULL,\
-                Model varchar(255),\
-                Make varchar(255),\
-                ExposureTime int,\
-                Today int,\
-                SingleMonth int,\
-                StartMonth int,\
-                StartYear int,\
-                StartDayoftheYear int,\
-                EndMonth int,\
-                EndYear int,\
-                EndDayoftheYear int,\
-                GPSLatitude float,\
-                GPSLongitude float,\
-                GPSRadius float,\
-                PRIMARY KEY (slideshowName)\
-            );"
-        db.run(sqlStr)
-        sqlStr = "CREATE TABLE ImageTags (\
-                imageName varchar(255) NOT NULL,\
-                tag varchar(255) NOT NULL,\
-                PRIMARY KEY (imageName, tag)\
-            );"
-        db.run(sqlStr)
-        sqlStr = "CREATE TABLE SlideshowTags (\
-                slideshowName varchar(255) NOT NULL,\
-                tag varchar(255) NOT NULL,\
-                PRIMARY KEY (slideshowName, tag)\
-            );"
-        db.run(sqlStr)
-        var dbBinary = db.export()
-        var buff = new Buffer(dbBinary)
-        fs.writeFileSync("database.sqlite", buff)
 
-    }
-    db.close()
-}

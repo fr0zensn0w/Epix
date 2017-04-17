@@ -13,7 +13,6 @@ let myWindow = remote.BrowserWindow.fromId(1);
 
 
 function processPhotos() {
-    loadDatabase()
     processing.processPhotos()
 
 }

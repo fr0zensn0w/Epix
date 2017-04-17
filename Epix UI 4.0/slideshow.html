@@ -140,24 +140,25 @@
     <script>
         //// code to make the slideshow when the page loads
 
+        const processing = require('./processing.js')
         const sql = require("sql.js")
 
-        var fullData;
         var slideshowSettings
-        d3.json("data.json", function(data) {
-            //console.log(data[0]);
-            this.fullData = data;
-            console.log(fullData)
+        afterProcessing()
+        // d3.json("data.json", function(data) {
+        //     //console.log(data[0]);
+        //     this.fullData = data;
+        //     console.log(fullData)
 
-            d3.json("settings.json", function(data) {
-                //console.log(data[0]);
-                this.slideshowSettings = data;
-                console.log(slideshowSettings)
-                afterProcessing()
-            });
+        //     d3.json("settings.json", function(data) {
+        //         //console.log(data[0]);
+        //         this.slideshowSettings = data;
+        //         console.log(slideshowSettings)
+                
+        //     });
 
 
-        });
+        // });
 
 
 
@@ -167,13 +168,18 @@
 
 
 
-        // array that has the images to be displayed
-        var slideshowImages = []
+        
         // var dates365Array;
         function afterProcessing() {
+
             var slideshowName = getSlideshowName()
             // console.log(calculateInCircle())
             console.log("Slideshow Name " + slideshowName)
+
+            var date = new Date();
+            dateMS = date.getTime(); //get date in milliseconds
+            //console.log(dateMS);
+            
 
             // we need to get the settings for this slideshow
             // for (i = 0; i < slideshowSettings.length; i++) {
@@ -186,15 +192,63 @@
             var inBuff = fs.readFileSync('./database.sqlite')
             console.log("database found!")
             var db = new sql.Database(inBuff)
+            console.log(db.exec("SELECT * FROM Image;"))
 
             var settings = db.exec("SELECT * FROM Slideshow WHERE slideshowName='" + slideshowName + "';")
             console.log(settings)
 
             var query = "SELECT * FROM Image WHERE "
 
-            if (settings[0].values[0][])
+            // select by model
+            if (settings[0].values[0][1]) {
+              query += "(Model='" + settings.values[0][1] + "') AND "
+            }
 
-            // var ssImages = db.exec("SELECT imageName, Month, Year, DayoftheYear FROM Images WHERE ")
+            // select by make
+            if (settings[0].values[0][2]) {
+              query += "(Make='" + settings.values[0][2] + "') AND "
+            }
+
+            // select by today within range
+            if (settings[0].values[0][4]) {
+              var date = new Date()
+              var endDayOfYear
+              var startDayOfYear
+              dateMS = date.getTime()
+              endDayOfYearMS = (dateMS % 31556952000) / 86400000
+              endDayOfYearMS = parseInt(dayOfYearMS, 10)
+              endDayOfYearMS++
+
+              startDayOfYear = endDayOfYear - settings[0].values[0][4]
+              query += "(DayoftheYear>=" + startDayOfYear + " AND " +
+                "DayoftheYear<=" + endDayOfYear + ") AND "
+            }
+
+            // select by month
+            if (settings[0].values[0][5]) {
+              query += "(Month=" + settings[0].values[0][5] + ") AND "
+            }
+
+            // select by specific date range
+            if (settings[0].values[0][8] && settings[0].values[0][11]) {
+              query += "(DayoftheYear>=" + settings[0].values[0][8] +
+                " AND DayoftheYear<=" + settings[0].values[0][11] + ") AND "
+            }
+
+            if (query.length < 28) {
+              query = query.substring(0, (query.length - 7)) + ";"
+            } else {
+              query = query.substring(0, (query.length - 5)) + ";" // chopping off any trailing ANDs
+            }
+
+            console.log(query)
+
+            var images = (db.exec(query))[0].values
+
+            console.log(slideshowImages)
+
+
+
 
             var dbBinary = db.export()
             var buff = new Buffer(dbBinary)
@@ -231,15 +285,17 @@
 
             // loop to grab all images by exif
 
+            // array that has the images to be displayed
+            var slideshowImages = []
 
             // loop just grabs them all and puts them in the array
-            // for (i = 0; i < fullData.length; i++) {
-            //     if (slideshowImages[fullData[i].TimeDayOfYear] == undefined) {
-            //         slideshowImages[fullData[i].TimeDayOfYear] = ['<img src="Photos/' + fullData[i].FileName + '">'];
-            //     } else {
-            //         slideshowImages[fullData[i].TimeDayOfYear].push('<img src="Photos/' + fullData[i].FileName + '">');
-            //     }
-            // }
+            for (i = 0; i < images.length; i++) {
+                if (slideshowImages[images[i][10]] == undefined) {
+                    slideshowImages[images[i][10]] = ['<img src="Photos/' + images[i][0] + '">'];
+                } else {
+                    slideshowImages[images[i][10]].push('<img src="Photos/' + images[i][0] + '">');
+                }
+            }
 
             console.log(slideshowImages);
 
@@ -252,7 +308,7 @@
               $('.cycle-slideshow').cycle();
 
                 for (var i=0; i < slideshowImages.length; i++) {
-                        // console.log("add image")
+                        console.log("add image")
                         // console.log(slideshowImages)
                         $('.cycle-slideshow').cycle('add', slideshowImages[i]);
                 }
