@@ -41,6 +41,39 @@ function openSlideshows() {
     setTimeout(function(){window.close()}, 1700);
 }
 
+window.onload = function setupForm() {
+    $(function() {
+
+      $('input[name="datefilter"]').daterangepicker({
+          autoUpdateInput: false,
+          locale: {
+              cancelLabel: 'Clear'
+          }
+      });
+
+      $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+      });
+
+      $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+          $(this).val('');
+      });
+
+    });
+
+    var inBuff = fs.readFileSync('./database.sqlite')
+    console.log("database found!")
+    var db = new sql.Database(inBuff)
+
+    var allMakes = db.exec("SELECT DISTINCT Make FROM Images;")
+    var allModels = db.exec("SELECT DISTINT Model FROM Images;")
+
+    var dbBinary = db.export()
+    var buff = new Buffer(dbBinary)
+    fs.writeFileSync("database.sqlite", buff)
+    db.close()
+}
+
 function saveSlideshowSettings() {
     var inBuff = fs.readFileSync('./database.sqlite')
     console.log("database found!")

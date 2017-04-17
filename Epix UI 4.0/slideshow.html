@@ -142,6 +142,7 @@
 
         const processing = require('./processing.js')
         const sql = require("sql.js")
+        const ssHandler = require('./slideshow.js')
 
         var slideshowSettings
         afterProcessing()
@@ -181,7 +182,7 @@
             console.log("database found!")
             var db = new sql.Database(inBuff)
 
-            var images = getSlideshowImages(db, getSlideshowName())
+            var images = ssHandler.getSlideshowImages(db, getSlideshowName())
 
             var dbBinary = db.export()
             var buff = new Buffer(dbBinary)
