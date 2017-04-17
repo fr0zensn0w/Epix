@@ -104,6 +104,28 @@ function loadDatabase() {
     db.close()
 }
 
+function deleteTag() {
+    var inBuff = fs.readFileSync('./database.sqlite')
+    console.log("database found!")
+    var db = new sql.Database(inBuff)
+
+    var SSName = "SSName"
+
+    try {
+        db.run("DELETE FROM Slideshow WHERE slideshowName='" + SSName + "';")
+    } catch (e) {
+        console.log(e)
+        console.log(db.exec("SELECT slideshowName FROM Slideshow;"))
+    }
+
+    var dbBinary = db.export()
+    var buff = new Buffer(dbBinary)
+    fs.writeFileSync("database.sqlite", buff)
+    console.log(db.exec("SELECT slideshowName FROM Slideshow;;"))
+    db.close()
+    // settingsDeleted()
+}
+
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
     loadDatabase()
@@ -134,7 +156,7 @@ window.onload = function populateImages() {
         } else {
             img.src = 'http://placehold.it/350x250'
         }
-        
+
         img.className = "card-img-top img-fluid w-100"
 
 
@@ -148,6 +170,17 @@ window.onload = function populateImages() {
         var h4 = document.createElement("h4")
         h4.textContent = img.id
         h4.className = "card-title"
+
+
+        var delSS = document.createElement('button')
+
+        delSS.type = "button"
+        delSS.className = "btn btn-sm btn-primary"
+
+        delSS.textContent = 'Delete Slideshow'
+        delSS.addEventListener('click', function() {
+            deleteSS()
+        })
 
         // //Card tags
         // var p = document.createElement("p")

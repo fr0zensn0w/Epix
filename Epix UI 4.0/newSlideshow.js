@@ -79,6 +79,16 @@ window.onload = function setupForm() {
         }
     }
 
+    var delSS = document.createElement('button')
+
+    delSS.type = "button"
+    delSS.className = "btn btn-sm btn-primary"
+
+    delSS.textContent = 'Delete Slideshow'
+    delSS.addEventListener('click', function() {
+        deleteSS()
+    })
+
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
     fs.writeFileSync("database.sqlite", buff)
@@ -114,7 +124,7 @@ function saveSlideshowSettings() {
         // console.log(month)
         year = null
     }
-    
+
 
     // get the coordinate details
     var lat = null
@@ -161,7 +171,7 @@ function saveSlideshowSettings() {
         console.log(e)
     }
 
-    
+
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
     fs.writeFileSync("database.sqlite", buff)
