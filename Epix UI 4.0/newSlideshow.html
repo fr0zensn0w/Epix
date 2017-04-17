@@ -33,10 +33,6 @@
             padding-top: 10px;
         }
 
-        .dropdown {
-          padding-top: 10px;
-          padding-bottom: 10px;
-        }
 
         .label-button {
           width: 300px;
@@ -104,14 +100,18 @@
 
         <div class="settings-form">
 
-            <div style="height: 50px;"></div>
+            <div style="height: 25px;"></div>
 
             <div class="form-group row">
-              <label class="col-2 col-form-label" data-toggle="tooltip" data-placement="top" title = "Give your slideshow a nice name!">Name of Slideshow</label>
-              <div class="col-10">
+              <label class="col-1 col-form-label" >Name of Slideshow</label>
+              <div class="col-4">
                 <input class="form-control" type="text" value="My New Slideshow" id="name" >
               </div>
+
+              <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Give your slideshow a nice name!">
             </div>
+
+            <hr/>
 
             <!-- <div class="form-group row">
               <label class="col-2 col-form-label">Slideshow Description</label>
@@ -120,75 +120,70 @@
               </div>
             </div> -->
 
-            <div style="height: 50px;"></div>
+            <div style="height: 25px;"></div>
 
-            <h3> Filters </h3>
-
-              <div class="form-group row">
-                <label class="col-1 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos from today and the past number of days"><input type = "checkbox" id="day-checkbox"value="">  Today</label>
-                <div class="col-4">
-                  <input class="form-control" type="text" placeholder="1" id="day">
-                </div>
-
-              </div>
+            <!-- <h3> Filters </h3> -->
 
               <div class="form-group row">
-                <label class="col-1 col-form-label" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags"><input type = "checkbox" id="tag-checkbox"value="">  Tags</label>
-                <div class="col-4">
-                  <input class="form-control" type="text" placeholder="i.e. friends" id="tag">
-                </div>
+                <label class="col-1 col-form-label" >Tags</label>
+                <input class="form-control col-4" type="text" placeholder="i.e. friends" id="tag">
+                <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags">
               </div>
 
-              <div class="dropdown">
-                <div class="btn-group">
-                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken after this date">Date Start</button>
-                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="date-start" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "date-start-options">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
-              </div>
 
-              <div class = "dropdown">
-                <div class="btn-group">
-                  <button class="btn btn-secondary label-button text-left" data-toggle="tooltip" data-placement="top" title = "Include photos taken before this date">Date End</button>
-                  <button class="btn btn-secondary dropdown-toggle dropdown-toggle-split" type="button" id="date-end" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id = "date-end-options">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
+
+
+
+              <div style="height: 15px;"></div>
+              <hr/>
+              <div style="height: 25px;"></div>
+
+              <!-- By time -->
+              <div id = "by-time-radio">
+                <div class="form-group row">
+                  <label class="col-1 col-form-label" ><input type = "radio" id="day-radio" name="optradio">  Today</label>
+                  <input class="form-control col-4" type="text" placeholder="eg 365" id="day">
+                  <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include all photos from today and the past number of days">
+
                 </div>
-              </div>
-              
-              <div class=" dropdown form-group row" id="month-picker">
-                <label class = "col-1 col-form-label" >Month</label>
-                <select class="form-control col-4" padding>
-                    <option></option>
-                    <option>January</option>
-                    <option>February</option>
-                    <option>March</option>
-                    <option>April</option>
-                    <option>May</option>
-                    <option>June</option>
-                    <option>July</option>
-                    <option>August</option>
-                    <option>Sepetember</option>
-                    <option>October</option>
-                    <option>November</option>
-                    <option>December</option>
-                </select>
-                <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken in a specific month">
+
                 
+
+                <div class="form-group row">
+                  <label class="col-1 col-form-label" ><input type = "radio" id="tag-radio" name="optradio">  Range of Dates</label>
+                  <input class = "col-4" type="text" name="datefilter" value="" />
+                  <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags">
+                </div>
+                
+                <div class=" dropdown form-group row" id="month-picker">
+                  <label class = "col-1 col-form-label" ><input type = "radio" id="month-radio" name="optradio">Month</label>
+                  <select class="form-control col-4" padding>
+                      <option></option>
+                      <option>January</option>
+                      <option>February</option>
+                      <option>March</option>
+                      <option>April</option>
+                      <option>May</option>
+                      <option>June</option>
+                      <option>July</option>
+                      <option>August</option>
+                      <option>Sepetember</option>
+                      <option>October</option>
+                      <option>November</option>
+                      <option>December</option>
+                  </select>
+                  <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken in a specific month">
+                  
+                </div>
               </div>
 
 
+              <div style="height: 15px;"></div>
+              <hr/>
+              <div style="height: 25px;"></div>
+
+
+              <!-- By Camera info -->
               <div class="dropdown form-group row" id="make-picker">
                 <label class = "col-1 col-form-label" >Make</label>
                 <select class="form-control col-4" id="make-options">
@@ -220,13 +215,14 @@
                 <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken with a certain exposure time">
               </div>
 
-              <input type="text" name="datefilter" value="" />
+              
 
 
 
+            <div style="height: 15px;"></div>
+            <hr/>
 
-
-            <div style="height: 20px;"></div>
+            <div style="height: 25px;"></div>
 
 
             <button class="btn btn-info" id = "open-map-button" data-toggle="tooltip" data-placement="top" title = "Open map to select from what location to include photos from" onclick="openMap()">Open Map</button>
