@@ -9,9 +9,8 @@ const geo = require('geolib')
 // center point and radius
 function calculateInCircle(newLat, newLong, lat, long, radius) {
   return geo.isPointInCircle(
-    {latitude: 51.525, longitude: 7.4575},
-    {latitude: 51.5175, longitude: 7.4678},
-    5000
+    {latitude: newLat, longitude: newLong},
+    {latitude: lat, longitude: long}, radius
   );
 }
 
@@ -94,7 +93,7 @@ exports.getSlideshowImages = (db, ssn) => {
       query = query.substring(0, (query.length - 5)) + ";" // chopping off any trailing ANDs
     }
 
-    console.log(query)
+    // console.log(query)
 
     var imageQuery = (db.exec(query))
     if (imageQuery[0]) {
@@ -108,12 +107,21 @@ exports.getSlideshowImages = (db, ssn) => {
             requestedLat = settings[0].values[0][12]
             requestedLong = settings[0].values[0][13]
             requestedRadius = settings[0].values[0][14]
-            console.lod("slideshow settings",settings[0])
+            console.log("slideshow settings",settings[0])
+            console.log("requested coordinates + radius", requestedLat, requestedLong, requestedRadius)
             // the settings for this slideshow contain radius and GPS coords
             for (i = 0; i < images.length; i++) {
-                console.log(images[i][11])
+                // console.log(images[i][11])
                 lat = images[i][11]
-                long = images[i][11]
+                long = images[i][12]
+                // console.log("lat and long for image", lat, long)
+                var inRadius = calculateInCircle(lat, long, requestedLat, requestedLong, requestedRadius)
+                // console.log(inRadius)
+
+                // check to see if the coordinates are in the requested
+                if (inRadius == true) {
+                    console.log("image is in the radius", images[i][0])
+                }
             }
         }
 
