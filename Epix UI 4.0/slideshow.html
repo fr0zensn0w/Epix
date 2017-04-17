@@ -155,7 +155,7 @@
         //         //console.log(data[0]);
         //         this.slideshowSettings = data;
         //         console.log(slideshowSettings)
-                
+
         //     });
 
 
@@ -169,7 +169,7 @@
 
 
 
-        
+
         // var dates365Array;
         function afterProcessing() {
 
@@ -183,6 +183,7 @@
             var db = new sql.Database(inBuff)
 
             var images = ssHandler.getSlideshowImages(db, getSlideshowName())
+            // for loop to go through all the images and then add them based on their GPS
 
             var dbBinary = db.export()
             var buff = new Buffer(dbBinary)

@@ -45,7 +45,7 @@ exports.getSlideshowImages = (db, ssn) => {
     var slideshowName = ssn
     console.log("Slideshow Name " + slideshowName)
 
-    console.log(db.exec("SELECT * FROM Image;"))
+    console.log("All the data from the image database",db.exec("SELECT * FROM Image;"))
 
     var settings = db.exec("SELECT * FROM Slideshow WHERE slideshowName='" + slideshowName + "';")
     console.log(settings)
@@ -99,9 +99,29 @@ exports.getSlideshowImages = (db, ssn) => {
     var imageQuery = (db.exec(query))
     if (imageQuery[0]) {
         var images = imageQuery[0].values
+        // filter through images and if they are in the GPS coords then leave them
+        // if not then take them out
+        // check settings to see if GPS coords are there first
+        // console.log("gps coords present? ", settings[0].values[0][13])
+        // if the GPS coords are present, do the processing
+        if (settings[0].values[0][13] != null) {
+            requestedLat = settings[0].values[0][12]
+            requestedLong = settings[0].values[0][13]
+            requestedRadius = settings[0].values[0][14]
+            console.lod("slideshow settings",settings[0])
+            // the settings for this slideshow contain radius and GPS coords
+            for (i = 0; i < images.length; i++) {
+                console.log(images[i][11])
+                lat = images[i][11]
+                long = images[i][11]
+            }
+        }
+
     } else {
         images = null
     }
+
+
 
 
 
