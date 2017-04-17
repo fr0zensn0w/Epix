@@ -27,9 +27,10 @@ Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework 
 Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/gh-pages/LICENSE) license.
 
 
+Packaging instructions
+npm run package-mac
+npm run package-win
 
+To package for (macOS) darwin
 
-To package for darwin
-
-electron-packager . Epix --platform=darwin --arch=x64 --version=1.6.2 --overwrite
-
+electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds

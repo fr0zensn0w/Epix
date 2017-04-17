@@ -28,8 +28,9 @@ app.on('ready', () => {
 
 })
 
-
-
+exports.saveMapData = (map) => {
+  global.sharedObj = {coordinates: map}
+}
 
 exports.openImage = (i) => {
     global.sharedObj = {imgname: i};

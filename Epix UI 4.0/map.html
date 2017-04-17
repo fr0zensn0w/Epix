@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Heatmaps</title>
+    <title>Select Photos Based on Location</title>
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -38,23 +38,63 @@
         z-index: 5;
       }
     </style>
+
+    <!-- NEED FOR ELECTRON 1/2-->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom CSS -->
+    <!-- <link href="css/sb-admin.css" rel="stylesheet"> -->
+
+    <!-- jQuery Version 3.1.1 -->
+    <script src="lib/jquery/jquery.js"></script>
+
+    <!-- Tether -->
+    <script src="lib/tether/tether.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- SB Admin JavaScript -->
+    <script src="js/sb-admin.min.js"></script>
+
+    <!-- Chart.js -->
+    <script src="lib/chart.js/Chart.min.js"></script>
   </head>
 
   <body>
-    <div id="floating-panel">
-      <button onclick="toggleHeatmap()">Toggle Heatmap</button>
-      <button onclick="changeGradient()">Change gradient</button>
-      <button onclick="changeRadius()">Change radius</button>
-      <button onclick="saveArea()">Save Area</button>
-      <!-- <button onclick="changeOpacity()">Change opacity</button> -->
+    <div class="container-fluid">
+      <div id="floating-panel" class="container-fluid">
+        <!-- <button onclick="toggleHeatmap()">Toggle Heatmap</button> -->
+        <button class="btn btn-sm btn-primary" onclick="toggleHeatmap()">Toggle Heatmap</button>
+        <!-- <button onclick="changeGradient()">Change gradient</button> -->
+        <button class="btn btn-sm btn-primary" onclick="chnageGradient()">Change Gradient</button>
+        <!-- <button onclick="changeRadius()">Change radius</button> -->
+        <button class="btn btn-sm btn-primary" onclick="changeRadius()">Change Radius</button>
+        <!-- <button onclick="saveArea()">Save Area</button> -->
+        <button class="btn btn-sm btn-primary" onclick="saveArea()">Save and Close</button>
+        <!-- <button onclick="changeOpacity()">Change opacity</button> -->
+
+        <div class="alert alert-info" style="margin-top:5px; margin-bottom:0px">
+            Click on the map and drag the circle to select an area. <br>Click "Save and Close" to save your selected area.
+        </div>
+      </div>
+
     </div>
     <div id="map"></div>
-    <!-- NEED FOR ELECTRON 1/2-->
-    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
     <!-- just my files -->
     <!-- <script src="map.js"></script> -->
     <script type="text/javascript" src="js/d3.v3.min.js"></script>
     <script>
+
+        const remote = require('electron').remote
+        const main = remote.require('./main.js')
 
         var fullData;
         var slideshowSettings
@@ -128,7 +168,9 @@
         // console.log(circles[0].radius)
         // console.log(circle.getBounds())
         console.log(circle)
+        main.saveMapData(circle)
         alert("Area added to critera")
+        remote.getCurrentWindow().close()
         return
       }
 
@@ -164,7 +206,7 @@
               // console.log(map.getZoom())
               if (circles.length < 1) {
                 var circle = new google.maps.Circle({
-                  radius: 10 * (1/map.getZoom() * 10000),
+                  radius: 100 * (1/map.getZoom() * 10000),
                   center: e.latLng,
                   clickable: true,
                   editable: true,
