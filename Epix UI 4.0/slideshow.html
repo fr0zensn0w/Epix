@@ -140,6 +140,8 @@
     <script>
         //// code to make the slideshow when the page loads
 
+        const sql = require("sql.js")
+
         var fullData;
         var slideshowSettings
         d3.json("data.json", function(data) {
@@ -172,15 +174,28 @@
             var slideshowName = getSlideshowName()
             // console.log(calculateInCircle())
             console.log("Slideshow Name " + slideshowName)
-            var currentSettings
 
             // we need to get the settings for this slideshow
-            for (i = 0; i < slideshowSettings.length; i++) {
-              if (slideshowSettings[i].Name == slideshowName) {
-                currentSettings = slideshowSettings[i]
-                i = slideshowSettings.length
-              }
-            }
+            // for (i = 0; i < slideshowSettings.length; i++) {
+            //   if (slideshowSettings[i].Name == slideshowName) {
+            //     currentSettings = slideshowSettings[i]
+            //     i = slideshowSettings.length
+            //   }
+            // }
+
+            var inBuff = fs.readFileSync('./database.sqlite')
+            console.log("database found!")
+            var db = new sql.Database(inBuff)
+
+            var settings = db.exec("SELECT * FROM Slideshow WHERE slideshowName='" + slideshowName + "';")
+            console.log(settings)
+
+            // var ssImages = db.exec("SELECT imageName, Month, Year, DayoftheYear FROM Images WHERE ")
+
+            var dbBinary = db.export()
+            var buff = new Buffer(dbBinary)
+            fs.writeFileSync("database.sqlite", buff)
+            db.close()
 
             // loop to grab all images by location
 
@@ -190,25 +205,25 @@
 
             // loop to grab all images by tag
 
-            for (i = 0; i < fullData.length; i++) {
-              console.log(fullData[i].Tags)
-              if (fullData[i].Tags) {
-                var imageTags = (fullData[i].Tags)
-                var ssTags = (currentSettings.Tag).split(' ')
-                console.log(imageTags)
-                console.log(ssTags)
-                for (j = 0; j < ssTags.length; j++) {
-                  console.log(" " + ssTags[j] + " ")
-                  if (imageTags.includes(" " + ssTags[j] + " ")) {
-                    if (slideshowImages[fullData[i].TimeDayOfYear] == undefined) {
-                        slideshowImages[fullData[i].TimeDayOfYear] = ['<img src="Photos/' + fullData[i].FileName + '">'];
-                    } else {
-                        slideshowImages[fullData[i].TimeDayOfYear].push('<img src="Photos/' + fullData[i].FileName + '">');
-                    }
-                  }
-                }
-              }
-            }
+            // for (i = 0; i < fullData.length; i++) {
+            //   console.log(fullData[i].Tags)
+            //   if (fullData[i].Tags) {
+            //     var imageTags = (fullData[i].Tags)
+            //     var ssTags = (currentSettings.Tag).split(' ')
+            //     console.log(imageTags)
+            //     console.log(ssTags)
+            //     for (j = 0; j < ssTags.length; j++) {
+            //       console.log(" " + ssTags[j] + " ")
+            //       if (imageTags.includes(" " + ssTags[j] + " ")) {
+            //         if (slideshowImages[fullData[i].TimeDayOfYear] == undefined) {
+            //             slideshowImages[fullData[i].TimeDayOfYear] = ['<img src="Photos/' + fullData[i].FileName + '">'];
+            //         } else {
+            //             slideshowImages[fullData[i].TimeDayOfYear].push('<img src="Photos/' + fullData[i].FileName + '">');
+            //         }
+            //       }
+            //     }
+            //   }
+            // }
 
             // loop to grab all images by exif
 
