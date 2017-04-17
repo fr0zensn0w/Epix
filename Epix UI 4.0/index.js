@@ -4,6 +4,7 @@
 const remote = require('electron').remote
 const main = remote.require('./main.js')
 const fs = require('fs')
+const sql = require('sql.js')
 
 function openNewSlideshow() {
     // DO NOT DELETE - handles opening the page
@@ -34,6 +35,7 @@ function openSelectedSlideshow(ssName) {
 
 // this function should load images into the frames for the slideshows
 window.onload = function populateImages() {
+    loadDatabase()
     //readTextFile('./data.json', function(dataJSON) {
     // I'm a dummy and forgot about fs
     fs.readFile('./settings.json', 'utf8', function(err, data) {
@@ -85,4 +87,97 @@ window.onload = function populateImages() {
         }
 
     })
+
+}
+
+function loadDatabase() {
+    try {
+        //https://github.com/kripken/sql.js/
+        var inBuff = fs.readFileSync('./database.sqlite')
+        // console.log("database found!")
+        var db = new sql.Database(inBuff)
+    } catch (e) {
+        // console.log(e)
+        // console.log("database not found");
+        var db = new sql.Database();
+        var sqlStr = "CREATE TABLE Image (\
+                imageName varchar(255) NOT NULL,\
+                Model varchar(255),\
+                Make varchar(255),\
+                LensModel varchar(255),\
+                ExposureTime int,\
+                iso int,\
+                Height int,\
+                Width int,\
+                Month int,\
+                Year int,\
+                DayoftheYear int,\
+                GPSLatitude float,\
+                GPSLongitude float,\
+                PRIMARY KEY (imageName)\
+            );"
+        db.run(sqlStr);
+        sqlStr = "CREATE TABLE Slideshow (\
+                slideshowName varchar(255) NOT NULL,\
+                Model varchar(255),\
+                Make varchar(255),\
+                LensModel varchar(255),\
+                ExposureTime int,\
+                iso int,\
+                Height int,\
+                Width int,\
+                Month int,\
+                Year int,\
+                DayoftheYear int,\
+                GPSLatitude float,\
+                GPSLongitude float,\
+                PRIMARY KEY (slideshowName)\
+            );"
+        db.run(sqlStr)
+        sqlStr = "CREATE TABLE ImageTags (\
+                imageName varchar(255) NOT NULL,\
+                tag varchar(255) NOT NULL,\
+                PRIMARY KEY (imageName, tag)\
+            );"
+        db.run(sqlStr)
+        sqlStr = "CREATE TABLE SlideshowTags (\
+                slideshowName varchar(255) NOT NULL,\
+                tag varchar(255) NOT NULL,\
+                PRIMARY KEY (slideshowName, tag)\
+            );"
+        db.run(sqlStr)
+
+        // console.log(sqlStr)
+        // dummy insert just to check if it's working
+        // sqlStr += "INSERT INTO Image VALUES (\
+        //         'first',\
+        //         'Iphone',\
+        //         'something',\
+        //         6,\
+        //         5,\
+        //         'default',\
+        //         4,\
+        //         3,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         1,\
+        //         'urp',\
+        //         'bleh',\
+        //         'north',\
+        //         'orb',\
+        //         'west',\
+        //         0,\
+        //         1\
+        //         );"
+        //db.run(sqlStr);
+        var dbBinary = db.export()
+        var buff = new Buffer(dbBinary)
+        fs.writeFileSync("database.sqlite", buff)
+
+    }
+    db.close()
 }

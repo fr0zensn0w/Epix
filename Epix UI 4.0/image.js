@@ -9,26 +9,39 @@ function openNewSlideshow() {
     //open the create new slideshow window
     window = remote.getCurrentWindow()
     main.openWindow("newSlideshow")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
     // window.close()
 }
 
 function openGallery() {
     window = remote.getCurrentWindow()
     main.openWindow("gallery")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 function openSlideshows() {
     window = remote.getCurrentWindow()
     main.openWindow("index")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
 }
 
 function openImage() {
     window = remote.getCurrentWindow()
     main.openWindow("image")
-    setTimeout(function(){window.close()}, 700);
+    setTimeout(function(){window.close()}, 1700);
+}
+
+function openPhoto() {
+    // alert("open the gallery")
+    // TODO: put code in here to open the gallery, AKA open up to where the images are stored
+    // fullPath = "/Users/liquidsn0w/Desktop/"
+    var fn = remote.getGlobal('sharedObj').imgname;
+    var imgArr = fn.split("/")
+    var imgName = (imgArr[imgArr.length-1]).replace("%20", " ")
+    fullPath = `file://${__dirname}/Photos/`
+    fullPath = __dirname + "/Photos/" + imgName
+    // shell.beep() //makes a beeping sound
+    shell.showItemInFolder(fullPath)
 }
 
 window.onload = function renderImage() {
@@ -64,11 +77,26 @@ window.onload = function renderImage() {
         openGallery()
     });
 
+
+
     backDiv.appendChild(backButton)
 
     container.appendChild(backDiv);
 
-    
+    // var openDiv = document.createElement('div')
+    // openDiv.id = "open-div"
+
+    var openButton = document.createElement('button')
+    openButton.textContent = 'Open on Computer'
+    openButton.type = "button"
+    openButton.className = "btn btn-sm btn-primary"
+    openButton.style = "margin-left: 10px; width:150px"
+    openButton.addEventListener('click', function() {
+        openPhoto()
+    });
+    backDiv.appendChild(openButton)
+
+
 
 
     //div to hold image and tag input row
@@ -105,7 +133,7 @@ window.onload = function renderImage() {
     var input = document.createElement('input')
     input.type = "text"
     input.className = "form-control"
-    input.value = "add tags"
+    input.placeholder = "e.g. sunset"
     input.id = "tag"
     form.appendChild(input);
     // var backButton = document.createElement('button')
@@ -140,7 +168,7 @@ window.onload = function renderImage() {
             console.log(e)
             console.log(db.exec("SELECT * FROM ImageTags WHERE imageName='" + imgName +"';"))
         }
-        
+
         var dbBinary = db.export()
         var buff = new Buffer(dbBinary)
         fs.writeFileSync("database.sqlite", buff)
