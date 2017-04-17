@@ -112,11 +112,14 @@ window.onload = function populateImages() {
     console.log("database found!")
     var db = new sql.Database(inBuff)
 
+
     var allSettings = db.exec("SELECT * FROM Slideshow")
+    console.log(allSettings)
     var deck = document.getElementById("card-deck")
-    for (i = 0; i < allSettings[0].values.length; i++) {
+    console.log(allSettings[0].values.length)
+    for (j = 0; j < allSettings[0].values.length; j++) {
         console.log('creating card')
-        console.log(allSettings[0].values[i])
+        console.log(allSettings[0].values[j])
         var div = document.createElement("div")
         var img = document.createElement("img")
 
@@ -125,7 +128,7 @@ window.onload = function populateImages() {
 
         img.style.height = '250px'
         img.style.width = '350px'
-        img.id = allSettings[0].values[i][0]
+        img.id = allSettings[0].values[j][0]
 
         var imgName = (ssHandler.getSlideshowImages(db, img.id))
 
@@ -157,7 +160,7 @@ window.onload = function populateImages() {
         cardBlock.appendChild(h4)
         // cardBlock.appendChild(p)
 
-
+        console.log("Appending stuff " + j)
         div.appendChild(img)
         div.appendChild(cardBlock)
         deck.appendChild(div)

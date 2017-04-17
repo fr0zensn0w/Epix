@@ -79,6 +79,17 @@ window.onload = function setupForm() {
         }
     }
 
+    if (allModels) {
+        console.log(allModels)
+        var makeOpt = document.getElementById('model-options')
+        for (i = 0; i < (allModels[0].values).length; i++) {
+            var opt = document.createElement('option')
+            opt.text = allModels[0].values[i][0]
+            makeOpt.appendChild(opt)
+
+        }
+    }
+
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
     fs.writeFileSync("database.sqlite", buff)
@@ -161,7 +172,7 @@ function saveSlideshowSettings() {
         console.log(e)
     }
 
-    
+    console.log(db.exec("SELECT * FROM ImageTags"))
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
     fs.writeFileSync("database.sqlite", buff)

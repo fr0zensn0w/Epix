@@ -95,6 +95,7 @@ exports.getSlideshowImages = (db, ssn) => {
 
     // console.log(query)
 
+    var correctImages = []
     var imageQuery = (db.exec(query))
     if (imageQuery[0]) {
         var images = imageQuery[0].values
@@ -120,13 +121,18 @@ exports.getSlideshowImages = (db, ssn) => {
 
                 // check to see if the coordinates are in the requested
                 if (inRadius == true) {
+                    correctImages.push(images[i])
                     console.log("image is in the radius", images[i][0])
                 }
+            }
+        } else {
+            for (i = 0; i < images.length; i++) {
+                correctImages.push(images[i])
             }
         }
 
     } else {
-        images = null
+        correctImages = null
     }
 
 
@@ -139,7 +145,7 @@ exports.getSlideshowImages = (db, ssn) => {
     // fs.writeFileSync("database.sqlite", buff)
     // db.close()
 
-    console.log(images)
+    // console.log("Correct images " + correctImages)
 
-    return images
+    return correctImages
 }
