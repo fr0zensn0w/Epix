@@ -44,6 +44,52 @@ function openPhoto() {
     shell.showItemInFolder(fullPath)
 }
 
+function deleteTag() {
+    var tag = document.getElementById("tag").value
+
+    var inBuff = fs.readFileSync('./database.sqlite')
+    console.log("database found!")
+    var db = new sql.Database(inBuff)
+
+    var fn = remote.getGlobal('sharedObj').imgname;
+    var imgArr = fn.split("/")
+    var imgName = (imgArr[imgArr.length-1]).replace("%20", " ")
+
+    try {
+        db.run("DELETE FROM ImageTags WHERE imageName='" + imgName + "' AND tag='" + tag + "';")
+    } catch (e) {
+        console.log(e)
+        console.log(db.exec("SELECT * FROM ImageTags WHERE imageName='" + imgName +"';"))
+    }
+
+    var dbBinary = db.export()
+    var buff = new Buffer(dbBinary)
+    fs.writeFileSync("database.sqlite", buff)
+    console.log(db.exec("SELECT * FROM ImageTags WHERE imageName='" + imgName +"';"))
+    db.close()
+    settingsDeleted()
+}
+
+
+function settingsSubmitted() {
+    var alert = document.getElementById("alert-info")
+    console.log("added tag to the database")
+    var submitAlert = document.createElement('div')
+    submitAlert.className = "alert alert-success"
+    submitAlert.textContent = "Tag Saved"
+    alert.appendChild(submitAlert)
+}
+
+function settingsDeleted() {
+    var alert = document.getElementById("alert-info")
+    console.log("Deleted tag from the database")
+    var delAlert = document.createElement('div')
+    delAlert.className = "alert alert-success"
+    delAlert.textContent = "Tag Deleted"
+    alert.appendChild(delAlert)
+}
+
+
 window.onload = function renderImage() {
     var fn = remote.getGlobal('sharedObj').imgname;
     var imgArr = fn.split("/")
@@ -179,20 +225,29 @@ window.onload = function renderImage() {
         settingsSubmitted()
     })
 
-    function settingsSubmitted() {
-        console.log("added tag to the database")
-        var submitAlert = document.createElement('div')
-        submitAlert.className = "alert alert-success"
-        submitAlert.textContent = "Tag Saved"
-        alert.appendChild(submitAlert)
-    }
+
     // document.body.appendChild(form);
     // document.body.appendChild(button);
     // document.body.appendChild(backButton);
 
 
+    var delButton = document.createElement('button')
+
+    delButton.type = "button"
+    delButton.className = "btn btn-sm btn-primary"
+
+    delButton.textContent = 'Delete Tag'
+    delButton.addEventListener('click', function() {
+        deleteTag()
+    })
+
+
+
+
+
     formCol.appendChild(form);
     buttonCol.appendChild(button);
+    buttonCol.appendChild(delButton);
 
     inputRow.appendChild(formCol);
     inputRow.appendChild(buttonCol);
