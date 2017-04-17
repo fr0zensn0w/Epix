@@ -5,6 +5,7 @@ const remote = require('electron').remote
 const main = remote.require('./main.js')
 const fs = require('fs')
 const sql = require('sql.js')
+const ssHandler = require('./slideshow')
 
 function openNewSlideshow() {
     // DO NOT DELETE - handles opening the page
@@ -112,7 +113,6 @@ window.onload = function populateImages() {
 
     var allSettings = db.exec("SELECT * FROM Slideshow")
     var deck = document.getElementById("card-deck")
-
     for (i = 0; i < allSettings[0].values.length; i++) {
         console.log('creating card')
         console.log(allSettings[0].values[i])
@@ -121,11 +121,22 @@ window.onload = function populateImages() {
 
         div.className = "card card-default"
 
-        img.src = "http://placehold.it/350x250"
+
         img.style.height = '250px'
         img.style.width = '350px'
         img.id = allSettings[0].values[i][0]
+
+        var imgName = (ssHandler.getSlideshowImages(db, img.id))
+
+        if (imgName) {
+            img.src = 'Photos/' + imgName[0][0]
+        } else {
+            img.src = 'http://placehold.it/350x250'
+        }
+        
         img.className = "card-img-top img-fluid w-100"
+
+
         img.addEventListener('click', function(e) {
             openSelectedSlideshow(e.path[0].id);
         })
@@ -155,57 +166,6 @@ window.onload = function populateImages() {
     var buff = new Buffer(dbBinary)
     fs.writeFileSync("database.sqlite", buff)
     db.close()
-
-    
-    //readTextFile('./data.json', function(dataJSON) {
-    // I'm a dummy and forgot about fs
-    // fs.readFile('./settings.json', 'utf8', function(err, data) {
-
-    //     var imgData = JSON.parse(data)
-    //     var deck = document.getElementById("card-deck")
-
-    //     for (i = 0; i < imgData.length; i++) {
-
-    //         var div = document.createElement('div')
-    //         div.className = "card card-default"
-    //         var img = document.createElement('img')
-    //         img.src = 'http://placehold.it/350x250'
-
-
-    //         // img[i].src = `file://${__dirname}/Photos/` + imgData[i].FileName
-    //         img.style.height = '250px'
-    //         img.style.width = '350px'
-    //         img.id = imgData[i].Name
-    //         img.className = "card-img-top img-fluid w-100"
-    //         img.addEventListener('click', function(e) {
-    //             openSelectedSlideshow(e.path[0].id);
-    //             console.log(e);
-    //         })
-
-    //         //Adding card block to hold slideshow title and description
-    //         var cardBlock = document.createElement('div')
-    //         cardBlock.className = "card-block"
-
-    //         //Card title
-    //         var h4 = document.createElement("h4")
-    //         h4.textContent = imgData[i].Name
-    //         h4.className = "card-title"
-
-    //         //Card tags
-    //         var p = document.createElement("p")
-    //         p.textContent = "Tags: " + imgData[i].Tag
-    //         p.className = "card-text"
-
-    //         cardBlock.appendChild(h4)
-    //         cardBlock.appendChild(p)
-
-
-    //         div.appendChild(img)
-    //         div.appendChild(cardBlock)
-    //         deck.appendChild(div)
-    //     }
-
-    // })
 
 }
 
