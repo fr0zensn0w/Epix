@@ -170,8 +170,11 @@ window.onload = function renderImage() {
     var formCol = document.createElement('div')
     formCol.className = "col-3"
 
-    var buttonCol = document.createElement('div')
-    buttonCol.className = "col-1"
+    var submitButtonCol = document.createElement('div')
+    submitButtonCol.className = "col-1"
+
+    var deleteButtonCol = document.createElement('div')
+    deleteButtonCol.className = "col-1"
 
     // document.body.appendChild(img);
 
@@ -235,6 +238,7 @@ window.onload = function renderImage() {
 
     delButton.type = "button"
     delButton.className = "btn btn-sm btn-primary"
+    delButton.style = "margin-left: 10px;"
 
     delButton.textContent = 'Delete Tag'
     delButton.addEventListener('click', function() {
@@ -246,11 +250,12 @@ window.onload = function renderImage() {
 
 
     formCol.appendChild(form);
-    buttonCol.appendChild(button);
-    buttonCol.appendChild(delButton);
+    submitButtonCol.appendChild(button);
+    deleteButtonCol.appendChild(delButton);
 
     inputRow.appendChild(formCol);
-    inputRow.appendChild(buttonCol);
+    inputRow.appendChild(submitButtonCol);
+    inputRow.appendChild(deleteButtonCol)
 
     imageAndInput.appendChild(inputRow);
 

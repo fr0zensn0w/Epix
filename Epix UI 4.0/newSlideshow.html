@@ -42,6 +42,7 @@
           width: 300px;
         }
 
+
     </style>
 
 
@@ -151,7 +152,7 @@
               <div class="form-group row">
                 <label class="col-2 col-form-label" ><input type = "radio" id="tag-radio" name="optradio">  Range of Dates</label>
                 <input class = "col-4" type="text" name="datefilter" value="" />
-                <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags">
+                <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include all photos taken within a range of dates">
               </div>
               
               <div class=" dropdown form-group row" id="month-picker">
@@ -187,8 +188,6 @@
               <label class = "col-2 col-form-label" >Make</label>
               <select class="form-control col-4" id="make-options">
                   <option></option>
-                  <option>Apple</option>
-                  <option>DGI</option>
               </select>
               <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific make of camera">
 
@@ -198,8 +197,6 @@
               <label class = "col-2 col-form-label" >Model</label>
               <select class="form-control col-4" id="model-options">
                   <option></option>
-                  <option>iPhone 7 Plus</option>
-                  <option>FC300C</option>
               </select>
               <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken by a specific model of camera">
             </div>
@@ -224,8 +221,9 @@
             <div style="height: 25px;"></div>
 
             <div class="form-group row">
-              <button style = "margin-left:10px" class="btn btn-info col-6 form-control" id = "open-map-button" data-toggle="tooltip" data-placement="top" title = "Open map to select from what location to include photos from" onclick="openMap()">Open Map</button>
-              <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken with a certain exposure time">
+              <label class = "col-2 col-form-label" >Location</label>
+              <button class="btn btn-outline-primary col-4 form-control" id = "open-map-button" data-toggle="tooltip" data-placement="top" title = "Open map to select from what location to include photos from" onclick="openMap()">Open Map</button>
+              <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include photos taken at a certain location on the map">
             </div>
 
             <div style="height: 25px;"></div>
@@ -236,10 +234,10 @@
 
             <div class="submit-button">
                 <!-- <button type="button" onclick="saveSlideshowSettings()">Submit</button> -->
-                <button class="btn btn-success" type="submit" onclick="saveSlideshowSettings()">Submit</button>
+                <button class="btn btn-primary" type="submit" onclick="saveSlideshowSettings()">Submit</button>
             </div>
 
-            <div style="height: 100px;"></div>
+            <div style="height: 15px;"></div>
 
 
         </div>
