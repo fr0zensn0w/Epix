@@ -66,14 +66,17 @@ function parsePhotos() {
 
 
                 // Prepare an sql statement
-                var stmt = db.prepare("SELECT COUNT(*) FROM Image WHERE imageName=:file");
+                // var stmt = db.prepare("SELECT COUNT(*) FROM Image WHERE imageName=:file");
 
                 // Bind values to the parameters and fetch the results of the query
-                var result = stmt.getAsObject({':file' : file});
+                // var result = stmt.exec({':file' : file});
+
+                var result = db.exec("SELECT COUNT(*) FROM Image WHERE imageName='" + file + "';")
+                console.log(result)
 
                 //console.log(result['COUNT(*)']);
 
-                stmt.free();
+                // stmt.free();
                 db.close()
 
 
@@ -81,7 +84,7 @@ function parsePhotos() {
                 console.log(e)
             }
 
-            if (result['COUNT(*)'] == 0) {
+            if (result[0].values[0][0] == 0) {
 
                 try {
 
