@@ -85,7 +85,11 @@ exports.getSlideshowImages = (db, ssn) => {
 
     // select by exposure
     if (settings[0].values[0][3]) {
-        query += "(i.ExposureTime'" + settings[0].values[0][3] + "')  AND  "
+        if (settings[0].values[0][3] == 0) {
+            query += "(i.ExposureTime < 1)  AND  "
+        } else {
+            query += "(i.ExposureTime > 1)  AND  "
+        }
     }
 
     // select by today within range
@@ -110,8 +114,8 @@ exports.getSlideshowImages = (db, ssn) => {
 
     // select by specific date range
     if (settings[0].values[0][8] && settings[0].values[0][11]) {
-      query += "(i.DayoftheYear BETWEEN " + settings[0].values[0][8] +
-        "  AND  " + settings[0].values[0][11] + ")  AND  "
+      query += "(i.DayoftheYear BETWEEN " + settings[0].values[0][9] +
+        "  AND  " + settings[0].values[0][12] + ")  AND  "
     }
 
     query = query.substring(0, (query.length - 7)) + ";"
@@ -131,9 +135,9 @@ exports.getSlideshowImages = (db, ssn) => {
         // console.log("gps coords present? ", settings[0].values[0][13])
         // if the GPS coords are present, do the processing
         if (settings[0].values[0][13] != null) {
-            requestedLat = settings[0].values[0][12]
-            requestedLong = settings[0].values[0][13]
-            requestedRadius = settings[0].values[0][14]
+            requestedLat = settings[0].values[0][13]
+            requestedLong = settings[0].values[0][14]
+            requestedRadius = settings[0].values[0][15]
             console.log("slideshow settings",settings[0])
             console.log("requested coordinates + radius", requestedLat, requestedLong, requestedRadius)
             // the settings for this slideshow contain radius and GPS coords

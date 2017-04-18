@@ -127,7 +127,7 @@
             <div class="form-group row">
               <label class="col-2 col-form-label" >Tags</label>
               <input class="form-control col-4" type="text" placeholder="i.e. friends" id="tag">
-              <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags">
+              <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include all photos with specific tags. Separate tags with commas.">
             </div>
 
 
@@ -150,14 +150,14 @@
               
 
               <div class="form-group row">
-                <label class="col-2 col-form-label" ><input type = "radio" id="tag-radio" name="optradio">  Range of Dates</label>
-                <input class = "col-4" type="text" name="datefilter" value="" />
+                <label class="col-2 col-form-label" ><input type = "radio" id="range-radio" name="optradio">  Range of Dates</label>
+                <input class = "col-4" type="text" name="datefilter" id="date-range" value="" />
                 <img src="icons/info/info.png" width ="45" height = "30" data-toggle="tooltip" data-placement="top" title = "Include all photos taken within a range of dates">
               </div>
               
               <div class=" dropdown form-group row" id="month-picker">
                 <label class = "col-2 col-form-label" ><input type = "radio" id="month-radio" name="optradio"> Month</label>
-                <select class="form-control col-4" padding>
+                <select class="form-control col-4" id="month" padding>
                     <option></option>
                     <option>January</option>
                     <option>February</option>
