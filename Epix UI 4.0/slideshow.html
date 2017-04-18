@@ -182,8 +182,30 @@
             console.log("database found!")
             var db = new sql.Database(inBuff)
 
-            var images = ssHandler.getSlideshowImages(db, getSlideshowName())
 
+
+            // var firstTable = db.exec("SELECT ImageTags.imageName \
+            //                           FROM ImageTags \
+            //                           INNER JOIN SlideshowTags \
+            //                           ON (")
+
+            // console.log("SELECT \
+            //               Image.imageName,\
+            //               Image.Model,\
+            //               Image.Make,\
+            //               Image.LensModel,\
+            //               Image.ExposureTime,\
+            //               Image.iso,\
+            //               Image.Height,\
+            //               Image.Width,\
+            //               Image.Month,\
+            //               Image.Year,\
+            //               Image.DayoftheYear,\
+            //               Image.
+            //               ")
+
+            var images = ssHandler.getSlideshowImages(db, getSlideshowName())
+            console.log(images)
             var dbBinary = db.export()
             var buff = new Buffer(dbBinary)
             fs.writeFileSync("database.sqlite", buff)

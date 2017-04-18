@@ -131,7 +131,7 @@ function saveSlideshowSettings() {
     var lat = null
     var lon = null
     var rad = null
-    if (remote.getGlobal('sharedObj')) {
+    if (remote.getGlobal('sharedObj') && remote.getGlobal('sharedObj').coordinates) {
         var coordinates = remote.getGlobal('sharedObj').coordinates
         console.log(coordinates)
         lat = coordinates[0]

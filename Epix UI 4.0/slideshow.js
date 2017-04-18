@@ -49,16 +49,38 @@ exports.getSlideshowImages = (db, ssn) => {
     var settings = db.exec("SELECT * FROM Slideshow WHERE slideshowName='" + slideshowName + "';")
     console.log(settings)
 
-    var query = "SELECT * FROM Image WHERE "
+    var checkTags = db.exec("SELECT COUNT(*) FROM SlideshowTags WHERE slideshowName='" + slideshowName + "';")
+    var query
+    console.log(checkTags[0].values[0][0])
+    if (checkTags[0].values[0][0] < 1) {
+        query = "   SELECT * \
+                    FROM Image AS i \
+                    WHERE "
+    } else {
+        query = "   SELECT i.imageName, i.Model, i.Make, i.LensModel, \
+                        i.ExposureTime, i.iso, i.Height, i.Width, i.Month, \
+                        i.Year, i.DayoftheYear, i.GPSLatitude, i.GPSLongitude \
+                        FROM Image AS i \
+                        INNER JOIN ( \
+                            SELECT ImageTags.imageName \
+                            FROM ImageTags \
+                            INNER JOIN ( \
+                                SELECT * \
+                                FROM SlideshowTags \
+                                WHERE slideshowName='" + slideshowName + "' \
+                                ) AS v ON v.tag=ImageTags.tag \
+                            ) AS c ON c.imageName=i.imageName \
+                            WHERE "
+    }
 
     // select by model
     if (settings[0].values[0][1]) {
-      query += "(Model='" + settings.values[0][1] + "') AND "
+      query += "(i.Model='" + settings.values[0][1] + "')  AND  "
     }
 
     // select by make
     if (settings[0].values[0][2]) {
-      query += "(Make='" + settings.values[0][2] + "') AND "
+      query += "(i.Make='" + settings.values[0][2] + "')  AND  "
     }
 
     // select by today within range
@@ -72,28 +94,27 @@ exports.getSlideshowImages = (db, ssn) => {
       endDayOfYearMS++
 
       startDayOfYear = endDayOfYearMS - settings[0].values[0][4]
-      query += "(DayoftheYear>=" + startDayOfYear + " AND " +
-        "DayoftheYear<=" + endDayOfYearMS + ") AND "
+      query += "(i.DayoftheYear BETWEEN " + startDayOfYear + "  AND  " +
+         + endDayOfYearMS + ")  AND  "
     }
 
     // select by month
     if (settings[0].values[0][5]) {
-      query += "(Month=" + settings[0].values[0][5] + ") AND "
+      query += "(i.Month=" + settings[0].values[0][5] + ")  AND  "
     }
 
     // select by specific date range
     if (settings[0].values[0][8] && settings[0].values[0][11]) {
-      query += "(DayoftheYear>=" + settings[0].values[0][8] +
-        " AND DayoftheYear<=" + settings[0].values[0][11] + ") AND "
+      query += "(i.DayoftheYear BETWEEN " + settings[0].values[0][8] +
+        "  AND  " + settings[0].values[0][11] + ")  AND  "
     }
 
-    if (query.length < 28) {
-      query = query.substring(0, (query.length - 7)) + ";"
-    } else {
-      query = query.substring(0, (query.length - 5)) + ";" // chopping off any trailing ANDs
-    }
+    query = query.substring(0, (query.length - 7)) + ";"
 
-    // console.log(query)
+    // console.log("Car tags:")
+    // console.log(db.exec("SELECT ImageTags.imageName FROM ImageTags INNER JOIN SlideshowTags ON ImageTags.Tag=car;"))
+
+    console.log(query)
 
     var correctImages = []
     var imageQuery = (db.exec(query))
