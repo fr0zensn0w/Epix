@@ -62,14 +62,14 @@ exports.getSlideshowImages = (db, ssn) => {
                         i.Year, i.DayoftheYear, i.GPSLatitude, i.GPSLongitude \
                         FROM Image AS i \
                         INNER JOIN ( \
-                            SELECT ImageTags.imageName \
-                            FROM ImageTags \
+                            SELECT it.imageName \
+                            FROM ImageTags AS it \
                             INNER JOIN ( \
                                 SELECT * \
                                 FROM SlideshowTags \
                                 WHERE slideshowName='" + slideshowName + "' \
-                                ) AS v ON v.tag=ImageTags.tag \
-                            ) AS c ON c.imageName=i.imageName \
+                                ) AS sst ON sst.tag=it.tag \
+                            ) AS iwt ON iwt.imageName=i.imageName \
                             WHERE "
     }
 
