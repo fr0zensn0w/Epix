@@ -9,6 +9,29 @@ const fs = require('fs')
 const path = require('path')
 const sql = require('sql.js')
 
+// shows the alert that you have submitted the settings to the slideshow
+function slideshowSettingsSubmitted(name) {
+    var alert = document.getElementById("alertDiv")
+    console.log("settings saved to the database")
+    var submitAlert = document.createElement('div')
+    submitAlert.className = "alert alert-success"
+    submitAlert.textContent = "Slideshow " + name + " Saved"
+    alert.appendChild(submitAlert)
+    // window.scrollTo(0,120);
+    window.scrollTo(0,0)
+}
+
+function noSlideshowNameWarning() {
+    var alert = document.getElementById("alertDiv")
+    console.log("name not added")
+    var submitAlert = document.createElement('div')
+    submitAlert.className = "alert alert-danger"
+    submitAlert.textContent = "Slideshow must have a name"
+    alert.appendChild(submitAlert)
+    // window.scrollTo(0,120);
+    // window.scrollTo(0,0)
+    document.getElementById("name").focus();
+}
 
 
 // TODO put functions here that handle what goes on in the create new slideshow page
@@ -122,7 +145,9 @@ window.onload = function setupForm() {
 
 function formValidation() {
     if ($('#name').val() == "") {
-        alert("Please include a name for the slideshow")
+        // alert("Please include a name for the slideshow")
+        noSlideshowNameWarning()
+
         return false
     } else {
         return true
@@ -240,7 +265,7 @@ function saveSlideshowSettings() {
         // console.log("Lat: ", lat)
         // console.log("Lon: ", lon)
         // console.log("Rad: ", rad)
-        
+
 
 
         try {
@@ -282,5 +307,6 @@ function saveSlideshowSettings() {
         var buff = new Buffer(dbBinary)
         fs.writeFileSync("database.sqlite", buff)
         db.close()
+        slideshowSettingsSubmitted(name)
     }
 }
