@@ -95,21 +95,34 @@
 
         const remote = require('electron').remote
         const main = remote.require('./main.js')
+        const fs = require('fs')
+        const sql = require('sql.js')
+        // const ns = require('./newSlideshow.js')
 
         var fullData;
         var slideshowSettings
         var GPScoords;
 
         function getData() {
-          d3.json("data.json", function(data) {
-              //console.log(data[0]);
-              this.fullData = data;
-              // console.log(fullData)
+          var inBuff = fs.readFileSync('./database.sqlite')
+          // console.log("database found!")
+          var db = new sql.Database(inBuff)
 
-              afterProcessing();
+          fullData = db.exec("SELECT * FROM Image;")[0].values
+          console.log(fullData)
+
+          db.close()
+
+          afterProcessing()
+          // d3.json("data.json", function(data) {
+          //     //console.log(data[0]);
+          //     this.fullData = data;
+          //     // console.log(fullData)
+
+          //     afterProcessing();
 
 
-          });
+          // });
         }
 
         // converts the coordinates given to decimal degrees for google maps
@@ -128,12 +141,12 @@
             for (i = 0; i < fullData.length; i++) {
                 // convert the given exif format to to decimal degrees to be
                 // passed to google maps for the heatmap
-                if (fullData[i].GPSLongitude) {
+                if (fullData[i][11]) {
                     // console.log(fullData[i].GPSLatitude)
                     // console.log(fullData[i].GPSLongitude)
 
-                    lat = calculateDecimalGPS(fullData[i].GPSLatitudeRef, fullData[i].GPSLatitude[0], fullData[i].GPSLatitude[1], fullData[i].GPSLatitude[2])
-                    long = calculateDecimalGPS(fullData[i].GPSLongitudeRef, fullData[i].GPSLongitude[0], fullData[i].GPSLongitude[1], fullData[i].GPSLongitude[2])
+                    lat = fullData[i][11]
+                    long = fullData[i][12]
                     // console.log(lat, long)
 
                     GPScoords.push(new google.maps.LatLng(lat, long))
@@ -171,6 +184,7 @@
         main.saveMapData(circle)
         // alert("Area added to critera")
         remote.getCurrentWindow().close()
+        // ns.coordAdded()
         return
       }
 

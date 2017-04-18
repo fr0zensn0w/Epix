@@ -41,6 +41,20 @@ function openSlideshows() {
     setTimeout(function(){window.close()}, 1700);
 }
 
+// exports.coordAdded = () => {
+//     coordinatesAdded()
+// }
+
+// module.exports = {
+//     coordAdded: function() {
+//       coordinatesAdded()
+//     }
+// }
+
+function coordinatesAdded() {
+    document.getElementById('gps-added').textContent = "GPS Coordinates Added!"
+}
+
 function getDayOfYear(year, month, day) {
 
     N1 = Math.floor(275 * month / 9)
