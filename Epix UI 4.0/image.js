@@ -157,6 +157,9 @@ window.onload = function renderImage() {
     img.src = fn;
     img.style.width = '600px'
     img.style.height = '500px'
+    // marg = ($(window).width() - 600 )/2
+    // console.log(marg)
+    // img.style.marginLeft = marg + "px"
 
     imageAndInput.appendChild(img);
     imageAndInput.appendChild(imageNameDiv);
@@ -175,6 +178,7 @@ window.onload = function renderImage() {
 
     var deleteButtonCol = document.createElement('div')
     deleteButtonCol.className = "col-1"
+    deleteButtonCol.style = "margin-left:50px"
 
     // document.body.appendChild(img);
 

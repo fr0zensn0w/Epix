@@ -48,19 +48,24 @@ function parsePhotos() {
     var numberOfPhotos = []
     var counter = 0
 
+    // number of images in the db before processing is comleted
+    var oldImages = 0
+
     fs.readdir(currentDirectory, function(err, files) {
         console.log("number of files = ", files.length)
-
         // var insStmt = db.prepare("INSERT INTO Image (imageName, Model, Make, ExposureTime, iso, Height, Width, Day, Month, Year, Second, Minute, Hour, DayoftheYear, GPSLatitude, GPSLatitudeRef, GPSLongitude, GPSLongitudeRef, GPSAltitude, GPSAltitudeRef) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
         files.forEach(function(file, index) {
 
             file2 = "Photos/" + file
+            // uncomment to print out the file name
             console.log(file2)
             try {
                 var inBuff = fs.readFileSync('./database.sqlite')
                 // console.log("database found!")
                 var db = new sql.Database(inBuff)
+                oldImages = db.exec("SELECT COUNT(*) FROM Image;")[0].values[0][0]
+                console.log("old Images", oldImages)
 
                 var insStmt = "INSERT INTO Image VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
 
@@ -72,7 +77,7 @@ function parsePhotos() {
                 // var result = stmt.exec({':file' : file});
 
                 var result = db.exec("SELECT COUNT(*) FROM Image WHERE imageName='" + file + "';")
-                console.log(result)
+                // console.log(result)
 
                 //console.log(result['COUNT(*)']);
 
@@ -96,6 +101,9 @@ function parsePhotos() {
                             var inBuff = fs.readFileSync('./database.sqlite')
                             // console.log("database found!")
                             var db = new sql.Database(inBuff)
+                            // console.log("number of photos in the db", db.exec("SELECT COUNT(*) FROM Image;"))
+
+
 
 
                             var imgObj = new Object();
@@ -181,17 +189,53 @@ function parsePhotos() {
                                 console.log(e)
 
                             }
+
                             var dbBinary = db.export()
                             var buff = new Buffer(dbBinary)
                             fs.writeFileSync("database.sqlite", buff)
                             // console.log(db.exec("SELECT * FROM Image;"))
-                            db.close()   
+                            db.close()
                         }
+                        counter = counter + 1
                     });
+                    // once writing to the database is complete this is fired off for each one
+                    // counter = counter + 1
                 } catch (error) {
                     console.log('Error: ' + error.message);
-                }             
+                }
+                // incriment so that we know when the last file has been processed
+                // counter = counter + 1
+
             }
         })
+        // console.log(counter)
+
+        //uncomment below to see the number of images in the database (note, images that errored are not added to db)
+        // var inBuff = fs.readFileSync('./database.sqlite')
+        // // console.log("database found!")
+        // var db = new sql.Database(inBuff)
+        // numberInDatabase= db.exec("SELECT COUNT(*) FROM Image;")[0].values[0][0]
+        // finalCount = numberInDatabase + counter
+        // console.log(finalCount, files.length)
+        // if (finalCount == files.length) {
+        //     // the number of files in the database is the same ish as the folder- AKA processed them all
+        //     // alert("done processing")
+        // }
+        // console.log(numberInDatabase)
+        // var dbBinary = db.export()
+        // var buff = new Buffer(dbBinary)
+        // fs.writeFileSync("database.sqlite", buff)
+        // // console.log(db.exec("SELECT * FROM Image;"))
+        // db.close()
+
+        // alert("done processing images")
+        // method in gallery.js to make an alert saying that processing is complete
+
+        // console.log(oldImages)
+        console.log("counter", counter)
+        newImagesAdded = (oldImages) - files.length
+        processingComplete()
+
+
     })
 }

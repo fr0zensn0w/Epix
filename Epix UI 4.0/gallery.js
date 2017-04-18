@@ -17,6 +17,18 @@ function processPhotos() {
 
 }
 
+function processingComplete() {
+    var alert = document.getElementById("alert-info")
+    console.log("added tag to the database")
+    var processingDone = document.createElement('div')
+    processingDone.className = "alert alert-success"
+    processingDone.textContent = "New images processed"
+
+    alert.appendChild(processingDone)
+
+    setTimeout(function(){main.openWindow("gallery")}, 1000)
+}
+
 function openPhotoGallery() {
     // alert("open the gallery")
     // TODO: put code in here to open the gallery, AKA open up to where the images are stored
@@ -94,5 +106,5 @@ window.onload = function populateImages() {
     var dbBinary = db.export()
     var buff = new Buffer(dbBinary)
     fs.writeFileSync("database.sqlite", buff)
-    db.close() 
+    db.close()
 }
