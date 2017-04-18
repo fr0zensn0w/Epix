@@ -83,6 +83,11 @@ exports.getSlideshowImages = (db, ssn) => {
       query += "(i.Make='" + settings[0].values[0][2] + "')  AND  "
     }
 
+    // select by exposure
+    if (settings[0].values[0][3]) {
+        query += "(i.ExposureTime'" + settings[0].values[0][3] + "')  AND  "
+    }
+
     // select by today within range
     if (settings[0].values[0][4]) {
       var date = new Date()
