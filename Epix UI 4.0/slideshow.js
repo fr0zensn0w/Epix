@@ -75,12 +75,12 @@ exports.getSlideshowImages = (db, ssn) => {
 
     // select by model
     if (settings[0].values[0][1]) {
-      query += "(i.Model='" + settings.values[0][1] + "')  AND  "
+      query += "(i.Model='" + settings[0].values[0][1] + "')  AND  "
     }
 
     // select by make
     if (settings[0].values[0][2]) {
-      query += "(i.Make='" + settings.values[0][2] + "')  AND  "
+      query += "(i.Make='" + settings[0].values[0][2] + "')  AND  "
     }
 
     // select by today within range
