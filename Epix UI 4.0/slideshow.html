@@ -36,12 +36,12 @@
 
         .cycle-slideshow {
 
-          width: auto;
-          height: auto;
+          width: 100%;
+          /*height: auto;
           min-width: 10%;
           max-width: 100%;
           max-height: 100%;
-          margin: 10px auto;
+          margin: 10px auto;*/
           padding: 0;
           position: relative;
 
@@ -53,11 +53,14 @@
           some of these styles will be set by the plugin (by default) but setting them here
           helps avoid flash-of-unstyled-content
           */
-          position: absolute;
+          /*position: absolute;*/
           top: 0;
           left: 0;
-          width: 80%;
+          /*margin-top: 5%;*/
+          width: 90%;
           height: auto;
+          /*width: 80%;
+          height: auto;*/
           padding: 0;
           display: block;
         }
@@ -73,6 +76,8 @@
           font-family: 'Montserrat', sans-serif;
         }
   	</style>
+
+
 
 </head>
 
@@ -101,6 +106,8 @@
           <img src="Photos/IMG_3362.JPG">
           <img src="Photos/IMG_3365.JPG"> -->
       </div>
+
+
     <!-- <div class="cycle-caption"></div> -->
 
     <!-- <script src="slideshow.js"></script> -->
@@ -266,6 +273,25 @@
 
 
 
+    </script>
+
+    <script>
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+
+      console.log("width:", w, "height:", h)
+
+      var i = document.getElementsByClassName("cycle-slideshow")[0];
+
+      console.log("this be the thing" , i)
+
+      if(w < h) {
+        
+        i.style = "width:90%; height:auto;"
+
+      } else {
+        i.style = "width:auto; height:90%"
+      }
     </script>
 
     <!-- NEED FOR ELECTRON 2/2-->
