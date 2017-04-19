@@ -15,7 +15,7 @@ function slideshowSettingsSubmitted(name) {
     console.log("settings saved to the database")
     var submitAlert = document.createElement('div')
     submitAlert.className = "alert alert-success"
-    submitAlert.textContent = "Slideshow " + name + " Saved"
+    submitAlert.textContent = "Slideshow " + '"' + name + '"' + " has been saved"
     alert.appendChild(submitAlert)
     // window.scrollTo(0,120);
     window.scrollTo(0,0)
@@ -26,6 +26,7 @@ function noSlideshowNameWarning() {
     console.log("name not added")
     var submitAlert = document.createElement('div')
     submitAlert.className = "alert alert-danger"
+    submitAlert.id = "NameDiv"
     submitAlert.textContent = "Slideshow must have a name"
     alert.appendChild(submitAlert)
     // window.scrollTo(0,120);
@@ -150,6 +151,10 @@ function formValidation() {
 
         return false
     } else {
+        hide = document.getElementById('NameDiv')
+        if (hide) {
+            hide.style.display = "none"
+        }
         return true
     }
 }
@@ -308,5 +313,10 @@ function saveSlideshowSettings() {
         fs.writeFileSync("database.sqlite", buff)
         db.close()
         slideshowSettingsSubmitted(name)
+
+        // clearing out the map coordinates
+        main.saveMapData([null, null, null])
+        //clear all the forms so you could technically make another slideshow
+
     }
 }

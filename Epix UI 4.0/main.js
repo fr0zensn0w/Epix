@@ -46,7 +46,13 @@ exports.openImage = (i) => {
 
 exports.openSlideshow = (ssName) => {
     global.sharedObj = {SSN: ssName};
-    let win = new BrowserWindow({width:1400, height:1000, backgroundColor: '#222',show:false})
+    let win = new BrowserWindow({
+      width:1400,
+      height:1000,
+      backgroundColor: '#222',
+      show:false,
+      frame:true
+    })
     win.loadURL(`file://${__dirname}/slideshow.html`)
     // win.show()
     //win.webContents.openDevTools()
