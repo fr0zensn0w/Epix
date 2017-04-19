@@ -26,11 +26,11 @@ Know Bugs
 
 To run our application you must have node.js installed. This can be found at [nodejs.org](nodejs.org).
 To install and run use these commands when inside of the Epix UI 4.0 folder:
-'npm install'
-'npm start'
+`npm install`
+`npm start`
 
-After the application is built the first time, only 'npm start' needs to be run to start the application.
+After the application is built the first time, only `npm start` needs to be run to start the application.
 
 Packaging Instructions (not currently working)
-'npm package-mac'
-'npm package-win'
+`npm package-mac`
+`npm package-win`
