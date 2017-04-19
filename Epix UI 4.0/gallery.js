@@ -25,8 +25,12 @@ function processingComplete() {
     processingDone.textContent = "New images processed"
 
     alert.appendChild(processingDone)
+    window = remote.getCurrentWindow()
 
-    setTimeout(function(){main.openWindow("gallery")}, 1000)
+    setTimeout(function(){
+        main.openWindow("gallery")
+        setTimeout(function(){window.close()}, 1700)
+      }, 1000)
 }
 
 function openPhotoGallery() {
