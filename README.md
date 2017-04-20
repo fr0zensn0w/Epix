@@ -1,4 +1,4 @@
-## Release Notes Epix 1.0
+## Epix 1.0 - Release Notes
 
 New features
 * Ability to create slideshows.
